@@ -1,6 +1,4 @@
-package stack.user
-
-import stack.post.Post;
+package outofbounds
 
 class User {
 	static hasMany = [posts:Post]

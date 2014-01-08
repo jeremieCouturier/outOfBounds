@@ -1,6 +1,4 @@
-package stack.post
-
-import stack.user.User;
+package outofbounds
 
 class Post {
 	
@@ -10,7 +8,9 @@ class Post {
 	static belongsTo = [user:User]
 	static hasMany = [comments:Comment]
 
-    static constraints = {
+    /*static constraints = {
 		tablePerHierarchy false
-    }
+	
+    }*/
+	
 }

@@ -1,14 +1,13 @@
-package stack.post
+package outofbounds
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
-import stack.post.Answer;
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Answer)
-class AnswerSpec extends Specification {
+@TestFor(User)
+class UserSpec extends Specification {
 
     def setup() {
     }

@@ -1,4 +1,4 @@
-package stack.post
+package outofbounds
 
 class Question extends Post {
 	

@@ -1,4 +1,4 @@
-package stack.post
+package outofbounds
 
 class Answer extends Post {
 	
@@ -7,3 +7,4 @@ class Answer extends Post {
     static constraints = {
     }
 }
+

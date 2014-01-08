@@ -1,9 +1,9 @@
-package stack.post
+package outofbounds
 
 class Comment extends Post {
 	
 	static belongsTo = [post:Post]
 	
-    static constraints = {
-    }
+	static constraints = {
+	}
 }
