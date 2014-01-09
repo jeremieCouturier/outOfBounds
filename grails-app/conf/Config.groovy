@@ -120,7 +120,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'outofbounds.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'outofbounds.UserRole'
 grails.plugin.springsecurity.authority.className = 'outofbounds.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
+	'/**':                              ['permitAll'],
 	'/index':                         ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
@@ -128,4 +128,5 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll']
 ]
-
+grails.plugin.springsecurity.auth.loginFormUrl = '/'
+grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/'

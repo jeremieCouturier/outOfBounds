@@ -103,6 +103,26 @@
 			</ul>
 		</div>
 		<div id="page-body" role="main">
+		<form method="POST" action="${resource(file: 'j_spring_security_check')}">
+		<table>
+			<tr>
+				<td>Username:</td><td><g:textField name="j_username"/></td>
+			</tr>
+			<tr>
+				<td>Password:</td><td><input name="j_password" type="password"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<g:submitButton name="login" value="Login"/>
+				</td>
+			</tr>
+		</table>              
+		</form>
+
+		<g:form name="signup" url="[action:'create',controller:'user']">
+			<g:submitButton name="signup" value="Sign Up" />
+		</g:form>
+
 			<h1>Welcome to Grails</h1>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
