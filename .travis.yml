@@ -2,12 +2,13 @@ language: groovy
 jdk:
  - oraclejdk7
 
- notifications:
-  email:
-    - couturier.jeremie@hotmail.fr
-
 before_script:
  - chmod +x grailsw
 
 script: ./grailsw refresh-dependencies
  && ./grailsw "test-app -integration"
+
+
+notifications:
+  email:
+    - couturier.jeremie@hotmail.fr
