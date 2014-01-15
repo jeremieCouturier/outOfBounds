@@ -8,5 +8,6 @@ class Question extends Post {
 	static hasMany = [answers:Answer, tags:Tag]
 
     static constraints = {
+		title blank:false, size:10..50
     }
 }
