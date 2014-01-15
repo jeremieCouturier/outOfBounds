@@ -7,6 +7,7 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -127,7 +128,7 @@ class UserController {
     }
 
     def profile(User userInstance) {
-        print "Does not work!"
+        userInstance = springSecurityService.getCurrentUser();
         respond userInstance, view:'profile'
     } 
 }

@@ -18,8 +18,9 @@
 				<g:submitButton name="signup" value="Sign Up" />
 			</g:form>
 		</sec:ifNotLoggedIn>
+
 		<sec:ifAllGranted roles="ROLE_USER">
-	  		<g:link controller="user" action="profile" resource="${userInstance}">
+	  		<g:link controller="user" action="profile">
 	  			<g:message code="user.my_profile" />
 	  		</g:link>
 	  		<g:link controller="user" action="disconnection">
