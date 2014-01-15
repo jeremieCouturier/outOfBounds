@@ -12,3 +12,6 @@ script: ./grailsw refresh-dependencies
 notifications:
   email:
     - couturier.jeremie@hotmail.fr
+    - gauthier.pelloux@gmail.com
+    - jeremi.jutand@hotmail.fr
+    - fourel.david118@gmail.com
