@@ -20,7 +20,21 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
+        
+
+   
+        def newUser = new User(
+            username: params.username,
+            password: params.password,
+            enabled: true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        )
+        
+
+
+        respond newUser
     }
 
     @Transactional
@@ -37,16 +51,25 @@ class UserController {
 
         userInstance.save flush:true
         
+        def userRole = Role.findByAuthority("ROLE_USER")?: 
+            new Role(authority:"ROLE_USER").save(failOnError:true)
+        def adminRole = Role.findByAuthority("ROLE_ADMIN") ?: 
+            new Role(authority:"ROLE_ADMIN").save(failOnError:true)
+
+        UserRole.create userInstance, userRole
+
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'userInstance.label', default: 'User'), userInstance.id])
-                redirect userInstance
+                //redirect userInstance
+                redirect(uri: "")
             }
             '*' { respond userInstance, [status: CREATED] }
         }
     }
 
     def edit(User userInstance) {
+        print userInstance
         respond userInstance
     }
 
@@ -61,6 +84,7 @@ class UserController {
             respond userInstance.errors, view:'edit'
             return
         }
+        UserRole.delete userInstance, userRole, flush:true
 
         userInstance.save flush:true
 
@@ -101,4 +125,9 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def profile(User userInstance) {
+        print "Does not work!"
+        respond userInstance, view:'profile'
+    } 
 }
