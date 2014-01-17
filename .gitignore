@@ -1,3 +1,6 @@
 *.class
 target/
 target-eclipse/
+.classpath
+.project
+.settings/org.eclipse.jdt.groovy.core.prefs
