@@ -2,7 +2,7 @@ package outofbounds
 
 class Post {
 	
-	int mark
+	int mark = 0
 	String text
 	
 	static belongsTo = [user:User]
