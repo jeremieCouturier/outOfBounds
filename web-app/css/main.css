@@ -47,8 +47,8 @@ body {
 	        box-shadow: 0 0 0.3em #255b17;
 }
 
-#grailsLogo {
-	background-color: #abbf78;
+#oobLogo {
+	background-color: #012345;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -65,7 +65,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #48802c; /* links color */
 }
 
 a:hover, a:active {
@@ -108,7 +108,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #012345;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -476,7 +476,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #B1B2F6;
 }
 
 /* PAGINATION */
