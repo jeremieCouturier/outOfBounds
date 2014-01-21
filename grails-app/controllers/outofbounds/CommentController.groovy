@@ -7,6 +7,8 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class CommentController {
+	
+	def CommentService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,9 +21,20 @@ class CommentController {
         respond commentInstance
     }
 
-    def create() {
-        respond new Comment(params)
+    def createCommentForQuestion() {
+		def user = getAuthenticatedUser()
+		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
+		
+        redirect(uri: "/question/show?question_id=${params.id}")
     }
+	
+	def createCommentForAnswer() {
+		def user = getAuthenticatedUser()
+		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
+		def answer = Answer.findById(params.id)
+		
+		redirect(uri: "/question/show?question_id=${answer.question.id}")
+	}
 
     @Transactional
     def save(Comment commentInstance) {
