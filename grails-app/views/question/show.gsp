@@ -36,8 +36,8 @@
             </div>
             <g:render template="templateAnswer" collection="${questionInstance.answers}" var="answer" />
         </div>
-        
-        <g:form controller="Answer" action="createPostForAnswer" id="${questionInstance.id}">
+
+        <g:form controller="Answer" action="createAnswerForQuestion" id="${questionInstance.id}">
             <textarea name="answer_text" placeholder="Add an answer ..." required></textarea><br />
             <button type="submit">Post your answer</button>
         </g:form>

@@ -3,6 +3,16 @@
 <div>
     <textarea readonly="true">${comment.text}</textarea>
     
+    <!-- vote -->
+    <label> ${comment.mark} </label>
+    
+    <g:link controller="Post" action="upVote" params='[post_id: "${comment.id}"]'>
+        <button>+</button>
+    </g:link>
+    <g:link controller="Post" action="downVote" params='[post_id: "${comment.id}"]'>
+        <button>-</button>
+    </g:link>
+    
     <g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${comment.date}"/>
       
 	<g:link controller="Comment" action="edit" params='[comment_id: "${comment.id}"]'>

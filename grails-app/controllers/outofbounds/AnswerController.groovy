@@ -21,7 +21,7 @@ class AnswerController {
         respond answerInstance
     }
 
-    def create() {
+    def createAnswerForQuestion() {
 		def user = getAuthenticatedUser()
 		def answer = AnswerService.create(Integer.parseInt(params.id), params.answer_text, user)
 		
