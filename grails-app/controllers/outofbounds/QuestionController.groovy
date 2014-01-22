@@ -18,18 +18,31 @@ class QuestionController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-		redirect(uri: "/question/listNews")
+		redirect(uri: "/question/newsQuestions")
     }
 	
-	def listNews()
+	def newsQuestions()
 	{
 		render(view: '/question/index',
-				model: [ questions: questionService.listNews() ])
+				model: [ questions: questionService.newsQuestions() ])
+	}
+	
+	def voteQuestions()
+	{
+		render(view: '/question/index',
+			model: [ questions: questionService.voteQuestions() ])
+	}
+
+	def unansweredQuestions()
+	{
+		render(view: '/question/index',
+			model: [ questions: questionService.unansweredQuestions() ])
 	}
 
     def show() {
         def currentLoggedInUser = springSecurityService.getCurrentUser();
 		def question = Question.findById(params.question_id)
+		questionService.addView(question)
 
 		return [questionInstance: question, currentLoggedInUser: currentLoggedInUser]
     }

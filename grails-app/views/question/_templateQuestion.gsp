@@ -3,6 +3,7 @@
 <div>
 	<label>Votes </label>${question.mark}
 	<label>Answers</label>${question.answers.size()}
+	<label>Views</label>${question.views}
 	<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 	    ${question.title}
 	</g:link>

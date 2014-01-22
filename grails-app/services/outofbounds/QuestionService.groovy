@@ -21,6 +21,12 @@ class QuestionService {
 		
 		question.save(faiLonError: true)
 	}
+	
+	def addView(Question question)
+	{
+		question.views ++
+		question.save(failOnError: true)
+	}
 
 	def saveQuestion(String title, String text, String tags, User user) {
 		
@@ -36,7 +42,18 @@ class QuestionService {
 		return question
 	}
 
-	def listNews() {
-		return Question.list(/*max:10, sort: 'date', order: 'asc'*/)
+	def newsQuestions() {
+		return Question.list(max:10, sort: 'date', order: 'desc')
+	}
+	
+	def voteQuestions()
+	{
+		return Question.list(max:10, sort: 'mark', order: 'desc')
+	}
+
+	def unansweredQuestions()
+	{
+		def listUnansweredQuestions = Question.findByViews(0)
+		return listUnansweredQuestions.list(max:10, sort: 'date', order: 'desc')
 	}
 }

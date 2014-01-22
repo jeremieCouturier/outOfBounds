@@ -21,16 +21,33 @@ class BootStrap {
         	password: "admin",
         	enabled: true).save(failOnError: true)
 			
-		/*def question = new Question(
+		/* first question */
+		def tag = Tag.findByName("grails") ?: new Tag(
+			name:"grails",
+			description:"the best way to develop your web app").save(failOnError: true)
+		
+		def question = new Question(
 			title:"How to deploy a grails application ?",
 			text:"I try for 2 days to deploy y app but it doesn't work. Am I stupid ?",
 			user:adminUser)
-			
-		def tag = Tag.findByName("grails") ?: new Tag(
-			name:"grails",
-			description:"the best way to develop your web app")
 		
-		question.addToTags(tag).save*/
+		question.addToTags(tag).save(failOnError: true)
+		
+		/* second question */
+		def tagcss = Tag.findByName("css") ?: new Tag(
+			name:"css",
+			description:"the design of your web app").save(failOnError: true)
+			
+		def taghtml = Tag.findByName("html") ?: new Tag(
+			name:"html",
+			description:"the body of your web app").save(failOnError: true)
+		
+		def questionWeb = new Question(
+			title:"How to merge the use html/css",
+			text:"I understand nothing. Please, please, please, help me !!!",
+			user:adminUser)
+		
+		questionWeb.addToTags(tagcss).addToTags(taghtml).save(failOnError: true)
 			
 
 	    if (!adminUser.authorities.contains(adminRole)) {
