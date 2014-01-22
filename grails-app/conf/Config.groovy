@@ -128,6 +128,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll']
 ]
-grails.plugin.springsecurity.auth.loginFormUrl = '/'
-grails.plugin.springsecurity.logout.postOnly = false
+// grails.plugin.springsecurity.auth.loginFormUrl = '/'
+grails.plugin.springsecurity.logout.postOnly = false //enable GET request for disconnection
 // grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/'

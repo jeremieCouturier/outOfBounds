@@ -1,4 +1,3 @@
-
 <%@ page import="outofbounds.Question" %>
 <!DOCTYPE html>
 <html>
@@ -8,12 +7,13 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+        <g:render template="/header" />
 		
 		<!-- Question -->
 		<label>${questionInstance.title}</label>
 				
-		<g:render template="templateQuestion" bean="${questionInstance}" var="question"></g:render>	
-		
+		<g:render template="templateQuestionDetailled" bean="${questionInstance}" var="question"></g:render>	
+
 		<!-- Comments of the question -->
 		<div>
             <div>

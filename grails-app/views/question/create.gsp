@@ -8,6 +8,8 @@
 		<link href="${resource(dir: 'css', file: 'question.css')}" rel="stylesheet">
 	</head>
 	<body>
+		<g:render template="/header" />
+
 		<g:form action="saveQuestion" >
 			<div class="block">
 				<label class="label_title" for="title">Title</label>

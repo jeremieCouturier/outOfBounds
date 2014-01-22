@@ -27,18 +27,18 @@
 				</li>
 			
 				<li class="fieldcontain">
-					<g:set var="count" value="${userInstance.posts?.size()}" />
+					<g:set var="count" value="${userInstance.questions?.size()}" />
 					<span id="postcount-label" class="property-label"><g:message code="user.post_count"/></span>
 					
 					<span class="property-value" aria-labelledby="postcount-label">${count}</span>
 				</li>
 
-				<g:if test="${userInstance?.posts}">
+				<g:if test="${userInstance?.questions}">
 				<li class="fieldcontain">
 					<span id="posts-label" class="property-label"><g:message code="user.posts.label" /></span>
 					
-						<g:each in="${userInstance.posts}" var="p">
-						<span class="property-value" aria-labelledby="posts-label"><g:link controller="post" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						<g:each in="${userInstance.questions}" var="question">
+						<span class="property-value" aria-labelledby="posts-label"><g:link controller="post" action="show" id="${question.id}">${question?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
