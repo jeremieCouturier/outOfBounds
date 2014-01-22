@@ -23,13 +23,14 @@
 	  		<g:link controller="user" action="profile">
 	  			<g:message code="user.my_profile" />
 	  		</g:link>
-	  		<g:link controller="user" action="disconnection">
-	  			
-	  		</g:link>
-			<form method="POST" action="${resource(file: 'j_spring_security_check')}">
-				<g:submitButton name="logout" value="${message(code: 'index.log_out')}"/>
-			</form>
+
+    		<g:remoteLink class="logout" controller="logout">${message(code: 'index.log_out')}</g:remoteLink><br>
+
+	  		<g:link controller="question" action="create">
+	  			<g:message code="question.create_question" />
+	  		</g:link><br>
 		</sec:ifAnyGranted>
+
 		<link:aboutConfig><g:message code="index.about_config"/></link:aboutConfig>
 	</body>
 </html>
