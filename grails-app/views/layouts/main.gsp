@@ -19,7 +19,32 @@
 		<r:layoutResources />
 	</head>
 	<body>
+<<<<<<< HEAD
 		<div id="oobLogo" role="banner"><a href="${resource(url:'/')}/"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a></div>
+=======
+		<div id="oobLogo" role="banner"><a href="${resource(url:'/')}"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a></div>
+		<!-- <div id="oobLogo" role="banner"><a href="http://localhost:8080/outOfBounds"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a></div> -->
+		<div id="menu">
+			<a href="http://localhost:8080/outOfBounds"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a>
+		    <label> OutOfBounds </label>
+		    
+		    <g:link controller="Question" action="index">
+		        <button><g:message code="menu.questions"/></button>
+		    </g:link>
+		    <g:link controller="Tag" action="index">
+		        <button><g:message code="menu.tags"/></button>
+		    </g:link>
+		    <g:link controller="User" action="index">
+		        <button><g:message code="menu.users"/></button>
+		    </g:link>
+		    <g:link controller="Badge" action="index">
+		        <button><g:message code="menu.badges"/></button>
+		    </g:link>
+		    <g:link controller="Question" action="create">
+		        <button><g:message code="menu.ask"/></button>
+		    </g:link>
+		</div>
+>>>>>>> 2f62675... [Menu] added menu with i18
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

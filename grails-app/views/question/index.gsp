@@ -1,6 +1,6 @@
-
 <%@page import="outOfBounds.Configuration"%>
 <%@ page import="outofbounds.Question" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
