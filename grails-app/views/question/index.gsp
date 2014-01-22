@@ -9,25 +9,19 @@
 	</head>
 	<body>
 		<g:render template="/header" />
-
-		<a href="#list-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+		<div>
+			<label>All question</label>
+			<g:link controller="Question" action="newsQuestions">
+		        <button>News</button>
+		    </g:link>
+		    <g:link controller="Question" action="voteQuestions">
+		        <button>Vote</button>
+		    </g:link>
+		    <g:link controller="Question" action="unansweredQuestions">
+		        <button>Unanswered</button>
+		    </g:link>
 		</div>
-		<div id="list-question" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			
-			<g:render template="templateQuestion" collection="${questionInstanceList}" var="question" />
-			
-			<div class="pagination">
-				<g:paginate total="${questionInstanceCount ?: 0}" />
-			</div>
-		</div>
+		
+		<g:render template="templateQuestion" collection="${questions}" var="question" />
 	</body>
 </html>

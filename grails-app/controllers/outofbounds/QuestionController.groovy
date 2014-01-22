@@ -17,11 +17,15 @@ class QuestionController {
 	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        User currentLoggedInUser = springSecurityService.getCurrentUser();
-        params.max = Math.min(max ?: 10, 100)
-        respond Question.list(params), model:[questionInstanceCount: Question.count(), currentLoggedInUser: currentLoggedInUser]
+    def index() {
+		redirect(uri: "/question/listNews")
     }
+	
+	def listNews()
+	{
+		render(view: '/question/index',
+				model: [ questions: questionService.listNews() ])
+	}
 
     def show() {
         def currentLoggedInUser = springSecurityService.getCurrentUser();
@@ -39,7 +43,8 @@ class QuestionController {
     def saveQuestion() {
 		def user = getAuthenticatedUser()
         def question = questionService.saveQuestion(params.question_title, params.question_text, params.question_tags, user) 
-        redirect(uri: "/question/show?question_id=${question.id}")
+        
+		redirect(uri: "/question/show?question_id=${question.id}")
 	}
 
     @Secured(['IS_AUTHENTICATED_FULLY'])

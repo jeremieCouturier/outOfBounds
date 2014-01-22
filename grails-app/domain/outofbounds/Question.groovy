@@ -6,7 +6,7 @@ class Question extends Post {
 	
 	
 	static hasMany = [answers:Answer, tags:Tag]
-	static belongsTo = [user:User]
+	//static belongsTo = [user:User]
 
     static constraints = {
 		title blank: false, size:10..50

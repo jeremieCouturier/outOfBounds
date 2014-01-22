@@ -6,10 +6,10 @@
     <!-- vote -->
     <label> ${answer.mark} </label>
     
-    <g:link controller="Post" action="upVote" params='[post_id: "${answer.id}", question_id: "${answer.question.id }"]'>
+    <g:link controller="Post" action="upVote" params='[post_id: "${answer.id}"]'>
         <button>+</button>
     </g:link>
-    <g:link controller="Post" action="downVote" params='[post_id: "${answer.id}", question_id: "${answer.question.id }"]'>
+    <g:link controller="Post" action="downVote" params='[post_id: "${answer.id}"]'>
         <button>-</button>
     </g:link>
     

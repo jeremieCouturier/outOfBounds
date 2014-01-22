@@ -13,6 +13,11 @@
         <button>-</button>
     </g:link>
     
+    Tags
+    <g:each var="tag" in="${question.tags}">
+    	${tag.name}
+    </g:each>
+    
     <g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}"/>
       
     <g:if test="${question.user == currentLoggedInUser }">

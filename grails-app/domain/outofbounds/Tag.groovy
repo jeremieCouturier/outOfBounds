@@ -3,7 +3,7 @@ package outofbounds
 class Tag {
 	
 	String name
-	String description
+	String description = new String("")
 	int reputation
 	
 	static hasMany = [questions:Question]
