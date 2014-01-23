@@ -1,4 +1,5 @@
 import outofbounds.Question
+import outofbounds.Answer
 import outofbounds.Role
 import outofbounds.Tag
 import outofbounds.User
@@ -29,6 +30,14 @@ class BootStrap {
         	UserRole.create adminUser, userRole
     	}
 
+    	/* random user */
+    	def user = User.findByUsername('simple_user') ?: new User(
+        	username: 'a',
+        	password: "a",
+        	enabled: true).save(failOnError: true)
+    	if (!user.authorities.contains(userRole)) {
+        	UserRole.create user, userRole
+    	}
 
 
 		/* first question */
@@ -42,6 +51,12 @@ class BootStrap {
 			user:adminUser)
 		
 		question.addToTags(tag).save(failOnError: true)
+		/* with its first answer (hourray!) */
+		def answer = new Answer(
+			title:"Try it",
+			text:"I tested g++ and it worked",
+			question: question.id,
+			user:adminUser).save(failOnError: true)
 		
 		/* second question */
 		def tagcss = Tag.findByName("css") ?: new Tag(
