@@ -42,18 +42,18 @@ class QuestionService {
 		return question
 	}
 
-	def newsQuestions() {
-		return Question.list(max:10, sort: 'date', order: 'desc')
+	def newsQuestions(def offset, def max) {
+		return Question.list(max: max, offset: offset, sort: 'date', order: 'desc')
 	}
 	
-	def voteQuestions()
+	def voteQuestions(def offset, def max)
 	{
-		return Question.list(max:10, sort: 'mark', order: 'desc')
+		return Question.list(max: max, offset: offset, sort: 'mark', order: 'desc')
 	}
 
-	def unansweredQuestions()
+	def unansweredQuestions(def offset, def max)
 	{
 		def listUnansweredQuestions = Question.findByViews(0)
-		return listUnansweredQuestions.list(max:10, sort: 'date', order: 'desc')
+		return listUnansweredQuestions.list(max: max, offset: offset, sort: 'date', order: 'desc')
 	}
 }

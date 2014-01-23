@@ -48,6 +48,18 @@ class BootStrap {
 			user:adminUser)
 		
 		questionWeb.addToTags(tagcss).addToTags(taghtml).save(failOnError: true)
+		
+		/* third question */
+		def tagcpp = Tag.findByName("cpp qt") ?: new Tag(
+			name:"cpp",
+			description:"a performing object language").save(failOnError: true)
+		
+		def questionCpp = new Question(
+			title:"How to insert a graphic in Qt",
+			text:"The problem is in the title ! Does anybody know how to do ?",
+			user:adminUser)
+		
+		questionCpp.addToTags(tagcpp).save(failOnError: true)
 			
 
 	    if (!adminUser.authorities.contains(adminRole)) {

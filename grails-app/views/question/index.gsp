@@ -1,4 +1,5 @@
 
+<%@page import="outOfBounds.Configuration"%>
 <%@ page import="outofbounds.Question" %>
 <!DOCTYPE html>
 <html>
@@ -23,5 +24,7 @@
 		</div>
 		
 		<g:render template="templateQuestion" collection="${questions}" var="question" />
+		
+		<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
 	</body>
 </html>

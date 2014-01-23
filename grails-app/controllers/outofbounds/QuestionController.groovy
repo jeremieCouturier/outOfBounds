@@ -3,6 +3,7 @@ package outofbounds
 
 
 import static org.springframework.http.HttpStatus.*
+import outOfBounds.Configuration;
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
@@ -18,25 +19,35 @@ class QuestionController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
+		
 		redirect(uri: "/question/newsQuestions")
     }
 	
 	def newsQuestions()
 	{
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		
 		render(view: '/question/index',
-				model: [ questions: questionService.newsQuestions() ])
+				model: [ questions: questionService.newsQuestions(offset, max), total: Question.count ])
 	}
 	
 	def voteQuestions()
 	{
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		
 		render(view: '/question/index',
-			model: [ questions: questionService.voteQuestions() ])
+			model: [ questions: questionService.voteQuestions(offset, max), total: Question.count ])
 	}
 
 	def unansweredQuestions()
 	{
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		
 		render(view: '/question/index',
-			model: [ questions: questionService.unansweredQuestions() ])
+			model: [ questions: questionService.unansweredQuestions(offset, max), total: Question.count ])
 	}
 
     def show() {
