@@ -7,7 +7,14 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/" {
+            controller = "question"
+            action = "index"
+        }
+        "404" {
+            controller = "question"
+            action = "index"
+        }
         "500"(view:'/error')
         name aboutConfig: "/about_config"(view:"about_config")
 	}

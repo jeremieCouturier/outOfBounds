@@ -7,7 +7,5 @@
 	</head>
 	<body>
 		<g:render template="/header" />
-
-		<link:aboutConfig><g:message code="index.about_config"/></link:aboutConfig>
 	</body>
 </html>

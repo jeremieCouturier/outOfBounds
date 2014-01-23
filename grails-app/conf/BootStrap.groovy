@@ -8,7 +8,7 @@ class BootStrap {
 	def springSecurityService
 
 	def init = { servletContext ->
-
+		/* roles definition */
 	    def userRole = Role.findByAuthority('ROLE_USER') ?: 
 	    	new Role(authority: 'ROLE_USER').save(failOnError: true)
 	    def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: 
@@ -16,11 +16,21 @@ class BootStrap {
 	    def moderatorRole = Role.findByAuthority('ROLE_MODERATOR') ?: 
 	    	new Role(authority: 'ROLE_MODERATOR').save(failOnError: true)
 
+	    /* admin super user */
 	    def adminUser = User.findByUsername('admin') ?: new User(
         	username: 'admin',
         	password: "admin",
         	enabled: true).save(failOnError: true)
-			
+		
+	    if (!adminUser.authorities.contains(adminRole)) {
+        	UserRole.create adminUser, adminRole
+    	}
+    	if (!adminUser.authorities.contains(userRole)) {
+        	UserRole.create adminUser, userRole
+    	}
+
+
+
 		/* first question */
 		def tag = Tag.findByName("grails") ?: new Tag(
 			name:"grails",
@@ -62,9 +72,6 @@ class BootStrap {
 		questionCpp.addToTags(tagcpp).save(failOnError: true)
 			
 
-	    if (!adminUser.authorities.contains(adminRole)) {
-        	UserRole.create adminUser, adminRole
-    	}
 	}
     def destroy = {
     }

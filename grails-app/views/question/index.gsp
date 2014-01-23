@@ -10,7 +10,7 @@
 		<link href="${resource(dir: 'css', file: 'question.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<!-- <g:render template="/header" /> -->
+		<g:render template="/header" />
 		
 		<ul class="menu_question"> 
 		   <li class="title">All Questions</li>

@@ -11,7 +11,7 @@
 	</g:form>
 </sec:ifNotLoggedIn>
 
-<sec:ifAnyGranted roles="ROLE_USER, ROLE_ADMIN">
+<sec:ifAnyGranted roles="ROLE_USER">
 		<g:link controller="user" action="profile">
 			<g:message code="user.my_profile" />
 		</g:link>
@@ -21,4 +21,10 @@
 		<g:link controller="question" action="create">
 			<g:message code="question.create_question" />
 		</g:link><br>
+</sec:ifAnyGranted>
+
+<sec:ifAnyGranted roles="ROLE_ADMIN">
+	<link:aboutConfig>
+		<g:message code="index.about_config" /> 
+	</link:aboutConfig>
 </sec:ifAnyGranted>
