@@ -19,7 +19,7 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="oobLogo" role="banner"><a href="http://localhost:8080/outOfBounds"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a></div>
+		<div id="oobLogo" role="banner"><a href="${resource(url:'/')}"><img src="${resource(dir: 'images', file: 'out_of_bounds.png')}" alt="Out of bounds"/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

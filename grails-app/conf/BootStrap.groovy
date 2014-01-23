@@ -37,8 +37,8 @@ class BootStrap {
 			description:"the best way to develop your web app").save(failOnError: true)
 		
 		def question = new Question(
-			title:"How to deploy a grails application ?",
-			text:"I try for 2 days to deploy y app but it doesn't work. Am I stupid ?",
+			title:"How to deploy a grails application?",
+			text:"I try for 2 days to deploy my app but it doesn't work. Am I stupid?",
 			user:adminUser)
 		
 		question.addToTags(tag).save(failOnError: true)
@@ -54,7 +54,7 @@ class BootStrap {
 		
 		def questionWeb = new Question(
 			title:"How to merge the use html/css",
-			text:"I understand nothing. Please, please, please, help me !!!",
+			text:"I understand nothing. Please, please, please, help me!!!",
 			user:adminUser)
 		
 		questionWeb.addToTags(tagcss).addToTags(taghtml).save(failOnError: true)
@@ -66,7 +66,7 @@ class BootStrap {
 		
 		def questionCpp = new Question(
 			title:"How to insert a graphic in Qt",
-			text:"The problem is in the title ! Does anybody know how to do ?",
+			text:"The problem is in the title! Does anybody know how to do?",
 			user:adminUser)
 		
 		questionCpp.addToTags(tagcpp).save(failOnError: true)
