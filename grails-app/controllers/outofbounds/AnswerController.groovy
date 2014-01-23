@@ -1,14 +1,18 @@
 package outofbounds
 
 
+import outofbounds.Post
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
 class AnswerController {
 	
 	def AnswerService
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -21,6 +25,7 @@ class AnswerController {
         respond answerInstance
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     def createAnswerForQuestion() {
 		def user = getAuthenticatedUser()
 		def answer = AnswerService.create(Integer.parseInt(params.id), params.answer_text, user)
@@ -28,6 +33,7 @@ class AnswerController {
         redirect(uri: "/question/show?question_id=${answer.question.id}")
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def save(Answer answerInstance) {
         if (answerInstance == null) {
@@ -51,6 +57,7 @@ class AnswerController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     def edit() {
 		def answer = Answer.findById(params.answer_id)
 		def question = answer.question
@@ -58,12 +65,14 @@ class AnswerController {
 		return [questionInstance: question, answerInstance: answer]
     }
 	
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
 	def editAnswer() {
 		def answer = AnswerService.editAnswer(Integer.parseInt(params.id), params.answer_text)
 		
 		redirect(uri: "/question/show?question_id=${answer.question.id}")
 	}
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def update(Answer answerInstance) {
         if (answerInstance == null) {
@@ -87,12 +96,17 @@ class AnswerController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     def deleteAnswer() {
-
-		def question = answerService.delete(Integer.parseInt(params.answer_id))
-
-		redirect(uri: "/question/show?question_id=${question.id}")
-		
+        def answer = Answer.findById(params.answer_id)
+        def question = answer.question
+        if (answer.canUserDeletePost(getAuthenticatedUser())) {
+            answerService.delete(answer)
+            flash.message = message(code: 'answer.delete_success')
+        } else {
+            flash.message = message(code: 'answer.delete_not_authorized')
+        }
+        redirect(uri: "/question/show?question_id=${question.id}")
     }
 
     protected void notFound() {

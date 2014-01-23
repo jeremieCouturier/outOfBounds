@@ -34,9 +34,8 @@ class AnswerService {
 		return answer
 	}
 	
-	def delete(int answer_id)
+	def delete(Answer answer)
 	{
-		def answer = Answer.findById(answer_id)
 		def question = answer.question
 
 		question.removeFromAnswers(answer)

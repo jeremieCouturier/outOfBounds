@@ -13,14 +13,13 @@
 		<g:render template="/header" />
 		
 		<ul class="menu_question"> 
-		   <li class="title">All Questions</li>
-		   
+		   <li class="title">All Questions</li> 
 		   <!-- first choice -->
 		   <g:if test="${choice.equals('newest')}">
 			  	<li class="item_selected_menu">newest</li> 
 			</g:if>
 			<g:else>
-		 		<li><g:link controller="Question" action="newsQuestions">newest</g:link></li>
+		 		<li><g:link controller="Question" action="newQuestions">newest</g:link></li>
 		 	</g:else>
 		 	
 		 	<!-- second choice -->

@@ -13,5 +13,11 @@ class Post {
 		tablePerHierarchy false
 	
     }*/
-	
+
+	public boolean canUserDeletePost(User inUser) {
+        def adminRole = Role.findByAuthority('ROLE_ADMIN')
+        
+        //check that user has privileges to delete the post
+        return (inUser.authorities.contains(adminRole) || inUser == user)
+	}	
 }
