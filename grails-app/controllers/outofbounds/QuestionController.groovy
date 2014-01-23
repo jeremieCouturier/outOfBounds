@@ -29,7 +29,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(view: '/question/index',
-				model: [ questions: questionService.newsQuestions(offset, max), total: Question.count ])
+				model: [ questions: questionService.newsQuestions(offset, max), total: Question.count, choice: "newest"])
 	}
 	
 	def voteQuestions()
@@ -38,7 +38,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(view: '/question/index',
-			model: [ questions: questionService.voteQuestions(offset, max), total: Question.count ])
+			model: [ questions: questionService.voteQuestions(offset, max), total: Question.count, choice: "votes" ])
 	}
 
 	def unansweredQuestions()
@@ -47,7 +47,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(view: '/question/index',
-			model: [ questions: questionService.unansweredQuestions(offset, max), total: Question.count ])
+			model: [ questions: questionService.unansweredQuestions(offset, max), total: Question.count, choice: "unanswered" ])
 	}
 
     def show() {

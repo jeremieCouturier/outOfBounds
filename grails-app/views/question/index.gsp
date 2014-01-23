@@ -14,13 +14,36 @@
 		
 		<ul class="menu_question"> 
 		   <li class="title">All Questions</li>
-		   <li><g:link controller="Question" action="newsQuestions">newest</g:link></li> 
-		   <li><g:link controller="Question" action="voteQuestions">votes</g:link></li> 
-		   <li><g:link controller="Question" action="unansweredQuestions">unanswered</g:link></li> 
+		   
+		   <!-- first choice -->
+		   <g:if test="${choice.equals('newest')}">
+			  	<li class="item_selected_menu">newest</li> 
+			</g:if>
+			<g:else>
+		 		<li><g:link controller="Question" action="newsQuestions">newest</g:link></li>
+		 	</g:else>
+		 	
+		 	<!-- second choice -->
+		 	<g:if test="${choice.equals('votes')}">
+		   		<li class="item_selected_menu">votes</li> 
+		   	</g:if>
+			<g:else>
+		 		<li><g:link controller="Question" action="voteQuestions">votes</g:link></li> 
+		 	</g:else>
+		 	
+		 	<!-- third choice -->
+		 	<g:if test="${choice.equals('unanswered')}">
+		   		<li class="item_selected_menu">unanswered</li> 
+		   	</g:if>
+			<g:else>
+		 		<li><g:link controller="Question" action="unansweredQuestions">unanswered</g:link></li> 
+		 	</g:else>
 		</ul> 
 		
 		<g:render template="templateQuestion" collection="${questions}" var="question" />
 		
-		<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
+		<div class="pagination">
+			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
+		</div>
 	</body>
 </html>

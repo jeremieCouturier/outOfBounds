@@ -1,23 +1,42 @@
 <%@page import="outofbounds.User" %> 
 
-<div>
-	<label>Votes </label>${question.mark}
-	<label>Answers</label>${question.answers.size()}
-	<label>Views</label>${question.views}
+<div class="listQuestion">
+
+	<div class="parameters">
+	<div class="group">
+		<span class="mark_value">${question.mark}</span><br/>
+		<span class="mark_name">vote<g:if test="${question.mark != 0 }">s</g:if></span><br/>
+		<span class="answers_value">${question.answers.size()}</span><br/>
+		<span class="answers_name">answer<g:if test="${question.answers.size() != 0 }">s</g:if></span><br/>
+	</div>
+		<span class="views">${question.views} view<g:if test="${question.views != 0 }">s</g:if></span>
+	</div>
+
+	<div class="title">
 	<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 	    ${question.title}
-	</g:link>
+	</g:link><br/>
+	<label>
+		<g:if test="${question.text.size() > 150}"> ${question.text.substring(0, 150) + "..." } </g:if>
+		<g:else> ${question.text} </g:else>
+	</label>
+	</div>
 	
-	Tags
-	<g:each in="${question.tags}" var="tag">
-		<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
-	    	${tag.name}
+	<span class="tag">
+		<g:each in="${question.tags}" var="tag">
+			<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
+		    	<label>${tag.name}</label>
+			</g:link>
+		</g:each>
+	</span>
+	
+	<span class="user">
+		<label>asked </label>
+		<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
+		<label> by </label>
+		<g:link controller="user" action="profile">
+			${question.user.username}
 		</g:link>
-	</g:each>
-	
-	<g:link controller="user" action="profile">
-		${question.user.username}
-	</g:link>
-	<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
+	</span>
 	
 </div>
