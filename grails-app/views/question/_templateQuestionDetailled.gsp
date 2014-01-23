@@ -3,14 +3,13 @@
 <div>
     <textarea readonly="true">${question.text}</textarea>
     
-    <!-- vote -->
-    <label> ${question.mark} </label>
-    
+    <!-- vote -->    
     <g:link controller="Post" action="upVote" params='[post_id: "${question.id}"]'>
-        <button>+</button>
+        <span class="triangle-up"></span><br />
     </g:link>
+    <label> ${question.mark} </label>
     <g:link controller="Post" action="downVote" params='[post_id: "${question.id}"]'>
-        <button>-</button>
+        <span class="triangle-down"></span><br />
     </g:link>
     
     Tags

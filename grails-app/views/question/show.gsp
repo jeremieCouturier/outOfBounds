@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<link href="${resource(dir: 'css', file: 'question.css')}" rel="stylesheet">
 	</head>
 	<body>
         <g:render template="/header" />
