@@ -7,3 +7,4 @@ target-eclipse/
 .settings
 devDb.h2.db
 devDb.trace.db
+devDb.lock.db

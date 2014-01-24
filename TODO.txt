@@ -1,0 +1,11 @@
+- affichage des tags selon un ordre défini (le mieux serait de les mettre par ordre de popularité)
+- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
+- unanswered question renvoit une erreur
+- gestion des badges
+- les tags, y a un '_' underscore entre chaque tags
+- empecher à un utilisateur de voter plusieurs fois
+- corollaire : changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
+- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
+- quand on supprime sa réponse, on fait quoi des commentaires ? La réputation reste ? On interdit le delete ?
+- quand on sauve une question sans tag ça plante
+- edit question: pouvoir modifier les tags
