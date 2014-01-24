@@ -10,10 +10,21 @@
 	<body>
 		<g:render template="/header" />
 
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>
+		<g:hasErrors bean="${question}">
+			<ul class="errors" role="alert">
+				<g:eachError bean="${question}" var="error">
+				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+				</g:eachError>
+			</ul>
+		</g:hasErrors>
 		<g:form action="saveQuestion" >
+
 			<div class="block">
 				<label class="label_title" for="title">Title</label>
-				<input class="input_title" name="question_title" type="text" placeholder="What's your programming question ? Be specific" required>
+				<input class="input_title" name="question_title" type="text" placeholder="What's your programming question? Be specific" required>
 			</div>
 			
 			<br/>

@@ -12,6 +12,9 @@
 </sec:ifNotLoggedIn>
 
 <sec:ifAnyGranted roles="ROLE_USER">
+		<label>
+		<g:message code="index.welcome" args="${sec.loggedInUserInfo(field:'username')}" />
+		</label>
 		<g:link controller="user" action="profile">
 			<g:message code="user.my_profile" />
 		</g:link><br>

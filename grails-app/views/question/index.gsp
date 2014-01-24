@@ -19,7 +19,7 @@
 			  	<li class="item_selected_menu">newest</li> 
 			</g:if>
 			<g:else>
-		 		<li><g:link controller="Question" action="newQuestions">newest</g:link></li>
+		 		<li><g:link controller="Question" action="newestQuestions">newest</g:link></li>
 		 	</g:else>
 		 	
 		 	<!-- second choice -->

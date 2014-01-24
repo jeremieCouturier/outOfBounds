@@ -36,13 +36,17 @@ class QuestionService {
 				user: user
 		)
 		
+		if (question.hasErrors()) {
+			return question
+		}
+
 		addTags(tags, question)
 		user.addToQuestions(question)
 
 		return question
 	}
 
-	def newQuestions(def offset, def max) {
+	def newestQuestions(def offset, def max) {
 		return Question.list(max: max, offset: offset, sort: 'date', order: 'desc')
 	}
 	

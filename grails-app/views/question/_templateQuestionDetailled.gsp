@@ -42,7 +42,7 @@
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
 			        <button>Edit</button>
 			    </g:link>
-			    <g:link controller="Question" action="deleteQuestion" params='[question_id: "${question.id}"]'>
+			    <g:link controller="Question" action="delete" params='[question_id: "${question.id}"]'>
 			        <button>Delete</button>
 			    </g:link>
 			</g:if>

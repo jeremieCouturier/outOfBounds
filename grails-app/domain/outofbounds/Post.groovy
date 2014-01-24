@@ -16,8 +16,18 @@ class Post {
 
 	public boolean canUserDeletePost(User inUser) {
         def adminRole = Role.findByAuthority('ROLE_ADMIN')
-  		
         //check that user has privileges to delete the post
-        return (inUser.authorities.contains(adminRole) || inUser.id == user.id)
+        return (inUser.authorities.contains(adminRole) 
+        	|| inUser.id == user.id)
+	}	
+
+	public boolean canUserEditPost(User inUser) {
+        def moderatorRole = Role.findByAuthority('ROLE_MODERATOR')
+        def adminRole = Role.findByAuthority('ROLE_ADMIN')
+  		
+        //check that user has privileges to edit the post
+        return (inUser.authorities.contains(moderatorRole) 
+        	|| inUser.authorities.contains(adminRole) 
+        	|| inUser.id == user.id)
 	}	
 }

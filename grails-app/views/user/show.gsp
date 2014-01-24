@@ -77,17 +77,26 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.posts}">
+				<g:if test="${userInstance?.questions}">
 				<li class="fieldcontain">
 					<span id="posts-label" class="property-label"><g:message code="user.posts.label" default="Posts" /></span>
 					
-						<g:each in="${userInstance.posts}" var="p">
+						<g:each in="${userInstance.questions}" var="p">
 						<span class="property-value" aria-labelledby="posts-label"><g:link controller="post" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
 				</g:if>
-			
+				
+				<li class="fieldcontain">
+					<span id="roles-label" class="property-label"><g:message code="user.roles.label" /></span>
+						<g:each in="${userInstance.authorities}" var="authority">
+						<span class="property-value" aria-labelledby="roles-label">
+							${authority.authority}
+						</span>
+						</g:each>
+				</li>
+
 			</ol>
 			<g:form url="[resource:userInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
