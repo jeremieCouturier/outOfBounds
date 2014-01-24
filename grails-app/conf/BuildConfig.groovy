@@ -52,7 +52,6 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
         runtime 'postgresql:postgresql:8.4-702.jdbc3'
-        //compile ":recaptcha:0.6.7"
     }
 
     plugins {
