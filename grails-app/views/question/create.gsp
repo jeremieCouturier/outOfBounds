@@ -5,7 +5,8 @@
 		<g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 		
-		<link href="${resource(dir: 'css', file: 'question.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'createQuestion.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 	</head>
 	<body>
 		<g:render template="/header" />
@@ -20,27 +21,30 @@
 				</g:eachError>
 			</ul>
 		</g:hasErrors>
+		
+		<div class="new_question">
 		<g:form action="saveQuestion" >
 
-			<div class="block">
-				<label class="label_title" for="title">Title</label>
-				<input class="input_title" name="question_title" type="text" placeholder="What's your programming question? Be specific" required>
+			<div class="title">
+				<label for="title">Title</label>
+				<input class="text" name="question_title" type="text" placeholder="What's your programming question? Be specific">
 			</div>
 			
-			<br/>
-			
-			<div class="block">
-				<textarea name="question_text" required placeholder="Enter your question here ..."></textarea>
+			<div class="text">
+				<textarea name="question_text" placeholder="Enter your question here ..."></textarea>
 			</div>
 			
-			<br/>
-			
-			<div class="block">
+			<div class="tags">
 				<label for="tags" >Tags</label>
-				<input name="question_tags" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
+				<input class="text" name="question_tags" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
 			</div>
-			<button type="submit">Post your question</button>
-                    
+			
+			<div class="bouton">
+				<button type="submit">Post your question</button>
+            </div>
+                   
 		</g:form>
+		</div>
+		
 	</body>
 </html>

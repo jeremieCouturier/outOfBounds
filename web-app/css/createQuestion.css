@@ -1,0 +1,47 @@
+.new_question {
+	display: block;
+	margin: 20px 40px 20px 40px;
+}
+
+.new_question .title, .new_question .tags {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+.new_question .title label, .new_question .tags label{
+	clear:both;
+	display: block;
+	font-size:19px;
+	font-weight:bold;
+	margin-bottom:4px;
+}
+
+.new_question .title .text, .new_question .tags .text, .new_question .text textarea {
+	display:block;
+	width:80%;
+	margin-bottom:20px;
+	clear:both;
+}
+
+.new_question .text textarea {
+	display: block;
+	margin-top: 20px;
+	margin-left:0px;
+	width: 80%;
+	float:left;
+	min-height:150px;
+}
+
+
+.new_question .text {
+	display: block;
+	margin-bottom:20px;
+}
+
+
+
+.new_question .bouton {
+	clear:both;
+	margin-left:30px;
+}
