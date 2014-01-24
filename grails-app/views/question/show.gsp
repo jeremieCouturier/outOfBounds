@@ -15,15 +15,13 @@
 		<!-- Question -->
 		<div class="question_show">					
 			<g:render template="templateQuestionDetailled" bean="${questionInstance}" var="question"></g:render>	
-	        
+			<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
 	        <sec:ifLoggedIn>
 	        <g:form controller="Comment" action="createCommentForQuestion" id="${questionInstance.id}">
 	            <textarea name="comment_text" placeholder="Add a comment ..." required></textarea><br />
 	            <button type="submit"><g:message code="question.add_comment" /></button>
 	        </g:form>
 	        </sec:ifLoggedIn>
-	        
-	        
 	        <!-- Answers of the question -->
 
 			<div>
