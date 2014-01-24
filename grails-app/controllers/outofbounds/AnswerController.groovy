@@ -98,8 +98,10 @@ class AnswerController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def deleteAnswer() {
+
         def answer = Answer.findById(params.answer_id)
         def question = answer.question
+
         if (answer.canUserDeletePost(getAuthenticatedUser())) {
             answerService.delete(answer)
             flash.message = message(code: 'answer.delete_success')

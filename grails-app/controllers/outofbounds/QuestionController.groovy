@@ -70,8 +70,9 @@ class QuestionController {
 	}
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
-    def edit(Question questionInstance) {
-        respond questionInstance
+    def edit() {
+        def question = Question.findById(params.question_id)
+        respond question
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])

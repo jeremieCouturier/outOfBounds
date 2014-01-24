@@ -28,11 +28,8 @@
 				<label for="tags" >Tags</label>
 				<input name="question_tags" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
 			</div>
-			
-			
-			
 			<button type="submit">Post your question</button>
                     
-			</g:form>
+		</g:form>
 	</body>
 </html>

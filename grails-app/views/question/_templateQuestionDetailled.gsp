@@ -36,7 +36,9 @@
 			<label> by </label>
 			<g:link controller="user" action="profile"> ${question.user.username} </g:link>
 		
-	    	<g:if test="${question.user == currentLoggedInUser }">
+			<!-- check that user IS login and owner or is admin -->
+			<sec:ifLoggedIn>
+	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isAdmin() }">
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
 			        <button>Edit</button>
 			    </g:link>
@@ -44,6 +46,7 @@
 			        <button>Delete</button>
 			    </g:link>
 			</g:if>
+			</sec:ifLoggedIn>
 		</span>
 	</div>
 </div>

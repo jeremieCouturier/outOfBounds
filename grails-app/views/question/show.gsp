@@ -17,25 +17,29 @@
 			<!-- Comments of the question -->
 			<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
 	        
+	        <sec:ifLoggedIn>
 	        <g:form controller="Comment" action="createCommentForQuestion" id="${questionInstance.id}">
 	            <textarea name="comment_text" placeholder="Add a comment ..." required></textarea><br />
-	            <button type="submit">Add the comment</button>
+	            <button type="submit"><g:message code="question.add_comment" /></button>
 	        </g:form>
+	        </sec:ifLoggedIn>
 	        
 	        
 	        <!-- Answers of the question -->
 	
 			<div>
 	            <div class="number_answers">
-	                <label>${questionInstance.answers.size()} Answer<g:if test="${questionInstance.answers.size() > 1}">s</g:if></label>
+	                <label><g:message code="question.answer_count" args="[questionInstance.answers.size()]"/></label>
 	            </div>
 	            <g:render template="templateAnswer" collection="${questionInstance.answers}" var="answer" />
 	        </div>
 	
+	        <sec:ifLoggedIn>
 	        <g:form controller="Answer" action="createAnswerForQuestion" id="${questionInstance.id}">
 	            <textarea name="answer_text" placeholder="Add an answer ..." required></textarea><br />
-	            <button type="submit">Post your answer</button>
+	            <button type="submit"><g:message code="question.post_answer" /></button>
 	        </g:form>
+	        </sec:ifLoggedIn>
 	    </div>
         
 	</body>
