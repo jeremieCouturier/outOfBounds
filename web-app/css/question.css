@@ -1,19 +1,3 @@
-/* VOTE */
-.triangle-up {
-	font-size: 0px; line-height: 0%; width: 0px;
-	border-bottom: 20px solid #77c;
-	border-left: 10px solid #f6f6f6;
-	border-right: 10px solid #f6f6f6;
-}
-
-.triangle-down {
-	width: 0;
-	font-size: 0px; line-height: 0%; width: 0px;
-	border-top: 20px solid #77c;
-	border-left: 10px solid #f6f6f6;
-	border-right: 10px solid #f6f6f6;
-}
-
 /*MENU*/
 .menu_question { 
 	list-style:none; 
@@ -101,11 +85,12 @@
 }
 
 
-.listQuestion {
+/*LIST QUESTION*/
+.question {
 	clear: both;
 }
 
-.listQuestion .parameters {
+.question .parameters {
 	display: inline-block;
 	vertical-align: top;
 	width: 100px;
@@ -116,17 +101,17 @@
 	float:left;
 }
 
-.listQuestion .parameters .group { background-color: rgb(230, 230, 230); margin-bottom: 10px;}
+.question .parameters .group { background-color: rgb(230, 230, 230); margin-bottom: 10px;}
 
-.listQuestion .parameters .mark_value { font-size: 20px; color: rgb(90, 90, 90);}
-.listQuestion .parameters .mark_name { font-size: 15px; color: rgb(90, 90, 90);}
+.question .parameters .mark_value { font-size: 20px; color: rgb(90, 90, 90);}
+.question .parameters .mark_name { font-size: 15px; color: rgb(90, 90, 90);}
 
-.listQuestion .parameters .answers_value { font-size: 20px; color: rgb(133, 15, 32);}
-.listQuestion .parameters .answers_name { font-size: 15px; color: rgb(133, 15, 32);}
+.question .parameters .answers_value { font-size: 20px; color: rgb(133, 15, 32);}
+.question .parameters .answers_name { font-size: 15px; color: rgb(133, 15, 32);}
 
-.listQuestion .parameters .views { font-size: 15px; color: rgb(140,140, 140); }
+.question .parameters .views { font-size: 15px; color: rgb(140,140, 140); }
 
-.listQuestion .title a{
+.question .text_list a{
 	display: inline-block;
 	vertical-align: top;
 	color: rgb(12, 123, 184);
@@ -136,19 +121,27 @@
 	font-size: 20px;
 }
 
-.listQuestion .title label {
-	margin-bottom:25px;
-	font-size:13px;
+.question .text_list label, .question .text_detailled label.text, .comment label.text, .answer .text_detailled label.text {
+	font-size: 13px;
+	cursor: text;
 }
 
-.listQuestion .tag label {
+.question .text_list label, .question .text_detailled label.text, .answer .text_detailled label.text {
+	margin-bottom: 25px;
+}
+
+.comment label.text, .comment .user {
+	margin-left: 170px;
+}
+
+.question .tag label {
 	color:rgb(49, 99, 137);
 	padding: 2px 6px 2px 6px;
 	background-color:rgb(205, 223, 237);
 }
 
 	
-.listQuestion .user {
+.question .user, .answer .user {
 	display:inline-block;
 	float:right;
 	margin-top: 20px;
@@ -158,8 +151,69 @@
 	margin-right:160px;
 }
 
-.listQuestion .user a{
+.comment .user {
+	display:inline-block;
+	font-style: italic;
+	color: rgb(90, 90, 90);
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px black dotted;
+}
+
+.question .user a, .comment .user a, .answer .user a {
 	font-weight: bold;
 	text-decoration: none;
 	color: rgb(90, 90, 90);
 }
+
+
+/*QUESTION DETAILLED*/
+
+.question .text_detailled label.title, .question_detailled .number_answers label{
+	font-size:23px;
+	font-weight:bold;
+	margin: 30px 0px 15px 40px;
+	padding-right: 10%;
+	padding-bottom: 8px;
+	border-bottom:1px solid rgb(150, 150, 150);
+	cursor: text;
+}
+	
+/* VOTE */
+.question .vote, .answer .vote {
+	display: inline-block;
+	vertical-align: top;
+	width: 70px;
+	margin-left: 50px;
+	margin-right: 30px;
+	text-align: center;
+	float:left;
+}
+
+.question .vote .mark, .answer .vote .mark {
+	margin-top: 7px;
+	margin-bottom: 10px;
+}
+
+.question .vote .triangle-up, .answer .vote .triangle-up{
+	font-size: 0px; line-height: 0%; width: 0px;
+	border-bottom: 20px solid #77c;
+	border-left: 10px solid #f6f6f6;
+	border-right: 10px solid #f6f6f6;
+}
+
+.question .vote .triangle-down, .answer .vote .triangle-down{
+	width: 0;
+	font-size: 0px; line-height: 0%; width: 0px;
+	border-top: 20px solid #77c;
+	border-left: 10px solid #f6f6f6;
+	border-right: 10px solid #f6f6f6;
+}
+
+.question .block, .answer .block {
+	padding-bottom: 10px;
+	display:inline-block;
+	border-bottom: 1px black dotted;
+	margin-bottom: 10px;
+}
+

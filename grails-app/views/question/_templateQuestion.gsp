@@ -1,6 +1,6 @@
 <%@page import="outofbounds.User" %> 
 
-<div class="listQuestion">
+<div class="question">
 
 	<div class="parameters">
 	<div class="group">
@@ -12,11 +12,11 @@
 		<span class="views">${question.views} view<g:if test="${question.views != 0 }">s</g:if></span>
 	</div>
 
-	<div class="title">
+	<div class="text_list">
 	<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 	    ${question.title}
 	</g:link><br/>
-	<label>
+	<label class="text">
 		<g:if test="${question.text.size() > 150}"> ${question.text.substring(0, 150) + "..." } </g:if>
 		<g:else> ${question.text} </g:else>
 	</label>
