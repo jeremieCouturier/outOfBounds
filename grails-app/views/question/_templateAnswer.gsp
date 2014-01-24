@@ -36,12 +36,11 @@
 			</g:if>
 		</div>
 		</div>
-	</div>
-    
-    <g:render template="templateComment" collection="${answer.comments}" var="comment" />  
-    
-    <sec:ifLoggedIn>  
-    	<g:render template="templateAddComment" bean="${answer}" var="post" />
-    </sec:ifLoggedIn>
-    
+		
+		<g:render template="templateComment" collection="${answer.comments}" var="comment" /> 
+		<sec:ifLoggedIn>  
+	    	<g:render template="templateAddComment" bean="${answer}" var="post" />
+	    </sec:ifLoggedIn>
+		
+	</div>    
 </div>
