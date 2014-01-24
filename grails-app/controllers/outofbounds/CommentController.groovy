@@ -8,8 +8,6 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
 class CommentController {
-	
-	def CommentService
 
     def springSecurityService
 
@@ -23,23 +21,6 @@ class CommentController {
     def show(Comment commentInstance) {
         respond commentInstance
     }
-
-    @Secured(['IS_AUTHENTICATED_FULLY'])    
-    def createCommentForQuestion() {
-		def user = getAuthenticatedUser()
-		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
-		
-        redirect(uri: "/question/show?question_id=${params.id}")
-    }
-	
-	@Secured(['IS_AUTHENTICATED_FULLY'])   
-    def createCommentForAnswer() {
-		def user = getAuthenticatedUser()
-		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
-		def answer = Answer.findById(params.id)
-		
-		redirect(uri: "/question/show?question_id=${answer.question.id}")
-	}
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional

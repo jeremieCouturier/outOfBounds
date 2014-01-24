@@ -12,34 +12,31 @@
 	    </g:link>
 	</div>
 	
-	<div class="block">
-		<div class="text_detailled">
-			<label class="text">${answer.text}</label>
-		</div>
+	<div class="group_answer">
+		<label class="text">${answer.text}</label>		
 		
-		
+		<div class="foot_answer">
 		<span class="user">
 			<label>answered </label>
 			<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
 			<label> by </label>
 			<g:link controller="user" action="profile"> ${answer.user.username} </g:link>
+		</span>
 		
+		<div class="modification">
 	    	<g:if test="${answer.user == currentLoggedInUser }">
 				<g:link controller="Answer" action="edit" params='[answer_id: "${answer.id}"]'>
-			        <button>Edit</button>
+			        Edit
 			    </g:link>
 			    <g:link controller="Answer" action="deleteAnswer" params='[answer_id: "${answer.id}"]'>
-			        <button>Delete</button>
+			        Delete
 			    </g:link>
 			</g:if>
-		</span>
+		</div>
+		</div>
 	</div>
     
-    <g:render template="templateComment" collection="${answer.comments}" var="comment" />
-    
-    <g:form controller="Comment" action="createCommentForAnswer" id="${answer.id}">
-        <textarea name="comment_text" placeholder="Add a comment ..." required></textarea><br />
-        <button type="submit">Add the comment</button>
-    </g:form>
+    <g:render template="templateComment" collection="${answer.comments}" var="comment" />    
+    <g:render template="templateAddComment" bean="${answer}" var="post" />
     
 </div>

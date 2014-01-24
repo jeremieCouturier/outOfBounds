@@ -1,9 +1,9 @@
 <%@page import="outofbounds.User" %> 
 
-<div class="question">
+<div class="list_question">
 
 	<div class="parameters">
-	<div class="group">
+	<div class="group_mark">
 		<span class="mark_value">${question.mark}</span><br/>
 		<span class="mark_name">vote<g:if test="${question.mark != 0 }">s</g:if></span><br/>
 		<span class="answers_value">${question.answers.size()}</span><br/>
@@ -12,7 +12,7 @@
 		<span class="views">${question.views} view<g:if test="${question.views != 0 }">s</g:if></span>
 	</div>
 
-	<div class="text_list">
+	<div class="group_message">
 	<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 	    ${question.title}
 	</g:link><br/>
@@ -25,7 +25,7 @@
 	<span class="tag">
 		<g:each in="${question.tags}" var="tag">
 			<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
-		    	<label>${tag.name}</label>
+		    	<label class="tag_text">${tag.name}</label>
 			</g:link>
 		</g:each>
 	</span>

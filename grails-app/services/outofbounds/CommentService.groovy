@@ -19,7 +19,7 @@ class CommentService {
 		return answer
 	}*/
 	
-	def create(int post_id, String text, User user)
+	/*def create(int post_id, String text, User user)
 	{
 		def post = Post.findById(post_id)
 		
@@ -30,7 +30,7 @@ class CommentService {
 		).save(failOnError: true)
 
 		return comment
-	}
+	}*/
 	
 	/*def delete(int answer_id)
 	{

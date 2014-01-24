@@ -9,6 +9,18 @@ class PostController {
 	def springSecurityService
 
     def index() { }
+	
+	@Secured(['IS_AUTHENTICATED_FULLY'])
+	def addComment()
+	{
+		def user = getAuthenticatedUser()
+		def post = PostService.addComment(Integer.parseInt(params.id), params.text, user)
+		
+		Question question = PostService.findQuestionPost(post)
+		
+		redirect(uri: "/question/show?question_id=${question.id}")
+	}
+
 
 	@Secured(['IS_AUTHENTICATED_FULLY'])	
 	def upVote()

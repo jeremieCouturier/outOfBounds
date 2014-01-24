@@ -2,10 +2,10 @@
 
 <div class="question">
     
-    <div class="text_detailled">
-		<label class="title">${question.title}</label>
-	</div>
-    
+    <div class="title">
+    	<label>${question.title}</label>
+    </div>
+        
     <!-- vote -->
     <div class="vote">
 	    <g:link controller="Post" action="upVote" params='[post_id: "${question.id}"]'>
@@ -17,36 +17,44 @@
 	    </g:link>
 	</div>
 	
-	<div class="block">
-		<div class="text_detailled">
-			<label class="text">${question.text}</label>
+	<div class="group_question">
+	
+		<label class="text">${question.text}</label>
+		
+		<div class="foot_question">
+		<div class="begin">
+			<span class="tag">
+				<g:each in="${question.tags}" var="tag">
+					<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
+				    	<label>${tag.name}</label>
+					</g:link>
+				</g:each>
+			</span>
+				
+			<span class="user">
+				<label>asked </label>
+				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
+				<label> by </label>
+				<g:link controller="user" action="profile"> ${question.user.username} </g:link>
+			</span>
 		</div>
 		
-		<span class="tag">
-			<g:each in="${question.tags}" var="tag">
-				<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
-			    	<label>${tag.name}</label>
-				</g:link>
-			</g:each>
-		</span>
-		
-		<span class="user">
-			<label>asked </label>
-			<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
-			<label> by </label>
-			<g:link controller="user" action="profile"> ${question.user.username} </g:link>
-		
+		<div class="modification">
 			<!-- check that user IS login and owner or is admin -->
 			<sec:ifLoggedIn>
 	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isAdmin() }">
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
-			        <button>Edit</button>
+			        Edit
 			    </g:link>
 			    <g:link controller="Question" action="delete" params='[question_id: "${question.id}"]'>
-			        <button>Delete</button>
+			        Delete
 			    </g:link>
 			</g:if>
 			</sec:ifLoggedIn>
 		</span>
+		
+		<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
+	    <g:render template="templateAddComment" bean="${questionInstance}" var="post" />
+		
 	</div>
 </div>

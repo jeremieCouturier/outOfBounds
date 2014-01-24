@@ -1,0 +1,36 @@
+.new_comment, .new_answer {
+	clear:both;
+	display: block;
+}
+
+.new_comment textarea {
+	display: inline-block;
+	margin-left: 35px;
+	margin-top: 20px;
+	width:70%;
+	height:70px;
+	float: left;
+}
+
+.new_answer .text {
+	display: block;
+}
+
+.new_answer .text textarea {
+	display: block;
+	margin-top: 20px;
+	margin-left:40px;
+	width: 80%;
+	float:left;
+	min-height:150px;
+}
+
+.new_comment button {
+	display:inline-block;
+	float: right;
+}
+
+.new_answer button {
+	margin-left: 90px;
+	margin-top:15px;
+}
