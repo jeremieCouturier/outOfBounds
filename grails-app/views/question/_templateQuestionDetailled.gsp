@@ -51,10 +51,14 @@
 			    </g:link>
 			</g:if>
 			</sec:ifLoggedIn>
-		</span>
+		</div>
+		</div>
 		
 		<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
-	    <g:render template="templateAddComment" bean="${questionInstance}" var="post" />
+		
+		<sec:ifLoggedIn>
+	    	<g:render template="templateAddComment" bean="${questionInstance}" var="post" />
+	    </sec:ifLoggedIn>
 		
 	</div>
 </div>

@@ -38,7 +38,7 @@
 	border-bottom: black 1px dotted;
 }
 
-.question .group_question .foot_question .begin {
+.question .group_question .foot_question .begin, .answer .group_answer .foot_answer .begin {
 	margin-bottom: 30px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 	
-.question .group_question .foot_question .user, .answer .group_answer .foot_answer {
+.question .group_question .foot_question .user, .answer .group_answer .foot_answer .user {
 	display:inline-block;
 	float:right;
 	margin-top: 20px;
@@ -61,7 +61,7 @@
 	margin-right:160px;
 }
 
-.question .group_question .foot_question .user a, .answer .group_answer .foot_answer a {
+.question .group_question .foot_question .user a, .answer .group_answer .foot_answer .user a {
 	font-weight: bold;
 	text-decoration: none;
 	color: rgb(90, 90, 90);

@@ -26,9 +26,9 @@ class AnswerController {
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
-    def createAnswerForQuestion() {
+    def create() {
 		def user = getAuthenticatedUser()
-		def answer = AnswerService.create(Integer.parseInt(params.id), params.answer_text, user)
+		def answer = AnswerService.create(Integer.parseInt(params.id), params.text, user)
 		
         redirect(uri: "/question/show?question_id=${answer.question.id}")
     }

@@ -1,6 +1,6 @@
 
 <div class="new_answer">
-	<g:form controller="Post" action="addComment" id="${question.id}">
+	<g:form controller="Answer" action="create" id="${question.id}">
 	<div class="text">
 	    <textarea name="text" placeholder="Add an answer ..."></textarea><br />
 	 </div>

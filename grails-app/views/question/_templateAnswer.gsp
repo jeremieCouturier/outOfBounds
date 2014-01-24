@@ -16,12 +16,14 @@
 		<label class="text">${answer.text}</label>		
 		
 		<div class="foot_answer">
-		<span class="user">
-			<label>answered </label>
-			<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
-			<label> by </label>
-			<g:link controller="user" action="profile"> ${answer.user.username} </g:link>
-		</span>
+		<div class="begin">
+			<span class="user">
+				<label>answered </label>
+				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
+				<label> by </label>
+				<g:link controller="user" action="profile"> ${answer.user.username} </g:link>
+			</span>
+		</div>
 		
 		<div class="modification">
 	    	<g:if test="${answer.user == currentLoggedInUser }">
@@ -36,7 +38,10 @@
 		</div>
 	</div>
     
-    <g:render template="templateComment" collection="${answer.comments}" var="comment" />    
-    <g:render template="templateAddComment" bean="${answer}" var="post" />
+    <g:render template="templateComment" collection="${answer.comments}" var="comment" />  
+    
+    <sec:ifLoggedIn>  
+    	<g:render template="templateAddComment" bean="${answer}" var="post" />
+    </sec:ifLoggedIn>
     
 </div>
