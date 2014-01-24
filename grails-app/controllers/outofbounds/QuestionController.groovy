@@ -19,18 +19,16 @@ class QuestionController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-		
-		redirect(uri: "/question/newsQuestions")
+		redirect(uri: "/question/newQuestions")
     }
 	
-	def newsQuestions()
+	def newQuestions()
 	{
 		def offset = params?.offset ?: 0
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(view: '/question/index',
-				model: [ questions: questionService.newsQuestions(offset, max), total: Question.count, choice: "newest"])
-	}
+				model: [ questions: questionService.newQuestions(offset, max), total: Question.count, choice: "newest"])	}
 	
 	def voteQuestions()
 	{
@@ -102,18 +100,19 @@ class QuestionController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     @Transactional
-    def delete(Question questionInstance) {
-
-        if (questionInstance == null) {
+    def deleteQuestion(Question questionInstance) {
+        def question = Question.findById(params.question_id)
+        
+        if (question == null) {
             notFound()
             return
         }
 
-        questionInstance.delete flush:true
+        question.delete flush:true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Question.label', default: 'Question'), question.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

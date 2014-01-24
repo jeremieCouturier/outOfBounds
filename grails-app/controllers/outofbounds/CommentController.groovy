@@ -4,11 +4,14 @@ package outofbounds
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
 class CommentController {
 	
 	def CommentService
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -21,6 +24,7 @@ class CommentController {
         respond commentInstance
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     def createCommentForQuestion() {
 		def user = getAuthenticatedUser()
 		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
@@ -28,7 +32,8 @@ class CommentController {
         redirect(uri: "/question/show?question_id=${params.id}")
     }
 	
-	def createCommentForAnswer() {
+	@Secured(['IS_AUTHENTICATED_FULLY'])   
+    def createCommentForAnswer() {
 		def user = getAuthenticatedUser()
 		def comment = CommentService.create(Integer.parseInt(params.id), params.comment_text, user)
 		def answer = Answer.findById(params.id)
@@ -36,6 +41,7 @@ class CommentController {
 		redirect(uri: "/question/show?question_id=${answer.question.id}")
 	}
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def save(Comment commentInstance) {
         if (commentInstance == null) {
@@ -59,10 +65,12 @@ class CommentController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     def edit(Comment commentInstance) {
         respond commentInstance
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def update(Comment commentInstance) {
         if (commentInstance == null) {
@@ -86,6 +94,7 @@ class CommentController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def delete(Comment commentInstance) {
 

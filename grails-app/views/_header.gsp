@@ -14,7 +14,7 @@
 <sec:ifAnyGranted roles="ROLE_USER">
 		<g:link controller="user" action="profile">
 			<g:message code="user.my_profile" />
-		</g:link>
+		</g:link><br>
 
 	<g:remoteLink class="logout" controller="logout">${message(code: 'index.log_out')}</g:remoteLink><br>
 
@@ -22,9 +22,12 @@
 			<g:message code="question.create_question" />
 		</g:link><br>
 </sec:ifAnyGranted>
+<g:if test="${flash.message}">
+	<div class="message" role="status">${flash.message}</div>
+</g:if>
 
 <sec:ifAnyGranted roles="ROLE_ADMIN">
 	<link:aboutConfig>
 		<g:message code="index.about_config" /> 
-	</link:aboutConfig>
+	</link:aboutConfig><br>
 </sec:ifAnyGranted>

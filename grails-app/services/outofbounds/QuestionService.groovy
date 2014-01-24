@@ -9,7 +9,7 @@ class QuestionService {
 
     }
 	
-	def ajouterTags(String tagString, Question question)
+	def addTags(String tagString, Question question)
 	{
 		String[] tagsName = tagString.split("[;,:( )]+")
 		
@@ -36,13 +36,13 @@ class QuestionService {
 				user: user
 		)
 		
-		ajouterTags(tags, question)
+		addTags(tags, question)
 		user.addToQuestions(question)
 
 		return question
 	}
 
-	def newsQuestions(def offset, def max) {
+	def newQuestions(def offset, def max) {
 		return Question.list(max: max, offset: offset, sort: 'date', order: 'desc')
 	}
 	
