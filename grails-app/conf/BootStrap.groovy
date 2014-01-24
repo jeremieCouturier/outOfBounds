@@ -37,7 +37,7 @@ class BootStrap {
         	enabled: true).save(failOnError: true)
     	if (!user.authorities.contains(userRole)) {
         	UserRole.create user, userRole
-    	}*/
+    	}
 
 
 		//first question
