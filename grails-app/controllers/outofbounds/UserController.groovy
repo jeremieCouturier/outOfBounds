@@ -4,10 +4,13 @@ package outofbounds
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import com.megatome.grails.RecaptchaService
 
 @Transactional(readOnly = true)
 class UserController {
     def springSecurityService
+    
+     RecaptchaService recaptchaService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,6 +22,7 @@ class UserController {
     def show(User userInstance) {
         respond userInstance
     }
+
 
     def create() {
         
@@ -50,23 +54,30 @@ class UserController {
             return
         }
 
-        userInstance.save flush:true
-        
-        def userRole = Role.findByAuthority("ROLE_USER")?: 
+        if(recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params) && userInstance.save(flush:true)) {
+            recaptchaService.cleanUp(session)
+            
+            def userRole = Role.findByAuthority("ROLE_USER")?: 
             new Role(authority:"ROLE_USER").save(failOnError:true)
-        def adminRole = Role.findByAuthority("ROLE_ADMIN") ?: 
+            def adminRole = Role.findByAuthority("ROLE_ADMIN") ?: 
             new Role(authority:"ROLE_ADMIN").save(failOnError:true)
 
-        UserRole.create userInstance, userRole
+            UserRole.create userInstance, userRole
 
-        request.withFormat {
+            request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'userInstance.label', default: 'User'), userInstance.id])
                 //redirect userInstance
                 redirect(uri: "")
             }
             '*' { respond userInstance, [status: CREATED] }
+            }
         }
+        else {
+            respond userInstance.errors, view:'create'
+            return
+        }
+   
     }
 
     def edit(User userInstance) {

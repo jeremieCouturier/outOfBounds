@@ -25,14 +25,16 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			
 			<g:form url="[resource:userInstance, action:'save']" >
 				<fieldset class="form">
-					<g:render template="formRO"/>
+					<g:render template="formRO"/>					
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save" value="${message(code: 'user.create.validate')}" />
 				</fieldset>
 			</g:form>
+			
 		</div>
 	</body>
 </html>
