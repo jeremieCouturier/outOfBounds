@@ -7,8 +7,10 @@
 		
 		<link href="${resource(dir: 'css', file: 'createQuestion.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
 	</head>
 	<body>
+		<g:render template="/headerSite" />
 		<g:render template="/header" />
 
 		<g:if test="${flash.message}">
