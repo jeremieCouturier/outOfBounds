@@ -4,6 +4,6 @@
 	<div class="text">
 	    <textarea name="text" placeholder="Add an answer ..."></textarea><br />
 	 </div>
-	    <button type="submit">Post your answer</button>
+	    <button type="submit"><g:message code="question.post_answer"/></button>
 	</g:form>
 </div>
