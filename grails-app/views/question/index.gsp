@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<g:render template="/headerSite"/>
-		<g:render template="/subheader"  model="[text: 'question']"/>
+		<g:render template="/subHeader"  model="[text: 'question']"/>
 		
 		<ul class="menu_question"> 
 		   <li class="title">All Questions</li> 

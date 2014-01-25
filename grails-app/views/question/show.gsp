@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<g:render template="/headerSite" />
-        <g:render template="/subheader" />
+        <g:render template="/subHeader" />
 		
 		<!-- Question -->
 		<div class="question_show">					

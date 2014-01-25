@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<g:render template="/headerSite"/>
-		<g:render template="/subheader"  model="[text: 'ask']"/>
+		<g:render template="/subHeader"  model="[text: 'ask']"/>
 
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
