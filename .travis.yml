@@ -17,8 +17,8 @@ notifications:
     - fourel.david118@gmail.com
 
 deploy:
-  provider:heroku
-  api_key:"12c43751-47de-4f30-bdc7-8f95e3e221b2"
-  app:"outofbounds"
+  provider: heroku
+  api_key: 12c43751-47de-4f30-bdc7-8f95e3e221b2
+  app: outofbounds
 
    
