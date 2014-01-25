@@ -8,9 +8,12 @@
 		<g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 		<link href="${resource(dir: 'css', file: 'listQuestion.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<g:render template="/header" />
+		<g:render template="/headerSite"/>
+		<g:render template="/subheader"  model="[text: 'question']"/>
 		
 		<ul class="menu_question"> 
 		   <li class="title">All Questions</li> 
