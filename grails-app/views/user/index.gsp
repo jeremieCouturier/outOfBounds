@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<g:render template="/headerSite"/>
-		<g:render template="/subHeader"  model="[text: 'question']"/>
+		<g:render template="/subHeader"  model="[text: 'users']"/>
 		
 		<ul class="menu_question"> 
 		   <li class="title">Users</li> 

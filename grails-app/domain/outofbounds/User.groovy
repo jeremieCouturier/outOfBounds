@@ -5,7 +5,7 @@ class User {
 
 	transient springSecurityService
 	
-	//Date dateSignUp = new Date()
+	Date dateSignUp = new Date()
 
 	String username
 	String password

@@ -10,6 +10,6 @@ class UserService {
     }
 	
 	def newUsers(def offset, def max) {
-		return User.list(max: max, offset: offset, /*sort: 'dateSignUp', order: 'desc'*/)
+		return User.list(max: max, offset: offset, sort: 'dateSignUp', order: 'desc')
 	}
 }
