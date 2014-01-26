@@ -1,39 +1,32 @@
-<sec:ifNotLoggedIn>
-	<form method="POST" action="${resource(file: 'j_spring_security_check')}">
-		<table>
-		<tr><td><g:message code="index.username"/></td><td><g:textField name="j_username"/></td></tr>
-		<tr><td><g:message code="index.password"/></td><td><input name="j_password" type="password"/></td></tr>
-		<tr><td colspan="2"><g:submitButton name="login" value="${message(code: 'index.log_in')}"/></td></tr>
-		</table>              
-	</form>
-	<g:form name="signup" url="[action:'create',controller:'user']">
-		<g:submitButton name="signup" value="${message(code: 'index.sign_up')}"/>
-	</g:form>
-	<!-- temporary -->
-	<twitterAuth:button />
-</sec:ifNotLoggedIn>
+<div id='cssmenu'>
+<ul>
+	<li class='active'><a href='index.html'><span>Home</span></a></li>
 
-<sec:ifAnyGranted roles="ROLE_USER">
-		<label>
-		<g:message code="index.welcome" args="${sec.loggedInUserInfo(field:'username')}" />
-		</label>
-		<g:link controller="user" action="profile">
+	<sec:ifLoggedIn>
+		<li><g:link controller="user" action="profile">
 			<g:message code="user.my_profile" />
-		</g:link><br>
-
-	<g:remoteLink class="logout" controller="logout">${message(code: 'index.log_out')}</g:remoteLink><br>
-
-		<g:link controller="question" action="create">
-			<g:message code="question.create_question" />
-		</g:link><br>
-</sec:ifAnyGranted>
-<g:if test="${flash.message}">
-	<div class="message" role="status">${flash.message}</div>
-</g:if>
+		</g:link></li>
 
 
-<sec:ifAnyGranted roles="ROLE_ADMIN">
-	<link:aboutConfig>
-		<g:message code="index.about_config" /> 
-	</link:aboutConfig><br>
-</sec:ifAnyGranted>
+		<li><g:link controller="logout" action="index">
+			<g:message code="index.log_out" />
+		</g:link></li>	
+	</sec:ifLoggedIn>
+
+	<sec:ifNotLoggedIn>
+		<li><g:link controller="user" action="create">
+			<g:message code="index.sign_up" />
+		</g:link></li>
+
+
+		<li><g:link controller="login" action="index">
+			<g:message code="index.log_in" />
+		</g:link></li>
+
+	</sec:ifNotLoggedIn>
+   
+
+   <li><a href='#'><span>About</span></a></li>
+   <li class='last'><a href='#'><span>Contact</span></a></li>
+</ul>
+</div>

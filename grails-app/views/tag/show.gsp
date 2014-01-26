@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	
-		<label>Tagged Questions : </label>${tag.name}
+		<label>Tagged Questions: </label>${tag.name}
 		<button>Newest</button>
 		<button>Unanswered</button>
 		

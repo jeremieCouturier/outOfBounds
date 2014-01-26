@@ -23,7 +23,7 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<g:render template="/headerSite" />
+		<g:render template="/header" />
 		<g:render template="/subHeader" />
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

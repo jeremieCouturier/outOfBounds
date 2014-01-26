@@ -16,6 +16,5 @@ class UrlMappings {
             action = "index"
         }
         "500"(view:'/error')
-        name aboutConfig: "/about_config"(view:"about_config")
 	}
 }

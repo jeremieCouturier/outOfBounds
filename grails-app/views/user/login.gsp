@@ -9,7 +9,7 @@
 		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<g:render template="/headerSite"/>
+		<g:render template="/header"/>
 		<g:render template="/subHeader" />
 		
 		
