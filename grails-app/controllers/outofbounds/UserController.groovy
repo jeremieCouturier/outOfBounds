@@ -3,21 +3,40 @@ package outofbounds
 
 
 import static org.springframework.http.HttpStatus.*
+import outOfBounds.Configuration;
 import grails.transaction.Transactional
+
 import com.megatome.grails.RecaptchaService
 
 @Transactional(readOnly = true)
 class UserController {
     def springSecurityService
+	def UserService
     
-     RecaptchaService recaptchaService
+    RecaptchaService recaptchaService 
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model:[userInstanceCount: User.count()]
+    def index() {
+        redirect action: "newUsers"
     }
+	
+	def newUsers() {
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+
+		render(   
+            view: '/user/index',
+            model: [ 
+                users: UserService.newUsers(offset, max), 
+                total: User.count, choice: "new"
+            ]
+        )	
+    }
+	
+	
+	
+	
 
 	def login() {
 		

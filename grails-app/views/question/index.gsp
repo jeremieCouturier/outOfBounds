@@ -10,6 +10,8 @@
 		<link href="${resource(dir: 'css', file: 'listQuestion.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'menu.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'pagination.css')}" rel="stylesheet">
 	</head>
 	<body>
 		<g:render template="/headerSite"/>

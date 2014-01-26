@@ -4,6 +4,8 @@ class User {
 	static hasMany = [questions:Question]
 
 	transient springSecurityService
+	
+	//Date dateSignUp = new Date()
 
 	String username
 	String password
