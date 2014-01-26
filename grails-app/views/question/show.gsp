@@ -7,14 +7,9 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'addPost.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet"
 	</head>
-	<body>
-		<g:render template="/headerSite" />
-        <g:render template="/subHeader" />
-		
+	<body>		
 		<!-- Question -->
 		<div class="question_show">					
 			<g:render template="templateQuestionDetailled" bean="${questionInstance}" var="question"></g:render>

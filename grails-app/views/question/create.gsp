@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="main" >
 		<g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 		
@@ -11,9 +11,6 @@
 		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<g:render template="/headerSite"/>
-		<g:render template="/subHeader"  model="[text: 'ask']"/>
-
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>

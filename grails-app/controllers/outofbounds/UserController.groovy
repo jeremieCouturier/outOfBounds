@@ -29,15 +29,11 @@ class UserController {
             view: '/user/index',
             model: [ 
                 users: UserService.newUsers(offset, max), 
-                total: User.count, choice: "new"
+                total: User.count, choice: "new", layout: "user"
             ]
         )	
     }
 	
-	
-	
-	
-
 	def login() {
 		
 	}

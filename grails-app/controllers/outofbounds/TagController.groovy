@@ -14,7 +14,7 @@ class TagController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Tag.list(params), model:[tagInstanceCount: Tag.count()]
+        respond Tag.list(params), model:[tagInstanceCount: Tag.count(), layout: "tag"]
     }
 
     def show() {

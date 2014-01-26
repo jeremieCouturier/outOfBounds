@@ -33,7 +33,7 @@ class QuestionController {
             view: '/question/index',
             model: [ 
                 questions: questionService.newestQuestions(offset, max), 
-                total: Question.count, choice: "newest"
+                total: Question.count, choice: "newest", layout: "question"
             ]
         )	
     }
@@ -46,7 +46,7 @@ class QuestionController {
             view: '/question/index',
             model: [ 
                 questions: questionService.voteQuestions(offset, max), 
-                total: Question.count, choice: "votes" 
+                total: Question.count, choice: "votes", layout: "question"
             ]
         )
 	}
@@ -59,7 +59,7 @@ class QuestionController {
             view: '/question/index',
 			model: [ 
                 questions: questionService.unansweredQuestions(offset, max), 
-                total: Question.count, choice: "unanswered" 
+                total: Question.count, choice: "unanswered", layout: "question"
             ]
         )
 	}
@@ -80,6 +80,10 @@ class QuestionController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
+		render(
+			view: '/question/create',
+			model: [ layout: "ask" ]
+		)
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])

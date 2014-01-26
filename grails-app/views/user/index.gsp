@@ -7,24 +7,11 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'menu.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'pagination.css')}" rel="stylesheet">
 	</head>
-	<body>
-		<g:render template="/headerSite"/>
-		<g:render template="/subHeader"  model="[text: 'users']"/>
-		
-		<ul class="menu_question"> 
+	<body>		
+		<ul class="menuInPage"> 
 		   <li class="title">Users</li> 
-		   <!-- first choice -->
-		   <g:if test="${choice.equals('new')}">
-			  	<li class="item_selected_menu">new users</li> 
-			</g:if>
-			<g:else>
-		 		<li><g:link controller="User" action="newUsers">newest</g:link></li>
-		 	</g:else>
+		   <li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="newestUsers">newest</g:link></li>
 		</ul> 
 		
 		<g:render template="templateUser" collection="${users}" var="user" />
