@@ -38,8 +38,10 @@ class UserController {
 		
 	}
 	
-    def show(User userInstance) {
-        respond userInstance
+    def show() {
+		def user = User.findById(params.user_id)
+		
+		return [userInstance: user]
     }
 
 
