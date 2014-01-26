@@ -58,6 +58,20 @@ class UserController {
 			]
 		)
 	}
+	
+	def userAnswers() {
+		def user = User.findById(params.user_id)
+		def questions = UserService.userAnswers(user)
+		
+		render(
+			view: '/user/show',
+			model: [
+				userInstance: user,
+				questions: questions,
+				choice: "answers"
+			]
+		)
+	}
 
 
     def create() {

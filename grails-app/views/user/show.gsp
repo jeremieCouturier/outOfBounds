@@ -16,13 +16,19 @@
 			</div>
 			
 			<ul class="menuInPage"> 
-			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions">questions</g:link></li>
-			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName">answers</g:link></li>
+			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance.id}"]'>questions</g:link></li>
+			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userAnswers" params='[user_id: "${userInstance.id}"]'>answers</g:link></li>
 			   <li <g:if test="${choice.equals('tags')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName">tags</g:link></li>
 			   <li <g:if test="${choice.equals('badges')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName">badges</g:link></li>
 			</ul> 
 			
-			<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+			<g:if test="${choice.equals('questions')}">
+				<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+			</g:if>
+			
+			<g:if test="${choice.equals('answers')}">
+				<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+			</g:if>
 			
 		</div>
 	</body>
