@@ -1,28 +1,48 @@
 <%@ page import="outofbounds.User" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} required" align="center">
-	<label for="username">
-		<g:message code="index.username"/>
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="username" required="" value="${userInstance?.username}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required" align="center">
-	<label for="password">
-		<g:message code="index.password"/>
-		<span class="required-indicator">*</span>
-	</label>
-	<g:passwordField  name="password" required="" value="${userInstance?.password}"/>
-</div>
-
-<div align="center">
-    <br>
+<div id="form_wrapper" class="form_wrapper">
+	<h3>Register</h3>
+    <div class="column">
+        <div>
+            <label>First Name :</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label>Last Name :</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label>Website :</label>
+            <input type="text" value="http://"/>
+        </div>
+    </div>
+    <div class="column">
+        <div>
+            <label><g:message code="index.username"/></label>
+            <g:textField type="text" name="username" value="${userInstance?.username}"/>
+        </div>
+        <div>
+            <label>Email :</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label><g:message code="index.password"/></label>
+            <g:passwordField type="password" name="password" required="" value="${userInstance?.password}"/>
+        </div>        
+    </div>
+    
+    <div class="recaptcha">
         <recaptcha:ifEnabled>
             <recaptcha:recaptcha theme="white"/>
         </recaptcha:ifEnabled>
-    </br>
+	</div>
+    
+    <div class="bottom">
+        <input type="submit" value=<g:message code="user.create.validate"/>></input>
+        <g:link controller="login">You have an account already? Log in here</g:link>
+        <div class="clear"></div>
+    </div>
 </div>
+
 
