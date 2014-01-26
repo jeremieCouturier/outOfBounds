@@ -9,6 +9,8 @@
 	<g:form name="signup" url="[action:'create',controller:'user']">
 		<g:submitButton name="signup" value="${message(code: 'index.sign_up')}"/>
 	</g:form>
+	<!-- temporary -->
+	<twitterAuth:button />
 </sec:ifNotLoggedIn>
 
 <sec:ifAnyGranted roles="ROLE_USER">
@@ -28,6 +30,7 @@
 <g:if test="${flash.message}">
 	<div class="message" role="status">${flash.message}</div>
 </g:if>
+
 
 <sec:ifAnyGranted roles="ROLE_ADMIN">
 	<link:aboutConfig>

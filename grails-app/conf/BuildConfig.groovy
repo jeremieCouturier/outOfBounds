@@ -74,6 +74,7 @@ grails.project.dependency.resolution = {
 
 
         compile ':spring-security-core:2.0-RC2'
+        compile ":spring-security-twitter:0.6"
         compile ':recaptcha:0.6.7'
     }
 }

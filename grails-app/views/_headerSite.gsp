@@ -1,16 +1,29 @@
 <div id='cssmenu'>
 <ul>
-   <li class='active'><a href='index.html'><span>Home</span></a></li>
-   
-   <sec:ifLoggedIn>
- 	<li><a href='#'><span>See profile</span></a></li>
- 	<li><a href='#'><span>Log out</span></a></li>
-   </sec:ifLoggedIn>
-   
-   <sec:ifNotLoggedIn>
-   	<li><a href='#'><span>Sign up</span></a></li>
-   	<li><a href='#'><span>Log in</span></a></li>
-   </sec:ifNotLoggedIn>
+	<li class='active'><a href='index.html'><span>Home</span></a></li>
+
+	<sec:ifLoggedIn>
+		<li><g:link controller="user" action="profile">
+			<g:message code="user.my_profile" />
+		</g:link></li>
+
+
+		<li><g:link controller="logout" action="index">
+			<g:message code="index.log_out" />
+		</g:link></li>	
+	</sec:ifLoggedIn>
+
+	<sec:ifNotLoggedIn>
+		<li><g:link controller="user" action="create">
+			<g:message code="index.sign_up" />
+		</g:link></li>
+
+
+		<li><g:link controller="login" action="index">
+			<g:message code="index.log_in" />
+		</g:link></li>
+
+	</sec:ifNotLoggedIn>
    
 
    <li><a href='#'><span>About</span></a></li>
