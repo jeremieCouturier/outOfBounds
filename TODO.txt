@@ -13,3 +13,4 @@
 - si on passe un mauvais id (lettres, etc.) erreur 500 (http://localhost:8080/outOfBounds/question/edit?question_id=14a)
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
 - regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
+- il faut changer le text d'un post... 255 charactères c'est pas assez, on est pas sur twitter! Mettre un text plutot qu'un varchar(255)
