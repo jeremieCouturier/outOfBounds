@@ -21,7 +21,7 @@
 				<label>answered </label>
 				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
 				<label> by </label>
-				<g:link controller="user" action="profile"> ${answer.user.username} </g:link>
+				<g:link controller="user" action="show" params='[user_id: "${answer.user.id}"]'> ${answer.user.username} </g:link>
 			</span>
 		</div>
 		

@@ -34,7 +34,7 @@
 		<label><g:message code ="question.asked"/> </label>
 		<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
 		<label> <g:message code ="question.by"/> </label>
-		<g:link controller="user" action="profile">
+		<g:link controller="user" action="show" params='[user_id: "${question.user.id}"]'>
 			${question.user.username}
 		</g:link>
 	</span>

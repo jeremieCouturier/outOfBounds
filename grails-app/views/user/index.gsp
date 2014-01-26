@@ -23,7 +23,7 @@
 		</div>
 		
 		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
+			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE*4}" total="${total}"/>
 		</div>
 		
 	</body>

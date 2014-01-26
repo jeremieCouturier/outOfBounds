@@ -6,7 +6,7 @@
 	
 	<div class="content">
 	   	<label for="comment_text" class="text">${comment.text} -
-			<g:link controller="user" action="profile">
+			<g:link controller="user" action="show" params='[user_id: "${comment.user.id}"]'>
 				${comment.user.username}
 			</g:link>
 			<span class="date"><g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${comment.date}" /></span>

@@ -23,7 +23,7 @@ class UserController {
 	
 	def newUsers() {
 		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE*4
 
 		render(   
             view: '/user/index',
