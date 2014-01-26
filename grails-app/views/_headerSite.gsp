@@ -19,7 +19,7 @@
 		</g:link></li>
 
 
-		<li><g:link controller="login" action="index">
+		<li><g:link controller="customLogin" action="index">
 			<g:message code="index.log_in" />
 		</g:link></li>
 

@@ -153,7 +153,7 @@ recaptcha {
     SecureAPI = true
 }
 
-grails.plugin.springsecurity.twitter.autoCreate.roles='ROLE_USER,ROLE_TWITTER,ROLE_SOCIAL'
+grails.plugin.springsecurity.twitter.autoCreate.roles='ROLE_USER, ROLE_TWITTER'
 grails.plugin.springsecurity.twitter.domain.classname='outofbounds.TwitterUser'
 grails.plugin.springsecurity.twitter.consumerKey='58WznFrTuizFt0pLw2P2w'
 grails.plugin.springsecurity.twitter.consumerSecret='ekXiOiB2TF5LSK6B7PtfXi5xoK15gy8UGs7Yg9bg4'

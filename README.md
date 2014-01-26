@@ -4,6 +4,7 @@ outOfBounds
 Application demo is available on [heroku](http://outofbounds.herokuapp.com/).
 
 #Features:
+* Localization support (English & French versions).
 * Register and login to your account, with Google, Twitter or a custom username.
 * Submit questions, post answers, add comments...
 * Gain reputation with these actions and unlock badges!
