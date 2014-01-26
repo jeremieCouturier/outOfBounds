@@ -12,3 +12,4 @@
 - renommer removeQuestion en remove casse l'action (erreur 405 quand on tente de delete qq chose)
 - si on passe un mauvais id (lettres, etc.) erreur 500 (http://localhost:8080/outOfBounds/question/edit?question_id=14a)
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
+- regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
