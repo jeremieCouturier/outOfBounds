@@ -12,4 +12,8 @@ class UserService {
 	def newUsers(def offset, def max) {
 		return User.list(max: max, offset: offset, sort: 'dateSignUp', order: 'desc')
 	}
+	
+	def userQuestions(def user) {
+		return Question.findAllByUser(user)
+	}
 }

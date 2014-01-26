@@ -38,11 +38,26 @@ class UserController {
 		
 	}
 	
-    def show() {
-		def user = User.findById(params.user_id)
-		
-		return [userInstance: user]
+    def show() {		
+		redirect (
+			action: "userQuestions",
+			params: [user_id: params.user_id]
+		)
     }
+	
+	def userQuestions() {
+		def user = User.findById(params.user_id)
+		def questions = UserService.userQuestions(user)
+		
+		render(
+			view: '/user/show',
+			model: [
+				userInstance: user,
+				questions: questions,
+				choice: "questions"
+			]
+		)
+	}
 
 
     def create() {
