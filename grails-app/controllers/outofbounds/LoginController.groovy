@@ -16,7 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder as SCH
 import org.springframework.security.web.WebAttributes
 
 @Secured('permitAll')
-class CustomLoginController {
+class LoginController {
 
 	/**
 	 * Dependency injection for the authenticationTrustResolver.
