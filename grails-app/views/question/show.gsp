@@ -7,7 +7,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'addPost.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet"
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 	</head>
 	<body>		
 		<!-- Question -->
