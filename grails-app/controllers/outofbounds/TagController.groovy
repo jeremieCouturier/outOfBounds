@@ -3,6 +3,7 @@ package outofbounds
 
 
 import static org.springframework.http.HttpStatus.*
+import outOfBounds.Configuration;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -12,14 +13,47 @@ class TagController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Tag.list(params), model:[tagInstanceCount: Tag.count(), layout: "tag"]
+    def index() {
+        redirect action: "popularTags"
     }
+	
+	def popularTags() {
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE*4
+
+		render(   
+            view: '/tag/index',
+            model: [ 
+                tags: TagService.popularTags(offset, max), 
+                total: Tag.count, choice: "popular", layout: "tag"
+            ]
+        )	
+    }
+	
+	
 
     def show() {
-		[tag:Tag.findById(params.tag_id)]
+		def tag_id = params.tag_id
+		redirect (
+			action: "unansweredTags",
+			params: [tag_id: tag_id]
+		)
     }
+	
+	def unansweredTags() {
+		def offset = params?.offset ?: 0
+		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		def tag = Tag.findById(params.tag_id)
+		def questions = TagService.unansweredTags(tag)
+
+		render(
+			view: '/tag/show',
+			model: [
+				questions: questions.subList(offset, Math.min(offset + max, questions.size())),
+				total: questions.size(), choice: "unanswered", layout: "tag"
+			]
+		)
+	}
 
     def create() {
         respond new Tag(params)

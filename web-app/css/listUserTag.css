@@ -1,14 +1,14 @@
-.groupUser {
+.groupUser, .groupTag {
 	margin: 20px 20px 60px 60px;
 }
 
-.user {
+.user, .tag {
 	display: inline-block;
 	margin-right:20%;
 	vertical-align: top;
 }
 
-.user a {
+.user a, .tag a {
 	color: rgb(12, 123, 184);
 	font-weight: bold;
 	font-size: 16px;

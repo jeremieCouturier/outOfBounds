@@ -8,7 +8,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-		<link href="${resource(dir: 'css', file: 'user.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
 	</head>
 	<body>		
 		<ul class="menuInPage"> 
