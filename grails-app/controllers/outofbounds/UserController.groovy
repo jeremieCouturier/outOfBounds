@@ -39,9 +39,10 @@ class UserController {
 	}
 	
     def show() {		
+		def user_id = params?.user_id?:getAuthenticatedUser().id
 		redirect (
 			action: "userQuestions",
-			params: [user_id: params.user_id]
+			params: [user_id: user_id]
 		)
     }
 	

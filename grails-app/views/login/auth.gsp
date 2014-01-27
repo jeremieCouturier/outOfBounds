@@ -2,14 +2,15 @@
 <head>
 	<meta name='layout' content='main'/>
 	<title><g:message code="springSecurity.login.title"/></title>
+	<link href="${resource(dir: 'css', file: 'formLogSign.css')}" rel="stylesheet">
 	<style type='text/css' media='screen'>
-	#login {
+	#login .google, #login .twitter{
 		margin: 15px 0px;
 		padding: 0px;
 		text-align: center;
 	}
 
-	#login .inner {
+	/*#login .inner {
 		width: 340px;
 		padding-bottom: 6px;
 		margin: 60px auto;
@@ -52,9 +53,9 @@
 		width: 110px;
 		padding-top: 3px;
 		padding-right: 10px;
-	}
+	}*/
 
-	#login #remember_me_holder {
+	/*#login #remember_me_holder {
 		padding-left: 120px;
 	}
 
@@ -67,9 +68,9 @@
 		margin-left: 0;
 		text-align: left;
 		width: 200px
-	}
+	}*/
 
-	#login .inner .login_message {
+	/*#login .inner .login_message {
 		padding: 6px 25px 20px 25px;
 		color: #c33;
 	}
@@ -80,21 +81,21 @@
 
 	#login .inner .chk {
 		height: 12px;
-	}
+	}*/
 	</style>
 </head>
 
 <body>
 <div id='login'>
 	<!-- Google authentification -->
-	<div>
+	<div class="google">
 		<oauth:connect provider="google" id="google-connect-link">
 		<img src="${resource(dir: 'images', file: 'login-google.png')}" alt="Connect with Google!"/>
 		</oauth:connect>
 
 	</div>
 	<!-- Twitter authentification -->
-	<div>
+	<div class="twitter">
 		<span class="twitter-login">
 	        <a href="${createLink(uri: processUrl)}" class="twitter-button" 
 	        title="Connect with Twitter!">
@@ -103,7 +104,35 @@
 	    </span>		
 	</div>
 	<!-- "Simple form" registration -->
-	<div class='inner'>
+	
+	<div id="form_wrapper_log" class="form_wrapper_log">
+		<form class="login active" action='${postUrl}' method='POST' autocomplete='off'>
+		    <h3><g:message code="springSecurity.login.header"/></h3>
+		    <div>
+		        <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
+		        <input type="text" name='j_username'/>
+		    </div>
+		    <div>
+		        <label for='password'><g:message code="springSecurity.login.password.label"/>:
+		            <!-- <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">
+		                Forgot your password?
+		            </a>-->
+		        </label>
+		        <input type="password" name='j_password'/>
+		    </div>
+		    <div class="bottom">
+		        <div class="remember"><input type="checkbox" name='${rememberMeParameter}' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+		            <span><g:message code="springSecurity.login.remember.me.label"/></span>
+		        </div>
+		        <input type="submit" value='${message(code: "springSecurity.login.button")}'></input>
+		        <g:link controller="user" action="create">You don't have an account yet? Register here</g:link>
+		        <div class="clear"></div>
+		    </div>
+		</form>
+	</div>
+	
+	
+	<!--<div class='inner'>
 		<div class='fheader'><g:message code="springSecurity.login.header"/></div>
 
 		<g:if test='${flash.message}'>
@@ -131,7 +160,7 @@
 			</p>
 		</form>
 	</div>
-</div>
+</div>-->
 <script type='text/javascript'>
 	<!--
 	(function() {

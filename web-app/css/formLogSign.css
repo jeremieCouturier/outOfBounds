@@ -5,19 +5,27 @@
 	margin-left:100px;
 }
 
-.form_wrapper{
+.form_wrapper, .form_wrapper_log{
     background:#fff;
     border:1px solid #ddd;
     margin:0 auto;
-    width:550px;
     font-size:16px;
     -moz-box-shadow:1px 1px 7px #ccc;
     -webkit-box-shadow:1px 1px 7px #ccc;
     box-shadow:1px 1px 7px #ccc;
+}
+
+.form_wrapper {
+	width:550px;	
     margin-left:150px;
 }
 
-.form_wrapper h3{
+.form_wrapper_log {
+	width:350px;	
+    margin-left:250px;
+}
+
+.form_wrapper h3, .form_wrapper_log h3{
     padding:20px 30px 20px 30px;
     background-color:#444;
     color:#fff;
@@ -25,7 +33,7 @@
     border-bottom:1px solid #ddd;
 }
 
-.form_wrapper form{
+.form_wrapper form, .form_wrapper_log form{
     display:none;
     background:#fff;
 }
@@ -43,32 +51,38 @@ form.forgot_password{
     width:300px;
 }
 
-.form_wrapper .column{
+.form_wrapper .column, .form_wrapper_log .column{
     width:47%;
     float:left;
 }
 
-.form_wrapper a{
+.form_wrapper a, .form_wrapper_log a{
     text-decoration:none;
     color:#777;
     font-size:12px;
 }
-.form_wrapper a:hover{
+.form_wrapper a:hover, .form_wrapper_log a:hover{
     color:#000;
 }
 
-.form_wrapper label{
+.form_wrapper label, .form_wrapper_log label{
     display:block;
     padding:10px 30px 0px 30px;
     margin:10px 0px 0px 0px;
+}
+
+
+.form_wrapper label{
     font-size: 16px;
     font-weight:bold;
-    font-style:italic;;
+    font-style:italic;
 }
 
 
 .form_wrapper input[type="text"],
-.form_wrapper input[type="password"]{
+.form_wrapper input[type="password"],
+.form_wrapper_log input[type="text"],
+.form_wrapper_log input[type="password"]{
     border: solid 1px #E5E5E5;
     margin: 5px 30px 0px 30px;
     padding: 9px;
@@ -97,12 +111,14 @@ form.forgot_password{
     box-shadow: 0px 0px 8px #f0f0f0;
 }
 .form_wrapper input[type="text"]:focus,
-.form_wrapper input[type="password"]:focus{
+.form_wrapper input[type="password"]:focus,
+.form_wrapper_log input[type="text"]:focus,
+.form_wrapper_log input[type="password"]:focus{
     background:#feffef;
 }
 
 
-.form_wrapper .bottom{
+.form_wrapper .bottom, .form_wrapper_log .bottom{
     background-color:#444;
     border-top:1px solid #ddd;
     margin-top:20px;
@@ -112,7 +128,7 @@ form.forgot_password{
 }
 
 
-.form_wrapper .bottom a{
+.form_wrapper .bottom a, .form_wrapper_log .bottom a{
     display:block;
     clear:both;
     padding:10px 30px;
@@ -120,19 +136,29 @@ form.forgot_password{
     color:#ffa800;
     text-shadow:1px 1px 1px #000;
 }
-.form_wrapper a.forgot{
+.form_wrapper a.forgot, .form_wrapper_log a.forgot{
     float:right;
     font-style:italic;
     line-height:24px;
     color:#ffa800;
     text-shadow:1px 1px 1px #fff;
 }
-.form_wrapper a.forgot:hover{
+.form_wrapper a.forgot:hover, .form_wrapper_log a.forgot:hover{
     color:#000;
 }
 
+.form_wrapper_log div.remember{
+    float:left;
+    width:140px;
+    margin:20px 0px 20px 30px;
+    font-size:11px;
+}
+.form_wrapper_log div.remember input{
+    float:left;
+    margin:2px 5px 0px 0px;
+}
 
-.form_wrapper input[type="submit"] {
+.form_wrapper input[type="submit"], .form_wrapper_log input[type="submit"] {
     background: #e3e3e3;
     border: 1px solid #ccc;
     color: #333;
@@ -154,7 +180,7 @@ form.forgot_password{
     box-shadow: 0px 0px 2px #fff inset;
 }
 
-.form_wrapper input[type="submit"]:hover {
+.form_wrapper input[type="submit"]:hover, .form_wrapper_log input[type="submit"]:hover {
     background: #d9d9d9;
     -moz-box-shadow: 0px 0px 2px #eaeaea inset;
     -webkit-box-shadow: 0px 0px 2px #eaeaea inset;

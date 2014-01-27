@@ -3,7 +3,7 @@
 	<li class='active'><a href='index.html'><span>Home</span></a></li>
 
 	<sec:ifLoggedIn>
-		<li><g:link controller="user" action="profile">
+		<li><g:link controller="user" action="show">
 			<g:message code="user.my_profile" />
 		</g:link></li>
 
