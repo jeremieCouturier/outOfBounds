@@ -153,7 +153,26 @@ recaptcha {
     SecureAPI = true
 }
 
-grails.plugin.springsecurity.twitter.autoCreate.roles='ROLE_USER, ROLE_TWITTER'
+grails.plugin.springsecurity.twitter.autoCreate.active=true
+grails.plugin.springsecurity.twitter.autoCreate.roles='ROLE_USER'
 grails.plugin.springsecurity.twitter.domain.classname='outofbounds.TwitterUser'
 grails.plugin.springsecurity.twitter.consumerKey='58WznFrTuizFt0pLw2P2w'
 grails.plugin.springsecurity.twitter.consumerSecret='ekXiOiB2TF5LSK6B7PtfXi5xoK15gy8UGs7Yg9bg4'
+
+def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8080')}/${appName}"
+oauth {
+    providers {
+        // for Google OAuth 2.0
+        google {
+            api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+            key = '67215815339-i3kv250l2nn6jnq6jbi8csg6e9bao496.apps.googleusercontent.com'
+            secret = 'EnuVcoM6Ukf6wXb7XqF-zZ2j'
+            successUri = '/oauth/google/success'
+            failureUri = '/oauth/google/error'
+            callback = "${baseURL}/oauth/google/callback"
+            scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+        }
+    }
+}
+// Added by the Spring Security OAuth plugin:
+grails.plugin.springsecurity.oauth.domainClass = 'outofbounds.OAuthID'
