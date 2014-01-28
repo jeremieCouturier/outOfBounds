@@ -104,18 +104,18 @@ class SpringSecurityOAuthController {
      * Associates an OAuthID with an existing account. Needs the user's password to ensure
      * that the user owns that account, and authenticates to verify before linking.
      */
+     def passwordEncoder
     def linkAccount = { OAuthLinkAccountCommand command ->
         OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
         assert oAuthToken, "There is no auth token in the session!"
 
         if (request.post) {
             boolean linked = command.validate() && User.withTransaction { status ->
-                User user = User.findByUsernameAndPassword(
-                        command.username, 
-                        //why do we need 2 encodages? I don't know!
-                        springSecurityService.encodePassword(springSecurityService.encodePassword(command.password)))
+                //do NOT use findByUsernameAndPassword which generate a random 
+                //hash each time
+                User user = User.findByUsername(command.username)
 
-                if (user) {
+                if (user && passwordEncoder.isPasswordValid(user.password, command.password, null)) {
                     user.addToOAuthIDs(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: user)
                     if (user.validate() && user.save()) {
                         oAuthToken = updateOAuthToken(oAuthToken, user)

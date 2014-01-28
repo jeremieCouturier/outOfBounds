@@ -1,7 +1,7 @@
 package outofbounds
 
 class User {
-	static hasMany = [questions:Question, oAuthIDs: OAuthID]
+	static hasMany = [questions:Question, oAuthIDs: OAuthID, badges: Badge]
 
 	transient springSecurityService
 	
@@ -15,6 +15,8 @@ class User {
 	boolean passwordExpired
 
 	static transients = ['springSecurityService']
+
+	transient bEncoded = false
 
 	static constraints = {
 		username blank: false, unique: true
@@ -46,6 +48,9 @@ class User {
 	}
 
 	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
+		if (!bEncoded) {
+			password = springSecurityService.encodePassword(password, username)
+			bEncoded = true
+		}
 	}
 }
