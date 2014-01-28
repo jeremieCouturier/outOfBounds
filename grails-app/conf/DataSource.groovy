@@ -11,7 +11,7 @@ environments {
     
     development {
         dataSource {
-          dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+          dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
           if( System.env.DATABASE_URL == null)
           {
             pooled = true

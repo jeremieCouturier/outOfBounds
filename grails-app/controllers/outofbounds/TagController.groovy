@@ -5,6 +5,7 @@ package outofbounds
 import static org.springframework.http.HttpStatus.*
 import outOfBounds.Configuration;
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
 class TagController {
@@ -45,7 +46,7 @@ class TagController {
         )   
     }
 	
-	def unansweredTags() {
+	/*def unansweredTags() {
 		def offset = params?.offset ?: 0
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		def tag = Tag.findById(params.tag_id)
@@ -58,14 +59,42 @@ class TagController {
 				total: questions.size(), choice: "unanswered", layout: "tag"
 			]
 		)
-	}
+	}*/
 
     def show() {
+        def tag = Tag.findById(params.tag_id)
+        
+        if (tag == null) {
+            redirect action: "index"
+            return
+        }
+
+        def questions = TagService.taggedQuestions(tag, params? params.offset : 0, 
+            params? params.max : Configuration.NUMBER_ITEM_PER_PAGE)
+
         render(
             view: '/tag/show',
             model: [ 
-                tag: Tag.findById(params.id)
+                tag: tag,
+                questions: questions
             ]
         )
     }
+
+    @Secured(['IS_AUTHENTICATED_FULLY', 'ROLE_MODERATOR', 'ROLE_ADMIN'])
+    def edit() {
+        def tag = Tag.findById(params.tag_id)
+        if (tag == null) {
+            redirect action:'show', tag_id:params.tag_id
+            return
+        }
+        
+//        if (tag.canUserEditPost(getAuthenticatedUser())) {
+            respond tag
+  //      } else {
+    //        flash.message = message(code: 'post.edit_not_authorized', args: ['tag'])
+      //      redirect action:show tag_id:params.tag_id
+       // }
+    }
+
 }

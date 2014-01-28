@@ -1,6 +1,6 @@
-
 <%@page import="outOfBounds.Configuration"%>
 <%@ page import="outofbounds.Tag" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,25 +9,24 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	
+
+	<!-- tag info pour info seulement -->
+	<!-- sinon tagged questions (newest/featured/frequent/votes/active/unanswered -->
 		<ul class="menuInPage"> 
-		   <g:if test="${choice.equals('info')}">
-		   		<li class="title">Tagged Questions</li>
-		   	</g:if>
-		   	<g:else>
-		   		<li class="title">Tag Info</li>
-		   	</g:else>
+	   		<li class="title">Tagged Questions</li>
 		   		
-		   <li <g:if test="${choice.equals('info')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="infoTags">info</g:link></li>
-		   <li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredTags">unanswered</g:link></li>
+			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestTags">newest</g:link></li>
+			<li <g:if test="${choice.equals('votes')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="votesTags">votes</g:link></li>
+			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredTags">unanswered</g:link></li>
 		</ul> 
 		
-		<g:if test="${choice.equals('info')}">
-			
-		</g:if>
-		<g:if test="${choice.equals('unanswered')}">
-			<g:render template="/Question/templateQuestion" collection="${questions}" var="question" />
-		</g:if>
+		Description: ${tag.description}	<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
+		<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
+	     (edit it)
+	     </g:link>
+	     </sec:ifAnyGranted>
+
+		<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
 		
 		<div class="pagination">
 			%{-- <g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/> --}%

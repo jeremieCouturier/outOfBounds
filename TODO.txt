@@ -1,8 +1,10 @@
-- affichage des tags selon un ordre défini (le mieux serait de les mettre par ordre de popularité)
+- gestion des tags
+	- affichage des tags selon un ordre défini (le mieux serait de les mettre par ordre de popularité)
+	- les tags, y a un '_' underscore entre chaque tags
+
 - gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
 - unanswered question renvoit une erreur
 - gestion des badges
-- les tags, y a un '_' underscore entre chaque tags
 - empecher à un utilisateur de voter plusieurs fois
 - corollaire : changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
 - enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
@@ -14,3 +16,7 @@
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
 - regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
 - il faut changer le text d'un post... 255 charactères c'est pas assez, on est pas sur twitter! Mettre un text plutot qu'un varchar(255)
+
+Amélioration:
+	- formattage des postes (Markdown, etc.)
+	- ajout de photo à un poste / utilisateur

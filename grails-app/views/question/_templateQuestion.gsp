@@ -1,4 +1,5 @@
 <%@page import="outofbounds.User" %> 
+<link href="${resource(dir: 'css', file: 'listQuestion.css')}" rel="stylesheet">
 
 <div class="list_question">
 
