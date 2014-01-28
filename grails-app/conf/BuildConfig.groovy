@@ -77,5 +77,9 @@ grails.project.dependency.resolution = {
         compile ":spring-security-twitter:0.6"
         compile ':spring-security-oauth-google:0.2'
         compile ':recaptcha:0.6.7'
+        
+        compile ":ckeditor:3.6.6.1.1"
+
+        compile ":wmd:0.1"
     }
 }
