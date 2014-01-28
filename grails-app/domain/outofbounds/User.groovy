@@ -1,7 +1,7 @@
 package outofbounds
 
 class User {
-	static hasMany = [questions:Question, oAuthIDs: OAuthID]
+	static hasMany = [questions:Question, oAuthIDs: OAuthID, badges: Badge]
 
 	transient springSecurityService
 	
