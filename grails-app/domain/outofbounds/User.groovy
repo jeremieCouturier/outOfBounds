@@ -16,6 +16,8 @@ class User {
 
 	static transients = ['springSecurityService']
 
+	transient bEncoded = false
+
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false, password: true
@@ -46,6 +48,9 @@ class User {
 	}
 
 	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
+		if (!bEncoded) {
+			password = springSecurityService.encodePassword(password, username)
+			bEncoded = true
+		}
 	}
 }
