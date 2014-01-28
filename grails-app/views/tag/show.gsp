@@ -30,7 +30,7 @@
 		</g:if>
 		
 		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
+			%{-- <g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/> --}%
 		</div>
 		
 	</body>

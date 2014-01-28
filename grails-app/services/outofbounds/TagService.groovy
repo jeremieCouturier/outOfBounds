@@ -10,7 +10,25 @@ class TagService {
     }
 	
 	def popularTags(def offset, def max) {
-		return Tag.list(max: max, offset: offset, sort: 'reputation', order: 'desc')
+		String hql = '''
+			SELECT t.id
+			FROM Tag t LEFT OUTER JOIN t.questions q
+			GROUP BY t.id
+			ORDER BY COUNT(q) ASC
+		'''
+		def ids = Tag.executeQuery(hql)
+
+		ids.subList(offset ?: 0, max ?: ids.size())
+
+		return Tag.getAll(ids)
+	}
+
+	def newTags(def offset, def max) {
+		return Tag.list(max: max, offset: offset, sort: 'name', order: 'asc')
+	}
+
+	def nameTags(def offset, def max) {
+		return Tag.list(max: max, offset: offset, sort: 'name', order: 'asc')
 	}
 	
 	def unansweredTags(def tag) {
