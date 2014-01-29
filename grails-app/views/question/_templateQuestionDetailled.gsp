@@ -1,4 +1,5 @@
 <%@page import="outofbounds.User" %> 
+<%@ defaultCodec="none" %>
 
 <div class="question">
     
