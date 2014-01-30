@@ -94,8 +94,13 @@ class TagController {
 
         def offset = params.int('offset') ?: 0
         def max = params.int('max') ?: Configuration.NUMBER_ITEM_PER_PAGE
-        questions = questions.subList(offset, offset + max)
 
+        if (offset >= size) {
+            redirect action: 'show', params: ['tag_id': tag.id]
+            return 
+        }
+
+        questions = questions.subList(offset, Math.min(offset + max, size))
         displayQuestions(tag, "unanswered", questions, size)
     }
     protected def displayQuestions(tag, choice, questions, total) {
