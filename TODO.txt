@@ -16,6 +16,7 @@
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
 - regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
 - il faut changer le text d'un post... 255 charactères c'est pas assez, on est pas sur twitter! Mettre un text plutot qu'un varchar(255)
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -25,8 +26,6 @@ Register
 
 Tags:
 - pb pour l'instant sur les requ�tes (notamment voir les questions unanswered d'un tag selectionn�)
-=======
-Amélioration:
-	- formattage des postes (Markdown, etc.)
-	- ajout de photo à un poste / utilisateur
->>>>>>> 3dfe927b105a4136be37b19512df28a6205f6c59
+- modif des pages d'erreurs? 404 etc.
+- ajout de photo à un utilisateur (gravatar?)
+- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)

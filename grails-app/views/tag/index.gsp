@@ -15,6 +15,10 @@
 			<li <g:if test="${choice.equals('name')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="nameTags"><g:message code='tag.name' /></g:link></li>
 			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newTags"><g:message code='tag.new' /></g:link></li>		
 		</ul> 
+
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>		
 		
 		<div class="groupTag">
 			<g:render template="templateTag" collection="${tags}" var="tag" />

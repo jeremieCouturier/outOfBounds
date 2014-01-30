@@ -15,28 +15,32 @@ class TagController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
+        flash.message = flash.message
         redirect action: "popularTags"
     }
 
+    /* Return list of tags ordered by date */    
     def newTags() {
         def tags = TagService.newTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("new", tags)
     }
 
+    /* Return list of tags ordered by popularity */    
     def popularTags() {
         def tags = TagService.popularTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("popular", tags)
     }
 
+    /* Return list of tags ordered by alphanumeric order */    
     def nameTags() {
         def tags = TagService.nameTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("name", tags)
     }
 
-    def getTags(name, tags) {
+    protected def getTags(name, tags) {
         render(   
             view: '/tag/index',
             model: [ 
@@ -61,11 +65,12 @@ class TagController {
 		)
 	}*/
 
+    /* Display a tag with its tagged questions */
     def show() {
         def tag = Tag.findById(params.tag_id)
-        
+
         if (tag == null) {
-            redirect action: "index"
+            notFound()
             return
         }
 
@@ -85,16 +90,39 @@ class TagController {
     def edit() {
         def tag = Tag.findById(params.tag_id)
         if (tag == null) {
-            redirect action:'show', tag_id:params.tag_id
+            notFound()    
             return
         }
         
-//        if (tag.canUserEditPost(getAuthenticatedUser())) {
-            respond tag
-  //      } else {
-    //        flash.message = message(code: 'post.edit_not_authorized', args: ['tag'])
-      //      redirect action:show tag_id:params.tag_id
-       // }
+        respond tag
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY', 'ROLE_MODERATOR', 'ROLE_ADMIN'])
+    @Transactional
+    def update(Tag tagInstance) {
+        if (tagInstance == null) {
+            notFound()
+            return
+        }
+
+        if (tagInstance.hasErrors()) {
+            respond tagInstance.errors, view:'edit'
+            return
+        }
+
+        tagInstance.save flush:true
+
+        flash.message = message(code: 'post.update_success', args: ['tag'])
+        redirect action: "show", params: ['tag_id': tagInstance.id]
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form {
+                flash.message = message(code: 'post.not_found', args: ['tag'])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
+    }
 }

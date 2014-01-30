@@ -5,17 +5,16 @@
 <div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'comments', 'error')} ">
 	<label for="comments">
 		<g:message code="comment.comments.label" default="Comments" />
-		
 	</label>
 	
-<ul class="one-to-many">
-<g:each in="${commentInstance?.comments?}" var="c">
-    <li><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="comment" action="create" params="['comment.id': commentInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'comment.label', default: 'Comment')])}</g:link>
-</li>
-</ul>
+	<ul class="one-to-many">
+		<g:each in="${commentInstance?.comments?}" var="c">
+		    <li><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+		</g:each>
+		<li class="add">
+			<g:link controller="comment" action="create" params="['comment.id': commentInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'comment.label', default: 'Comment')])}</g:link>
+		</li>
+	</ul>
 
 </div>
 

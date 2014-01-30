@@ -10,6 +10,7 @@ class Tag {
 	static belongsTo = Question
 
     static constraints = {
+    	name unique: true
     	description nullable: true
     }
 }

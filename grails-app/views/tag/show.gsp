@@ -10,8 +10,6 @@
 	</head>
 	<body>
 
-	<!-- tag info pour info seulement -->
-	<!-- sinon tagged questions (newest/featured/frequent/votes/active/unanswered -->
 		<ul class="menuInPage"> 
 	   		<li class="title">Tagged Questions</li>
 		   		
@@ -20,10 +18,13 @@
 			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredTags">unanswered</g:link></li>
 		</ul> 
 		
-		Description: ${tag.description}	<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
-		<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
-	     (edit it)
-	     </g:link>
+		<!-- to be changed -->
+		Tag: ${tag.name}<br >
+		Description: ${tag.description?: message(code: "tag.no_description")}
+		<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
+			<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
+	    	 	<g:message code="tag.edit_it" />
+	     	</g:link>
 	     </sec:ifAnyGranted>
 
 		<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
