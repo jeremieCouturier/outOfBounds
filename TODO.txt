@@ -1,14 +1,10 @@
-- gestion des tags
-	- affichage des tags selon un ordre défini (le mieux serait de les mettre par ordre de popularité)
-	- les tags, y a un '_' underscore entre chaque tags
-
+- affichage des tags selon un ordre défini (le mieux serait de les mettre par ordre de popularité)
+- les tags, y a un '_' underscore entre chaque tags
 - gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
-- unanswered question renvoit une erreur
 - gestion des badges
 - empecher à un utilisateur de voter plusieurs fois
 - corollaire : changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
 - enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
-- quand on supprime sa réponse, on fait quoi des commentaires ? La réputation reste ? On interdit le delete ?
 - quand on sauve une question sans tag ça plante
 - edit question: pouvoir modifier les tags
 - renommer removeQuestion en remove casse l'action (erreur 405 quand on tente de delete qq chose)
@@ -16,16 +12,10 @@
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
 - regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
 - il faut changer le text d'un post... 255 charactères c'est pas assez, on est pas sur twitter! Mettre un text plutot qu'un varchar(255)
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-
-Register
 - voir quels sont les param�tres � conserver (email, site web, ...)
 - v�rifier la validit� des saisies (regex pour mail, ...) et signaler � l'utilisateur la partie qu'il a mal saisi
-
-Tags:
-- pb pour l'instant sur les requ�tes (notamment voir les questions unanswered d'un tag selectionn�)
 - modif des pages d'erreurs? 404 etc.
 - ajout de photo à un utilisateur (gravatar?)
 - ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
+- page google casser si erreurs
+- écrire les tests...

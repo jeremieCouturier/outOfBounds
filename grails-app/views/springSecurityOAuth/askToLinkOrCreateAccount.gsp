@@ -42,7 +42,7 @@
 
 <body>
 
-<div class='body'">
+<div class='body'>
     <g:if test='${flash.error}'>
         <div class="errors">${flash.error}</div>
     </g:if>
