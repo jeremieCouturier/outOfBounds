@@ -9,6 +9,9 @@
 		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'header.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'subheader.css')}" rel="stylesheet">
+
+		<ckeditor:resources/>
+
 	</head>
 	<body>
 		<g:if test="${flash.message}">
@@ -31,7 +34,15 @@
 			</div>
 			
 			<div class="text">
-				<textarea name="question_text" placeholder="Enter your question here ..."></textarea>
+				<!--  <textarea name="question_text" placeholder="Enter your question here ..."></textarea> -->
+				<ckeditor:config var="toolbar_Mytoolbar">
+					[
+					    ['Bold', 'Italic', '-', 'Link', 'Unlink', 'Blockquote','CreateDiv', 'Image', '-', 'NumberedList', 'BulletedList', 'HorizontalRule', '-', 'Undo','Redo']
+					]
+				</ckeditor:config>
+				<ckeditor:editor name="question_text" toolbar="Mytoolbar">
+					${initialValue}
+				</ckeditor:editor>
 			</div>
 			
 			<div class="tags">

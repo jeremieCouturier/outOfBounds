@@ -5,6 +5,9 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'answer.label', default: 'Answer')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+
+		<ckeditor:resources/>
+
 	</head>
 	<body>
 
@@ -12,7 +15,15 @@
 
     <g:form action="editAnswer" id="${answerInstance.id}">
     	<div class="block">
-			<textarea name="answer_text" required placeholder="Add an answer ...">${answerInstance.text}</textarea>
+			<!-- <textarea name="answer_text" required placeholder="Add an answer ...">${answerInstance.text}</textarea> -->
+			<ckeditor:config var="toolbar_Mytoolbar">
+				[
+				    ['Bold', 'Italic', '-', 'Link', 'Unlink', 'Blockquote','CreateDiv', 'Image', '-', 'NumberedList', 'BulletedList', 'HorizontalRule', '-', 'Undo','Redo']
+				]
+			</ckeditor:config>
+			<ckeditor:editor name="answer_text" toolbar="Mytoolbar">
+				${answerInstance.text}
+			</ckeditor:editor>
 		</div>
         <br />
         <button type="submit">OK</button>

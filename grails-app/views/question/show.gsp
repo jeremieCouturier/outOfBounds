@@ -1,3 +1,4 @@
+
 <%@ page import="outofbounds.Question" %>
 <!DOCTYPE html>
 <html>
@@ -7,11 +8,15 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'addPost.css')}" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">		
+
+		<ckeditor:resources/>
+		
 	</head>
 	<body>		
 		<!-- Question -->
 		<div class="question_show">					
+			
 			<g:render template="templateQuestionDetailled" bean="${questionInstance}" var="question"></g:render>
 			
 	        <!-- Answers of the question -->
@@ -19,7 +24,7 @@
 	            <div class="number_answers">
 	                <label><g:message code="question.answer_count" args="[questionInstance.answers.size()]"/></label>
 	            </div>
-	            <g:render template="templateAnswer" collection="${questionInstance.answers}" var="answer" />
+	            <g:render template="templateAnswer" collection="${questionInstance.answers}" var="answer" />	
 	        </div>
 	
 	        <sec:ifLoggedIn>
@@ -29,3 +34,4 @@
         
 	</body>
 </html>
+

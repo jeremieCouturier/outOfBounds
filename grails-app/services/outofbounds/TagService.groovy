@@ -14,7 +14,7 @@ class TagService {
 			SELECT t.id
 			FROM Tag t LEFT OUTER JOIN t.questions q
 			GROUP BY t.id
-			ORDER BY COUNT(q) ASC
+			ORDER BY COUNT(q) DESC
 		'''
 		def ids = Tag.executeQuery(hql)
 
@@ -24,7 +24,7 @@ class TagService {
 	}
 
 	def newTags(def offset, def max) {
-		return Tag.list(max: max, offset: offset, sort: 'name', order: 'asc')
+		return Tag.list(max: max, offset: offset, sort: 'creationDate', order: 'desc')
 	}
 
 	def nameTags(def offset, def max) {
@@ -45,5 +45,9 @@ class TagService {
 		}
 		
 		return results
+	}
+
+	def taggedQuestions(def tag, def max, def offset) {
+		return tag.questions;//(max: max, offset: offset, sort: 'views', order: 'desc')
 	}
 }
