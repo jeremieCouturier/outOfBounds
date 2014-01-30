@@ -19,20 +19,20 @@ class TagController {
     }
 
     def newTags() {
-        def tags = TagService.newTags(params? params.offset : 0, 
-            params? params.max : Configuration.NUMBER_ITEM_PER_PAGE*4)
+        def tags = TagService.newTags(params.offset?: 0, 
+            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("new", tags)
     }
 
     def popularTags() {
-        def tags = TagService.popularTags(params? params.offset : 0, 
-            params? params.max : Configuration.NUMBER_ITEM_PER_PAGE*4)
+        def tags = TagService.popularTags(params.offset?: 0, 
+            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("popular", tags)
     }
 
     def nameTags() {
-        def tags = TagService.nameTags(params? params.offset : 0, 
-            params? params.max : Configuration.NUMBER_ITEM_PER_PAGE*4)
+        def tags = TagService.nameTags(params.offset?: 0, 
+            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("name", tags)
     }
 
@@ -69,8 +69,8 @@ class TagController {
             return
         }
 
-        def questions = TagService.taggedQuestions(tag, params? params.offset : 0, 
-            params? params.max : Configuration.NUMBER_ITEM_PER_PAGE)
+        def questions = TagService.taggedQuestions(tag, params.offset?: 0, 
+            params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
 
         render(
             view: '/tag/show',

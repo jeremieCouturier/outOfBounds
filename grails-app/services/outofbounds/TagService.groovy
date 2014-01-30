@@ -10,6 +10,7 @@ class TagService {
     }
 	
 	def popularTags(def offset, def max) {
+
 		String hql = '''
 			SELECT t.id
 			FROM Tag t LEFT OUTER JOIN t.questions q
@@ -18,7 +19,10 @@ class TagService {
 		'''
 		def ids = Tag.executeQuery(hql)
 
-		ids.subList(offset ?: 0, max ?: ids.size())
+		offset = offset ? offset.toInteger() : 0
+		max = max ? Math.min(max.toInteger() + offset, ids.size()) : ids.size()
+
+		ids = ids.subList(offset, max)
 
 		return Tag.getAll(ids)
 	}
@@ -32,19 +36,7 @@ class TagService {
 	}
 	
 	def unansweredTags(def tag) {
-		def c = Question.createCriteria()
-		def results = c.list {
-			answers {
-				count = 0
-			}
-			tags {
-				eq('name', tag.name)
-			}
-			
-			order("mark", "desc")
-		}
-		
-		return results
+		//todo
 	}
 
 	def taggedQuestions(def tag, def max, def offset) {

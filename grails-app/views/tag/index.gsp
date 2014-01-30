@@ -18,15 +18,9 @@
 		
 		<div class="groupTag">
 			<g:render template="templateTag" collection="${tags}" var="tag" />
-
-			%{-- why? WHY this v ?! --}%
-			%{-- <g:each var="i" in="${ (0..<(tags.size()-1)/4+1) }">
-				<g:render template="templateTag" collection="${tags.subList(0*4, Math.min((0+1)*4, tags.size()))}" var="tag" />
-			</g:each> --}%
 		</div>
-		
 		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE*4}" total="${total}"/>
+			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE * 4}" total="${total}"/>
 		</div>
 		
 	</body>
