@@ -50,38 +50,62 @@ class TagController {
         )   
     }
 	
-	/*def unansweredTags() {
-		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
-		def tag = Tag.findById(params.tag_id)
-		def questions = TagService.unansweredTags(tag)
-
-		render(
-			view: '/tag/show',
-			model: [
-				questions: questions.subList(offset, Math.min(offset + max, questions.size())),
-				total: questions.size(), choice: "unanswered", layout: "tag"
-			]
-		)
-	}*/
 
     /* Display a tag with its tagged questions */
     def show() {
-        def tag = Tag.findById(params.tag_id)
+        redirect action: 'unansweredQuestions', params: params
+    }
 
+    def newestQuestions() {
+        def tag = Tag.findById(params.tag_id)
         if (tag == null) {
-            notFound()
+            notFound()    
             return
         }
 
-        def questions = TagService.taggedQuestions(tag, params.offset?: 0, 
+        def questions = TagService.newestTaggedQuestions(tag, params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
 
+        displayQuestions(tag, "newest", questions, tag.questions.size())
+    }
+    def popularQuestions() {
+        def tag = Tag.findById(params.tag_id)
+        if (tag == null) {
+            notFound()    
+            return
+        }
+
+        def questions = TagService.popularTaggedQuestions(tag, params.offset?: 0, 
+            params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
+
+        displayQuestions(tag, "popular", questions, tag.questions.size())
+    }
+    def unansweredQuestions() {
+        def tag = Tag.findById(params.tag_id)
+        if (tag == null) {
+            notFound()    
+            return
+        }
+
+        // special case: since we need the total count, we do not use offset/max
+        // params when querying the DB
+        def questions = TagService.unansweredTaggedQuestions(tag)
+        def size = questions.size()
+
+        def offset = params.int('offset') ?: 0
+        def max = params.int('max') ?: Configuration.NUMBER_ITEM_PER_PAGE
+        questions = questions.subList(offset, offset + max)
+
+        displayQuestions(tag, "unanswered", questions, size)
+    }
+    protected def displayQuestions(tag, choice, questions, total) {
         render(
             view: '/tag/show',
             model: [ 
                 tag: tag,
-                questions: questions
+                questions: questions,
+                choice: choice,
+                total: total
             ]
         )
     }

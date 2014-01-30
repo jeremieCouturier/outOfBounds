@@ -13,9 +13,9 @@
 		<ul class="menuInPage"> 
 	   		<li class="title">Tagged Questions</li>
 		   		
-			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestTags">newest</g:link></li>
-			<li <g:if test="${choice.equals('votes')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="votesTags">votes</g:link></li>
-			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredTags">unanswered</g:link></li>
+			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestQuestions" params='[tag_id: "${tag.id}"]'>newest</g:link></li>
+			<li <g:if test="${choice.equals('popular')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="popularQuestions" params='[tag_id: "${tag.id}"]'>popular</g:link></li>
+			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredQuestions" params='[tag_id: "${tag.id}"]'>unanswered</g:link></li>
 		</ul> 
 		
 		<!-- to be changed -->
@@ -30,7 +30,7 @@
 		<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
 		
 		<div class="pagination">
-			%{-- <g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/> --}%
+			<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
 		</div>
 		
 	</body>

@@ -56,6 +56,8 @@ class BootStrap {
 				text:"I tested g++ and it worked",
 				question: question.id,
 				user:adminUser).save(failOnError: true)
+
+			question.correctAnswer = answer
 		}
 		
 		//second question

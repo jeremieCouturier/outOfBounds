@@ -19,6 +19,7 @@
 		<div class="foot_answer">
 		<div class="begin">
 			<span class="user">
+			accepted? ${answer.question.correctAnswer.id == answer.id}
 				<label>answered </label>
 				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
 				<label> by </label>

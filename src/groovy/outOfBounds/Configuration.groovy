@@ -2,5 +2,5 @@ package outOfBounds
 
 class Configuration {
 	
-	static final int NUMBER_ITEM_PER_PAGE = 10;
+	static final int NUMBER_ITEM_PER_PAGE = 1;
 }
