@@ -11,7 +11,7 @@ environments {
     
     development {
         dataSource {
-          dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+          dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
           if( System.env.DATABASE_URL == null)
           {
             pooled = true
@@ -36,14 +36,14 @@ environments {
    
     test {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
     
     production {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
             properties {
                maxActive = -1
