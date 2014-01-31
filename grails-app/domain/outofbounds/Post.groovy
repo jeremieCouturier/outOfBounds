@@ -11,7 +11,8 @@ class Post {
 
 	static mapping = {
 		text type:'text'
-	}
+        comments sort: 'date', order: 'asc'
+    }
 
 	public boolean canUserDeletePost(User inUser) {
         def adminRole = Role.findByAuthority('ROLE_ADMIN')
