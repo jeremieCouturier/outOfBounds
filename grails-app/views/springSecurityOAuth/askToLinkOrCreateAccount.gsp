@@ -57,7 +57,7 @@
     </g:hasErrors>
     
     <div id="form_wrapper_google" class="form_wrapper_google" >
-		<form class="login active" action="createAccount" method="post" autocomplete="off">
+		<g:form class="login active" action="createAccount" method="post" autocomplete="off">
 		    <h3><g:message code="springSecurity.oauth.registration.create.legend" default="Create a new account"/></h3>
 		    <div class="fieldcontain ${hasErrors(bean: createAccountCommand, field: 'username', 'error')} ">
                 <label for='username'><g:message code="OAuthCreateAccountCommand.username.label" default="Username"/>:</label>
@@ -76,7 +76,7 @@
 		        <g:link controller="login" action="auth"><g:message code="springSecurity.oauth.registration.back" default="Back to login page"/></g:link>
 		        <div class="clear"></div>
 		    </div>
-		</form>
+		</g:form>
 	</div>
 
     <!--<g:form action="createAccount" method="post" autocomplete="off">
@@ -105,7 +105,7 @@
     </g:hasErrors>
     
     <div id="form_wrapper_google" class="form_wrapper_google">
-		<form class="login active" action="linkAccount" method="post" autocomplete="off">
+		<g:form class="login active" action="linkAccount" method="post" autocomplete="off">
 		    <h3><g:message code="springSecurity.oauth.registration.login.legend" default="Link to an existing account"/></h3>
 		    <div class="fieldcontain ${hasErrors(bean: linkAccountCommand, field: 'username', 'error')} ">
 		        <label for='username'><g:message code="OAuthLinkAccountCommand.username.label" default="Username"/>:</label>
@@ -121,7 +121,7 @@
 		        <g:link controller="login" action="auth"><g:message code="springSecurity.oauth.registration.back" default="Back to login page"/></g:link>
 		        <div class="clear"></div>
 		    </div>
-		</form>
+		</g:form>
 	</div>
 
     <!--<g:form action="linkAccount" method="post" autocomplete="off">
