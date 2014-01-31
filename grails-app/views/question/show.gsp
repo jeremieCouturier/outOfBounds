@@ -24,7 +24,7 @@
 	            <div class="number_answers">
 	                <label><g:message code="question.answer_count" args="[questionInstance.answers.size()]"/></label>
 	            </div>
-	            <g:render template="/answer/template" collection="${questionInstance.answers}" var="answer" />	
+	            <g:render template="/answer/show" collection="${questionInstance.answers}" var="answer" />	
 	        </div>
 	
 	        <sec:ifLoggedIn>
