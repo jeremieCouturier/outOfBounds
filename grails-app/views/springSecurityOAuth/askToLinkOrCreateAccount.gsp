@@ -50,13 +50,13 @@
     <label class="message"><g:message code="springSecurity.oauth.registration.link.not.exists" default="No user was found with this account." args="[session.springSecurityOAuthToken.providerName]"/></label>
     <br/>
 
-    <g:hasErrors bean="${createAccountCommand}">
-    <div class="errors">
-        <g:renderErrors bean="${createAccountCommand}" as="list"/>
-    </div>
-    </g:hasErrors>
     
     <div id="form_wrapper_google" class="form_wrapper_google" >
+        <g:hasErrors bean="${createAccountCommand}">
+        <div class="errors">
+            <g:renderErrors bean="${createAccountCommand}" as="list"/>
+        </div>
+        </g:hasErrors>
 		<g:form class="login active" action="createAccount" method="post" autocomplete="off">
 		    <h3><g:message code="springSecurity.oauth.registration.create.legend" default="Create a new account"/></h3>
 		    <div class="fieldcontain ${hasErrors(bean: createAccountCommand, field: 'username', 'error')} ">
@@ -97,15 +97,14 @@
             <g:submitButton name="${message(code: 'springSecurity.oauth.registration.create.button', default: 'Create')}"/>
         </fieldset>
     </g:form>-->
-
-    <g:hasErrors bean="${linkAccountCommand}">
-    <div class="errors">
-        <g:renderErrors bean="${linkAccountCommand}" as="list"/>
-    </div>
-    </g:hasErrors>
-    
     <div id="form_wrapper_google" class="form_wrapper_google">
-		<g:form class="login active" action="linkAccount" method="post" autocomplete="off">
+        <g:hasErrors bean="${linkAccountCommand}">
+        <div class="errors">
+            <g:renderErrors bean="${linkAccountCommand}" as="list"/>
+        </div>
+        </g:hasErrors>
+    
+        <g:form class="login active" action="linkAccount" method="post" autocomplete="off">
 		    <h3><g:message code="springSecurity.oauth.registration.login.legend" default="Link to an existing account"/></h3>
 		    <div class="fieldcontain ${hasErrors(bean: linkAccountCommand, field: 'username', 'error')} ">
 		        <label for='username'><g:message code="OAuthLinkAccountCommand.username.label" default="Username"/>:</label>
