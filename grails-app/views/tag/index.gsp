@@ -18,10 +18,22 @@
 
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
-		</g:if>		
+		</g:if>
 		
 		<div class="groupTag">
-			<g:render template="templateTag" collection="${tags}" var="tag" />
+		<table>
+		   <g:each var="i" in="${ (0..<(tags.size()-1)/4+1) }">
+		   <g:set var="liste" value="${tags.subList(i*4, Math.min((i+1)*4, tags.size()))}" />
+			<tr>
+				<g:each var="j" in="${(0..<liste.size()) }">
+					<td>
+					<g:render template="templateTag" bean="${liste.get(j)}" var="tag" />
+					</td>
+				</g:each>
+			</tr>
+			
+			</g:each>
+		</table>
 		</div>
 		<div class="pagination">
 			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE * 4}" total="${total}"/>
