@@ -39,9 +39,9 @@
 		</div>
 		</div>
 		
-		<g:render template="templateComment" collection="${answer.comments}" var="comment" /> 
+		<g:render template="/comment/show" collection="${answer.comments}" var="comment" /> 
 		<sec:ifLoggedIn>  
-	    	<g:render template="templateAddComment" bean="${answer}" var="post" />
+	    	<g:render template="/comment/add" bean="${answer}" var="post" />
 	    </sec:ifLoggedIn>
 		
 	</div>    

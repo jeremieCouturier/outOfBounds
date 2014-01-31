@@ -17,7 +17,7 @@
 		   <li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Question" action="unansweredQuestions">unanswered</g:link></li>
 		</ul> 
 		
-		<g:render template="templateQuestion" collection="${questions}" var="question" />
+		<g:render template="showSummary" collection="${questions}" var="question" />
 		
 		<div class="pagination">
 			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>

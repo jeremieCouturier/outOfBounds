@@ -17,18 +17,18 @@
 		<!-- Question -->
 		<div class="question_show">					
 			
-			<g:render template="templateQuestionDetailled" bean="${questionInstance}" var="question"></g:render>
+			<g:render template="showDetails" bean="${questionInstance}" var="question"></g:render>
 			
 	        <!-- Answers of the question -->
 			<div>
 	            <div class="number_answers">
 	                <label><g:message code="question.answer_count" args="[questionInstance.answers.size()]"/></label>
 	            </div>
-	            <g:render template="templateAnswer" collection="${questionInstance.answers}" var="answer" />	
+	            <g:render template="/answer/template" collection="${questionInstance.answers}" var="answer" />	
 	        </div>
 	
 	        <sec:ifLoggedIn>
-	        	<g:render template="templateAddAnswer" bean="${questionInstance}" var="question"></g:render>
+	        	<g:render template="/answer/add" bean="${questionInstance}" var="question"></g:render>
 	        </sec:ifLoggedIn>
 	    </div>
         

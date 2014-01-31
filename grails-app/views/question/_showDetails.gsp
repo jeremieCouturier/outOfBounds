@@ -58,10 +58,10 @@
 		</div>
 		
 		<!-- comments -->
-		<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
+		<g:render template="/comment/show" collection="${questionInstance.comments}" var="comment" />
 		
 		<sec:ifLoggedIn>
-	    	<g:render template="templateAddComment" bean="${questionInstance}" var="post" />
+	    	<g:render template="/comment/add" bean="${questionInstance}" var="post" />
 	    </sec:ifLoggedIn>
 		
 	</div>

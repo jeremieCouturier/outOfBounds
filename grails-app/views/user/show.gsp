@@ -22,11 +22,11 @@
 			</ul> 
 			
 			<g:if test="${choice.equals('questions')}">
-				<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+				<g:render template="/question/showSummary" collection="${questions}" var="question" />
 			</g:if>
 			
 			<g:if test="${choice.equals('answers')}">
-				<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+				<g:render template="/question/showSummary" collection="${questions}" var="question" />
 			</g:if>
 			
 		</div>

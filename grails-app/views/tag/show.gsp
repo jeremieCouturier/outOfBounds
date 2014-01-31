@@ -27,7 +27,7 @@
 	     	</g:link>
 	     </sec:ifAnyGranted>
 
-		<g:render template="/question/templateQuestion" collection="${questions}" var="question" />
+		<g:render template="/question/showSummary" collection="${questions}" var="question" />
 		
 		<div class="pagination">
 			<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>

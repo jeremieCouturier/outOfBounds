@@ -9,7 +9,7 @@
 - si on passe un mauvais id (lettres, etc.) erreur 500 (http://localhost:8080/outOfBounds/question/edit?question_id=14a)
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
 - regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
-- voir quels sont les param?res ?conserver (email, site web, ...)
+- voir quels sont les param?res ?conserver (email, site web, ...) + merger avec le signup google
 - v?ifier la validit?des saisies (regex pour mail, ...) et signaler ?l'utilisateur la partie qu'il a mal saisi
 - modif des pages d'erreurs? 404 etc.
 - ajout de photo à un utilisateur (gravatar?)
