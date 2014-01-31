@@ -25,7 +25,7 @@
 				<fieldset class="form">
 					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'name', 'error')} required">
 						<label for="name">
-							<g:message code="tag.name.label" default="Name" />
+							<g:message code="tag.name" />
 							<span class="required-indicator">*</span>
 						</label>
 						<g:textField name="name" required="" value="${tagInstance?.name}"/>
@@ -33,7 +33,7 @@
 
 					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'description', 'error')}">
 						<label for="description">
-							<g:message code="tag.description.label" default="Description" />
+							<g:message code="tag.description" />
 						</label>
 						<g:textField name="description" value="${tagInstance?.description}"/>
 					</div>

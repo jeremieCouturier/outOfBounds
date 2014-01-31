@@ -50,7 +50,7 @@ class AnswerController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'answerInstance.label', default: 'Answer'), answerInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'answer.Answer'), answerInstance.id])
                 redirect answerInstance
             }
             '*' { respond answerInstance, [status: CREATED] }
@@ -89,7 +89,7 @@ class AnswerController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Answer.label', default: 'Answer'), answerInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'answer.Answer'), answerInstance.id])
                 redirect answerInstance
             }
             '*'{ respond answerInstance, [status: OK] }
@@ -113,7 +113,7 @@ class AnswerController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'answerInstance.label', default: 'Answer'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.Answer'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

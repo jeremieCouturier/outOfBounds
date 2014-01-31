@@ -133,7 +133,7 @@ class QuestionController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.Question'), questionInstance.id])
                 redirect questionInstance
             }
             '*'{ respond questionInstance, [status: OK] }

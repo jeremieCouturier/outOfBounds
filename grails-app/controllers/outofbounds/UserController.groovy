@@ -117,7 +117,7 @@ class UserController {
 
             request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'userInstance.label', default: 'User'), userInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'user.User'), userInstance.id])
                 //redirect userInstance
                 redirect(uri: "")
             }
@@ -153,7 +153,7 @@ class UserController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.User'), userInstance.id])
                 redirect userInstance
             }
             '*'{ respond userInstance, [status: OK] }
@@ -172,7 +172,7 @@ class UserController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.User'), userInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -182,7 +182,7 @@ class UserController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'userInstance.label', default: 'User'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.User'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

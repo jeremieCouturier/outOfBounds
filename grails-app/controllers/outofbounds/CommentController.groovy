@@ -41,7 +41,7 @@ class CommentController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'commentInstance.label', default: 'Comment'), commentInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'comment.Comment'), commentInstance.id])
                 redirect commentInstance
             }
             '*' { respond commentInstance, [status: CREATED] }
@@ -70,7 +70,7 @@ class CommentController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'comment.Comment'), commentInstance.id])
                 redirect commentInstance
             }
             '*'{ respond commentInstance, [status: OK] }
@@ -95,7 +95,7 @@ class CommentController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'commentInstance.label', default: 'Comment'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'comment.Comment'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

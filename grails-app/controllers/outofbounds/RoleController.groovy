@@ -39,7 +39,7 @@ class RoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'roleInstance.label', default: 'Role'), roleInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'role.Role'), roleInstance.id])
                 redirect roleInstance
             }
             '*' { respond roleInstance, [status: CREATED] }
@@ -66,7 +66,7 @@ class RoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Role.label', default: 'Role'), roleInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'role.Role'), roleInstance.id])
                 redirect roleInstance
             }
             '*'{ respond roleInstance, [status: OK] }
@@ -85,7 +85,7 @@ class RoleController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Role.label', default: 'Role'), roleInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'role.Role'), roleInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -95,7 +95,7 @@ class RoleController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'roleInstance.label', default: 'Role'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.Role'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
