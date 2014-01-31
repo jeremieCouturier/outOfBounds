@@ -37,11 +37,14 @@ class AnswerService {
 	def delete(Answer answer)
 	{
 		def question = answer.question
-
+		
+		answer.comments.each { comment ->
+			answer.removeFromComments(comment)
+			comment.delete()
+		}
+		
 		question.removeFromAnswers(answer)
 		answer.delete()
 		question.save(FailOnError: true)
-
-		return question
 	}
 }

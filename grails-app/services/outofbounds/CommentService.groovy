@@ -9,6 +9,15 @@ class CommentService {
 
     }
 	
+	def delete(Comment comment)
+	{
+		def father_post = comment.post
+
+		father_post.removeFromComments(comment)
+		comment.delete()
+		father_post.save(FailOnError: true)
+	}
+	
 	/*def editAnswer(int answer_id, String text)
 	{
 		def answer = Answer.findById(answer_id)

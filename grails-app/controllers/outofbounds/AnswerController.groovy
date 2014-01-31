@@ -100,15 +100,14 @@ class AnswerController {
     def deleteAnswer() {
 
         def answer = Answer.findById(params.answer_id)
-        def question = answer.question
-
-        if (answer && answer.canUserDeletePost(getAuthenticatedUser())) {
-            answerService.delete(answer)
+        def question = answer.question      
+		if (answer && answer.canUserDeletePost(getAuthenticatedUser())) {
+            AnswerService.delete(answer)
             flash.message = message(code: 'post.delete_success', args: ["answer"])
         } else {
             flash.message = message(code: 'post.delete_not_authorized', args: ["answer"])
         }
-        redirect(uri: "/question/show?question_id=${question.id}")
+       redirect(uri: "/question/show?question_id=${questiond}")
     }
 
     protected void notFound() {

@@ -10,6 +10,8 @@ import grails.plugin.springsecurity.annotation.Secured
 class CommentController {
 
     def springSecurityService
+	def PostService
+	def CommentService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -77,22 +79,17 @@ class CommentController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
-    def delete(Comment commentInstance) {
+    def deleteComment() {
+		def comment = Comment.findById(params.comment_id)
+		def question = PostService.findQuestionPost(comment)
 
-        if (commentInstance == null) {
-            notFound()
-            return
-        }
-
-        commentInstance.delete flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Comment.label', default: 'Comment'), commentInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+		if (comment && comment.canUserDeletePost(getAuthenticatedUser())) {
+			CommentService.delete(comment)
+			flash.message = message(code: 'post.delete_success', args: ["comment"])
+		} else {
+			flash.message = message(code: 'post.delete_not_authorized', args: ["comment"])
+		}
+		redirect(uri: "/question/show?question_id=${question.id}")
     }
 
     protected void notFound() {
