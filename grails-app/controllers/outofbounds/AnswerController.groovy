@@ -30,7 +30,7 @@ class AnswerController {
 		def user = getAuthenticatedUser()
 		def answer = AnswerService.create(Integer.parseInt(params.id), params.text, user)
 		
-        redirect(uri: "/question/show?question_id=${answer.question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -69,7 +69,7 @@ class AnswerController {
 	def editAnswer() {
 		def answer = AnswerService.editAnswer(Integer.parseInt(params.id), params.answer_text)
 		
-		redirect(uri: "/question/show?question_id=${answer.question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
 	}
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -107,7 +107,7 @@ class AnswerController {
         } else {
             flash.message = message(code: 'post.delete_not_authorized', args: ["answer"])
         }
-       redirect(uri: "/question/show?question_id=${questiond}")
+       redirect controller: 'question', action: 'show', params: ['question_id': question.id]
     }
 
     protected void notFound() {

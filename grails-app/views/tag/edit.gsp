@@ -31,12 +31,11 @@
 						<g:textField name="name" required="" value="${tagInstance?.name}"/>
 					</div>
 
-					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'description', 'error')} required">
+					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'description', 'error')}">
 						<label for="description">
 							<g:message code="tag.description.label" default="Description" />
-							<span class="required-indicator">*</span>
 						</label>
-						<g:textField name="description" required="" value="${tagInstance?.description}"/>
+						<g:textField name="description" value="${tagInstance?.description}"/>
 					</div>
 
 				</fieldset>

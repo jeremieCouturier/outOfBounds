@@ -15,3 +15,16 @@
 - ajout de photo à un utilisateur (gravatar?)
 - ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
 - écrire les tests...
+- supprimer les redirect(uri:) (cf "Ne PAS FAIRE")
+
+Édition / Suppression :
+	- édition / suppression d'une question
+	- édition d'un commentaire
+	- CSS de réponse
+
+
+Ne PAS faire :
+	- redirect(uri: "/question/show?question_id=${answer.question.id}")
+		mais 
+   		redirect action: show params: ['question_id' : answer.question.id ]
+   	- du texte en clair dans les .gsp (utiliser g:message)

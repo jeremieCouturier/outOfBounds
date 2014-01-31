@@ -98,8 +98,7 @@ class QuestionController {
             return
         }
 
-        redirect action: "show", params: "question_id=${question.id}"
-		//redirect(uri: "/question/show?question_id=${question.id}")
+        redirect action:'show', params: ['question_id': question.id]
 	}
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
@@ -113,7 +112,7 @@ class QuestionController {
             respond question
         } else {
             flash.message = message(code: 'post.edit_not_authorized', args: ['question'])
-            redirect(uri: "/question/show?question_id=${question.id}")       
+            redirect action:'show', params: ['question_id': question.id]
         }
     }
 

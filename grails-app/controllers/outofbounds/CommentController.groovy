@@ -89,7 +89,7 @@ class CommentController {
 		} else {
 			flash.message = message(code: 'post.delete_not_authorized', args: ["comment"])
 		}
-		redirect(uri: "/question/show?question_id=${question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': question.id]
     }
 
     protected void notFound() {

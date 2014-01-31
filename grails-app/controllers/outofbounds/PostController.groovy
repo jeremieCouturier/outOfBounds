@@ -18,7 +18,7 @@ class PostController {
 		
 		Question question = PostService.findQuestionPost(post)
 		
-		redirect(uri: "/question/show?question_id=${question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': question.id]
 	}
 
 
@@ -30,8 +30,7 @@ class PostController {
 
 		Question question = PostService.findQuestionPost(post)
 
-		
-		redirect(uri: "/question/show?question_id=${question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': question.id]
 	}
 	
 	@Secured(['IS_AUTHENTICATED_FULLY'])
@@ -42,6 +41,6 @@ class PostController {
 		
 		Question question = PostService.findQuestionPost(post)
 		
-		redirect(uri: "/question/show?question_id=${question.id}")
+        redirect controller: 'question', action:'show', params: ['question_id': question.id]
 	}
 }
