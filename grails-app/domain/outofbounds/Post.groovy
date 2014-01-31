@@ -9,10 +9,9 @@ class Post {
 	static belongsTo = [user:User]
 	static hasMany = [comments:Comment, vote:Vote]
 
-    /*static constraints = {
-		tablePerHierarchy false
-	
-    }*/
+	static constraints = {
+		text type:'text'
+	}
 
 	public boolean canUserDeletePost(User inUser) {
         def adminRole = Role.findByAuthority('ROLE_ADMIN')
