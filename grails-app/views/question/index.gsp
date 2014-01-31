@@ -9,6 +9,9 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>
 		
 		<ul class="menuInPage"> 
 		   <li class="title">All Questions</li>

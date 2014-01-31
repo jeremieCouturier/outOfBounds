@@ -49,7 +49,7 @@
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
 			        Edit
 			    </g:link>
-			    <g:link controller="Question" action="delete" params='[question_id: "${question.id}"]'>
+			    <g:link controller="Question" action="deleteQuestion" params='[question_id: "${question.id}"]'>
 			        Delete
 			    </g:link>
 			</g:if>

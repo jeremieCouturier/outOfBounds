@@ -49,8 +49,23 @@ class CommentController {
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
-    def edit(Comment commentInstance) {
-        respond commentInstance
+    def edit() {
+        def comment = Comment.findById(params.comment_id)
+        if (comment == null) {
+            notFound()
+            return
+        }
+
+        if (comment.canUserEditPost(getAuthenticatedUser())) {
+            respond comment
+        } else {
+            flash.message = message(code: 'post.edit_not_authorized', args: ['comment'])
+            Post p = Post.findById(comment.post.id)
+            if (p instanceof Answer) {
+                p = p.question
+            }
+            redirect controller:'question', action:'show', params: ['question_id': p.id]
+        }
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -68,13 +83,13 @@ class CommentController {
 
         commentInstance.save flush:true
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'comment.Comment'), commentInstance.id])
-                redirect commentInstance
-            }
-            '*'{ respond commentInstance, [status: OK] }
+        // go back to the question
+        flash.message = message(code: 'post.update_success', args: ['comment'])
+        Post p = Post.findById(commentInstance.post.id)
+        if (p instanceof Answer) {
+            p = p.question
         }
+        redirect controller:'question', action:'show', params: ['question_id': p.id]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -95,8 +110,8 @@ class CommentController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'comment.Comment'), params.id])
-                redirect action: "index", method: "GET"
+                flash.message = message(code: 'post.not_found', args: ['comment'])
+                redirect controller: "question", action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

@@ -18,7 +18,7 @@ class CommentService {
 		father_post.save(FailOnError: true)
 	}
 	
-	/*def editAnswer(int answer_id, String text)
+	/*def updateAnswer(int answer_id, String text)
 	{
 		def answer = Answer.findById(answer_id)
 	

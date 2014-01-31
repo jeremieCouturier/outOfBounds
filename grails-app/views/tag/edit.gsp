@@ -12,7 +12,7 @@
 		<div id="edit-tag" class="content scaffold-edit" tag="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-				<div class="message" tag="status">${flash.message}</div>
+				<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${tagInstance}">
 			<ul class="errors" tag="alert">
@@ -40,7 +40,7 @@
 
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label'}" />
 				</fieldset>
 			</g:form>
 		</div>

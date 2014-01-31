@@ -66,35 +66,11 @@ class AnswerController {
     }
 	
     @Secured(['IS_AUTHENTICATED_FULLY'])    
-	def editAnswer() {
-		def answer = AnswerService.editAnswer(Integer.parseInt(params.id), params.answer_text)
+	def updateAnswer() {
+		def answer = AnswerService.updateAnswer(Integer.parseInt(params.id), params.answer_text)
 		
         redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
 	}
-
-    @Secured(['IS_AUTHENTICATED_FULLY'])    
-    @Transactional
-    def update(Answer answerInstance) {
-        if (answerInstance == null) {
-            notFound()
-            return
-        }
-
-        if (answerInstance.hasErrors()) {
-            respond answerInstance.errors, view:'edit'
-            return
-        }
-
-        answerInstance.save flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'answer.Answer'), answerInstance.id])
-                redirect answerInstance
-            }
-            '*'{ respond answerInstance, [status: OK] }
-        }
-    }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def deleteAnswer() {

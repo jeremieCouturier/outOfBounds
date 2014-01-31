@@ -1,24 +1,29 @@
+COUTURIER
+	- empecher à un utilisateur de voter plusieurs fois
+FOUREL
+	- gestion des badges
+JUTAND 
+	- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
+	- changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
+PELLOUX
+	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
+	- regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
+	
+ALL 
+	- écrire les tests...
+	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
+
 - les tags, y a un '_' underscore entre chaque tags
-- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
-- gestion des badges
-- empecher à un utilisateur de voter plusieurs fois
-- corollaire : changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
-- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
-- quand on sauve une question sans tag ça plante
-- edit question: pouvoir modifier les tags
 - si on passe un mauvais id (lettres, etc.) erreur 500 (http://localhost:8080/outOfBounds/question/edit?question_id=14a)
 - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
-- regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
-- voir quels sont les param?res ?conserver (email, site web, ...) + merger avec le signup google
-- v?ifier la validit?des saisies (regex pour mail, ...) et signaler ?l'utilisateur la partie qu'il a mal saisi
+- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
+- vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
 - modif des pages d'erreurs? 404 etc.
 - ajout de photo à un utilisateur (gravatar?)
-- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
-- écrire les tests...
 
-Édition / Suppression :
-	- édition / suppression d'une question
-	- édition d'un commentaire
+JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
+	- CSS édition d'une question
+	- CSS édition d'un commentaire
 	- CSS de réponse
 
 

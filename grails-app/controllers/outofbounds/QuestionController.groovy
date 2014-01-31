@@ -22,13 +22,14 @@ class QuestionController {
         //redirect is flushing flash dictionnary.. so we reset it (I agree,
         //this line is weird)
         flash.message = flash.message
+
         redirect action: "newestQuestions"
     }
 	
 	def newestQuestions() {
 		def offset = params?.offset ?: 0
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
-
+        
 		render(   
             view: '/question/index',
             model: [ 
@@ -154,7 +155,7 @@ class QuestionController {
         }
 
         if (question && question.canUserDeletePost(getAuthenticatedUser())) {
-            question.delete flush:true
+            questionService.deleteQuestion(question)
             flash.message = message(code: 'post.delete_success', args: ['question'])
             redirect action:"index"
         } else {

@@ -132,7 +132,6 @@ class UserController {
     }
 
     def edit(User userInstance) {
-        print userInstance
         respond userInstance
     }
 

@@ -4,6 +4,7 @@ import grails.transaction.Transactional
 
 @Transactional
 class QuestionService {
+	def answerService
 
     def serviceMethod() {
 
@@ -16,17 +17,17 @@ class QuestionService {
 		// remove tags from the question since we'll refill them right after
 		// but first, check if these tags are used elsewhere. If not, delete them
 		// definitely
-		for (Tag t : question.tags) {
+		question.tags.each { t ->
 			if (t.questions.size() == 1) {
 				t.delete()
 			}
 		}
+
 		if (question.tags != null) {
 			question.tags.clear()
 		}
 
-		for (String tagName : tagsName)
-		{
+		for (String tagName : tagsName) {
 			Tag tag = Tag.findByName(tagName)?:
 				new Tag(name: tagName).save(failOnError: true)
 
@@ -60,6 +61,27 @@ class QuestionService {
 		return question
 	}
 
+	def deleteQuestion(Question question) {
+		// remove answers
+		for (Answer a : question.answers) {
+			answerService.deleteAnswer(a)
+		}
+
+		// and question's comments
+		question.comments.each { comment ->
+			answer.removeFromComments(comment)
+			comment.delete()
+		}
+
+		// and tags if they are not used elsewhere
+		question.tags.each { tag ->
+			if (tag.questions.size() == 1) {
+				tag.delete()
+			}
+		}
+
+		question.delete flush:true
+	}
 
 	def newestQuestions(def offset, def max) {
 		return Question.list(max: max, offset: offset, sort: 'date', order: 'desc')
