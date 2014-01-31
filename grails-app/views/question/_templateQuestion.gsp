@@ -24,7 +24,7 @@
 	</div>
 	
 	<span class="tag">
-		<g:each in="${question.tags}" var="tag">
+		<g:each in="${question.tags.sort{a,b-> a.creationDate.compareTo(b.creationDate)} }" var="tag">
 			<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
 		    	<label class="tag_text">${tag.name}</label>
 			</g:link>

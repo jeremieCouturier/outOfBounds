@@ -67,7 +67,7 @@ class QuestionController {
     def show() {
         def currentLoggedInUser = springSecurityService.getCurrentUser();
 		def question = Question.findById(params.question_id)
-
+        
         //if no question selected, go back to index
         if (question == null) {
             index()
