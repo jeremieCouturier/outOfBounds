@@ -15,7 +15,6 @@
 - ajout de photo à un utilisateur (gravatar?)
 - ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
 - écrire les tests...
-- supprimer les redirect(uri:) (cf "Ne PAS FAIRE")
 
 Édition / Suppression :
 	- édition / suppression d'une question

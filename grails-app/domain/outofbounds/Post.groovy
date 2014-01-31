@@ -9,7 +9,7 @@ class Post {
 	static belongsTo = [user:User]
 	static hasMany = [comments:Comment, vote:Vote]
 
-	static constraints = {
+	static mapping = {
 		text type:'text'
 	}
 
