@@ -6,6 +6,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'tag.label', default: 'Tag')}" />
+		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -18,16 +19,16 @@
 			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredQuestions" params='[tag_id: "${tag.id}"]'>unanswered</g:link></li>
 		</ul> 
 		
-		<!-- to be changed -->
-		<label>
-			Tag: ${tag.name}<br >
-			Description: ${tag.description?: message(code: "tag.no_description")}
+		<div class="description">
+			<label class="name">${tag.name}</label>
+			<label class="description">${tag.description?: message(code: "tag.no_description")}</label>
+				
 			<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
 				<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
 		    	 	<g:message code="tag.edit_it" />
 		     	</g:link>
 		    </sec:ifAnyGranted>
-		</label>
+		</div>
 
 	    <g:if test="${total == 0}">
 	    	<g:message code="tag.no_question_found" args="[choice, tag.name]" />
