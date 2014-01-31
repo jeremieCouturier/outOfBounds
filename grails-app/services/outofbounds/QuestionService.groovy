@@ -9,13 +9,27 @@ class QuestionService {
 
     }
 
-	def addTags(String tagString, Question question)
+	def setTags(String tagString, Question question)
 	{
 		String[] tagsName = tagString.split("[;,:( )]+")
 		
+		// remove tags from the question since we'll refill them right after
+		// but first, check if these tags are used elsewhere. If not, delete them
+		// definitely
+		for (Tag t : question.tags) {
+			if (t.questions.size() == 1) {
+				t.delete()
+			}
+		}
+		if (question.tags != null) {
+			question.tags.clear()
+		}
+
 		for (String tagName : tagsName)
 		{
-			Tag tag = Tag.findByName(tagName)?:new Tag(name: tagName).save(failOnError: true)
+			Tag tag = Tag.findByName(tagName)?:
+				new Tag(name: tagName).save(failOnError: true)
+
 			question.addToTags(tag)
 		}	
 		
@@ -40,11 +54,12 @@ class QuestionService {
 			return question
 		}
 
-		addTags(tags, question)
+		setTags(tags, question)
 		user.addToPosts(question)
 
 		return question
 	}
+
 
 	def newestQuestions(def offset, def max) {
 		return Question.list(max: max, offset: offset, sort: 'date', order: 'desc')

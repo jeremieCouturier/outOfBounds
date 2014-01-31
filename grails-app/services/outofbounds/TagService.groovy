@@ -72,6 +72,10 @@ class TagService {
 			return null
 		}
 
+		if (tag.questions.size() == 0) {
+			return null
+		}
+		
 		// non-trivial query: we need to sort QUESTIONS by ANSWERS count for 
 		// a given tag...
 		def popular = Question.executeQuery("""

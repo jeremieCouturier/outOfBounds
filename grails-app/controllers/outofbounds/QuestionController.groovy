@@ -90,8 +90,8 @@ class QuestionController {
     @Transactional
     def saveQuestion() {
 		def user = getAuthenticatedUser()
-        def question = questionService.saveQuestion(params.question_title, 
-            params.question_text, params.question_tags, user) 
+        def question = questionService.saveQuestion(params.title, 
+            params.text, params.question_tags, user) 
         
         if (question == null || question.id == null) {
             respond question.errors, view:'create'
@@ -108,6 +108,7 @@ class QuestionController {
             notFound()
             return
         }
+
         if (question.canUserEditPost(getAuthenticatedUser())) {
             respond question
         } else {
@@ -130,6 +131,8 @@ class QuestionController {
         }
 
         questionInstance.save flush:true
+        // reset tags
+        questionService.setTags(params.question_tags, questionInstance)
 
         request.withFormat {
             form {

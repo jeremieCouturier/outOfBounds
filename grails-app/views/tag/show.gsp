@@ -19,19 +19,25 @@
 		</ul> 
 		
 		<!-- to be changed -->
-		Tag: ${tag.name}<br >
-		Description: ${tag.description?: message(code: "tag.no_description")}
-		<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
-			<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
-	    	 	<g:message code="tag.edit_it" />
-	     	</g:link>
-	     </sec:ifAnyGranted>
+		<label>
+			Tag: ${tag.name}<br >
+			Description: ${tag.description?: message(code: "tag.no_description")}
+			<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
+				<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
+		    	 	<g:message code="tag.edit_it" />
+		     	</g:link>
+		    </sec:ifAnyGranted>
+		</label>
 
-		<g:render template="/question/showSummary" collection="${questions}" var="question" />
+	    <g:if test="${total == 0}">
+	    	<g:message code="tag.no_question_found" args="[choice, tag.name]" />
+	    </g:if>
+	    <g:else>
+			<g:render template="/question/showSummary" collection="${questions}" var="question" />
 		
-		<div class="pagination">
-			<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
-		</div>
-		
+			<div class="pagination">
+				<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
+			</div>
+		</g:else>
 	</body>
 </html>

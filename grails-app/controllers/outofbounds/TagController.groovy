@@ -95,9 +95,10 @@ class TagController {
         def offset = params.int('offset') ?: 0
         def max = params.int('max') ?: Configuration.NUMBER_ITEM_PER_PAGE
 
-        if (offset >= size) {
-            redirect action: 'show', params: ['tag_id': tag.id]
-            return 
+
+        // if we asked an invalid page, return to first page
+        if (size > 0 && offset >= size) {
+            offset = 0
         }
 
         questions = questions.subList(offset, Math.min(offset + max, size))
