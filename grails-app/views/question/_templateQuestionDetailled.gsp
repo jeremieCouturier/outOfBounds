@@ -2,7 +2,7 @@
 <%@ defaultCodec="none" %>
 
 <div class="question">
-    
+    <!-- title -->
     <div class="title">
     	<label>${question.title}</label>
     </div>
@@ -19,11 +19,12 @@
 	</div>
 	
 	<div class="group_question">
-	
+		<!-- body -->
 		<label class="text">${question.text}</label>
 		
 		<div class="foot_question">
 		<div class="begin">
+			<!-- tags -->
 			<span class="tag">
 				<g:each in="${question.tags.sort{a,b-> a.creationDate.compareTo(b.creationDate)}}" var="tag">
 					<g:link controller="Tag" action="show" params='[tag_id: "${tag.id}"]'>
@@ -31,7 +32,7 @@
 					</g:link>
 				</g:each>
 			</span>
-				
+			<!-- asker / date -->
 			<span class="user">
 				<label><g:message code ="question.asked"/> </label>
 				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${question.date}" />
@@ -40,6 +41,7 @@
 			</span>
 		</div>
 		
+		<!-- edit / delete -->
 		<div class="modification">
 			<!-- check that user IS login and owner or is admin -->
 			<sec:ifLoggedIn>
@@ -55,6 +57,7 @@
 		</div>
 		</div>
 		
+		<!-- comments -->
 		<g:render template="templateComment" collection="${questionInstance.comments}" var="comment" />
 		
 		<sec:ifLoggedIn>
