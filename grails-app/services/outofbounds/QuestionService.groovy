@@ -41,7 +41,7 @@ class QuestionService {
 		}
 
 		addTags(tags, question)
-		user.addToQuestions(question)
+		user.addToPosts(question)
 
 		return question
 	}

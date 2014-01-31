@@ -25,9 +25,11 @@ class PostController {
 	@Secured(['IS_AUTHENTICATED_FULLY'])	
 	def upVote()
 	{
-		Post post = PostService.upVote(Integer.parseInt(params.post_id))
-		
+		def user = getAuthenticatedUser()
+		Post post = PostService.upVote(Integer.parseInt(params.post_id), user)
+
 		Question question = PostService.findQuestionPost(post)
+
 		
 		redirect(uri: "/question/show?question_id=${question.id}")
 	}
@@ -35,7 +37,8 @@ class PostController {
 	@Secured(['IS_AUTHENTICATED_FULLY'])
 	def downVote()
 	{
-		Post post = PostService.downVote(Integer.parseInt(params.post_id))
+		def user = getAuthenticatedUser()
+		Post post = PostService.downVote(Integer.parseInt(params.post_id), user)
 		
 		Question question = PostService.findQuestionPost(post)
 		

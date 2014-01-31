@@ -7,7 +7,7 @@ class Post {
 	Date date = new Date()
 	
 	static belongsTo = [user:User]
-	static hasMany = [comments:Comment]
+	static hasMany = [comments:Comment, vote:Vote]
 
     /*static constraints = {
 		tablePerHierarchy false
