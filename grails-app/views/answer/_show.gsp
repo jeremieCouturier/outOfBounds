@@ -11,6 +11,18 @@
 	    <g:link controller="Post" action="downVote" params='[post_id: "${answer.id}"]'>
 	        <span class="triangle-down"></span>
 	    </g:link>
+	    
+	    <g:if test="${ answer.question.correctAnswer != null && answer.question.correctAnswer.id == answer.id }">
+	    	<g:link class="accept" controller="Answer" action="unaccept" params='[answer_id: "${answer.id}"]'>
+		        
+		    </g:link>
+	    </g:if>
+	    <g:else>
+	    	<g:link class="unaccept" controller="Answer" action="accept" params='[answer_id: "${answer.id}"]'>
+
+		    </g:link>
+	    </g:else>
+	    
 	</div>
 	
 	<div class="group_answer">

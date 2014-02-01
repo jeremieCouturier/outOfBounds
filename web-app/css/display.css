@@ -154,3 +154,19 @@
 	border-right: 10px solid #f6f6f6;
 }
 
+.answer .vote .accept {
+	background-image: url(/images/accept.png);
+	height:20px;
+	width:20px;
+	display:block;
+	clear:both;
+}
+
+.answer .vote .unaccept {
+	background-image: url(/images/unaccept.png);
+	height:20px;
+	width:20px;
+	display:block;
+	clear:both;
+}
+

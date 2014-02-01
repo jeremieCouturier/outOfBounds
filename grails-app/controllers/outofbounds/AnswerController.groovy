@@ -95,4 +95,18 @@ class AnswerController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	public accept() {
+		def answer = Answer.findById(params.answer_id)
+		answer.question.correctAnswer = answer
+		answer.save(failOnError: true)
+		redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
+	}
+	
+	public unaccept() {
+		def answer = Answer.findById(params.answer_id)
+		answer.question.correctAnswer = null
+		answer.save(failOnError: true)
+		redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
+	}
 }
