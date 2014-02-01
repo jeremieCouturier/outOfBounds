@@ -160,7 +160,7 @@ class QuestionController {
             redirect action:"index"
         } else {
             flash.message = message(code: 'post.delete_not_authorized', args: ['question'])
-            redirect action:"show", params: question.id
+            redirect action:"show", params: ['question_id': question.id]
         }
     }
 
@@ -172,5 +172,43 @@ class QuestionController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
+    def accept() {
+        def answer = Answer.findById(params.answer_id)
+        
+        if (answer == null) {
+            notFound()
+            return
+        }
+        def question = answer.question
+
+        changeCorrectAnswer(question, answer)
+    }
+    
+    @Secured(['IS_AUTHENTICATED_FULLY'])    
+    def unaccept() {
+        def answer = Answer.findById(params.answer_id)
+
+        if (answer == null) {
+            notFound()
+            return
+        }
+        def question = answer.question
+
+        changeCorrectAnswer(question, null)
+    }
+
+    protected void changeCorrectAnswer(Question question, Answer newCorrect) {
+        if (question.user != getAuthenticatedUser()) {
+            flash.message = message(code: 'question.accept_answer_error')
+            redirect action:"show", params: ['question_id': question.id]
+            return
+        }
+
+        question.correctAnswer = newCorrect
+        question.save(failOnError: true)
+        redirect action:'show', params: ['question_id': question.id]
     }
 }

@@ -12,26 +12,34 @@
 	        <span class="triangle-down"></span>
 	    </g:link>
 	    
-	    <g:if test="${ answer.question.correctAnswer != null && answer.question.correctAnswer.id == answer.id }">
-	    	<g:link class="accept" controller="Answer" action="unaccept" params='[answer_id: "${answer.id}"]'>
-		        
-		    </g:link>
-	    </g:if>
-	    <g:else>
-	    	<g:link class="unaccept" controller="Answer" action="accept" params='[answer_id: "${answer.id}"]'>
-
-		    </g:link>
-	    </g:else>
+	    <!-- correct answer -->
+	    <!-- if it's user question, display both accept/unaccept -->
+	    <g:if test="${answer.user == currentLoggedInUser}" >
+		    <g:if test="${ answer.question.correctAnswer != null && answer.question.correctAnswer.id == answer.id }">
+		    	<g:link class="accept" controller="Question" action="unaccept" params='[answer_id: "${answer.id}"]' />
+		    </g:if>
+		    <g:else>
+		    	<g:link class="unaccept" controller="Question" action="accept" params='[answer_id: "${answer.id}"]' />
+		    </g:else>
+		</g:if>
+		<g:else>
+			<!-- else only display accepted icon, if any -->
+			<g:if test="${ answer.question.correctAnswer != null && answer.question.correctAnswer.id == answer.id }">
+				<!-- it shouldn't be a label.. but what ever -->
+		    	<label class="accept" />
+		    </g:if>
+		</g:else>
 	    
 	</div>
 	
 	<div class="group_answer">
+		<!-- text -->
 		<label class="text">${answer.text}</label>		
 		
+		<!-- date / autor -->
 		<div class="foot_answer">
 		<div class="begin">
 			<span class="user">
-			accepted? ${answer.question.correctAnswer?.id == answer.id}
 				<label>answered </label>
 				<g:formatDate format="dd-MM-yyyy HH:mm:ss" date="${answer.date}" />
 				<label> by </label>
@@ -39,6 +47,7 @@
 			</span>
 		</div>
 		
+		<!-- modification -->
 		<div class="modification">
 	    	<g:if test="${answer.user == currentLoggedInUser }">
 				<g:link controller="Answer" action="edit" params='[answer_id: "${answer.id}"]'>
@@ -51,7 +60,10 @@
 		</div>
 		</div>
 		
+		<!-- comments -->
 		<g:render template="/comment/show" collection="${answer.comments}" var="comment" /> 
+
+		<!-- add response button -->
 		<sec:ifLoggedIn>  
 	    	<g:render template="/comment/add" bean="${answer}" var="post" />
 	    </sec:ifLoggedIn>

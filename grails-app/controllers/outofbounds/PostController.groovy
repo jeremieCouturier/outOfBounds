@@ -26,6 +26,7 @@ class PostController {
 	def upVote()
 	{
 		def user = getAuthenticatedUser()
+
 		Post post = PostService.upVote(Integer.parseInt(params.post_id), user)
 
 		Question question = PostService.findQuestionPost(post)

@@ -1,5 +1,6 @@
 
 <%@ page import="outofbounds.Question" %>
+<%@ page import="outofbounds.Answer" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,7 +29,16 @@
 	            <div class="number_answers">
 	                <label><g:message code="question.answer_count" args="[questionInstance.answers.size()]"/></label>
 	            </div>
-	            <g:render template="/answer/show" collection="${questionInstance.answers}" var="answer" />	
+	            <!-- render the correct answer first if it exists -->
+	            <g:if test="${questionInstance.correctAnswer != null}">
+	            	<g:render template="/answer/show" 
+	            	model="['answer': questionInstance.correctAnswer]" />
+	            </g:if>
+
+	            <!-- render the others -->
+	            <g:render template="/answer/show" collection="${questionInstance.answers.findAll {
+	            it.id != questionInstance.correctAnswer?.id}.sort{a,b->
+	            (b.vote.size() <=> a.vote.size()) ?: a.date <=> b.date}}" var="answer" />	
 	        </div>
 	
 	        <sec:ifLoggedIn>

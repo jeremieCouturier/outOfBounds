@@ -1,5 +1,6 @@
 COUTURIER
 	- empecher à un utilisateur de voter plusieurs fois
+	- mettre un message d'erreur lorsqu'on vote sur sa propre réponse (flash.message)
 FOUREL
 	- gestion des badges
 JUTAND 
@@ -32,5 +33,5 @@ JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
 Ne PAS faire :
 	- redirect(uri: "/question/show?question_id=${answer.question.id}")
 		mais 
-   		redirect action: show params: ['question_id' : answer.question.id ]
+   		redirect action: 'show', params: ['question_id' : answer.question.id ]
    	- du texte en clair dans les .gsp (utiliser g:message)
