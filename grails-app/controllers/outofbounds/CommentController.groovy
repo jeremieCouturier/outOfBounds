@@ -57,7 +57,7 @@ class CommentController {
         }
 
         if (comment.canUserEditPost(getAuthenticatedUser())) {
-            respond comment
+            [commentInstance: comment, questionInstance: PostService.findQuestionPost(comment)]
         } else {
             flash.message = message(code: 'post.edit_not_authorized', args: ['comment'])
             Post p = Post.findById(comment.post.id)

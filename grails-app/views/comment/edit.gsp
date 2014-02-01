@@ -4,10 +4,11 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'comment.Comment')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-		
+	<div class="comment">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
@@ -19,23 +20,23 @@
 			</ul>
 		</g:hasErrors>
 
-		<div class="edit_question">
-			<g:form url="[resource:commentInstance, action:'update']" method="PUT" >
-				<fieldset class="form">
-					<!-- text -->
-					<div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'text', 'error')} required">
-						<label for="text">
-							<g:message code="comment.text" />
-							<span class="required-indicator">*</span>
-						</label>
-						<g:textField name="text" required="" value="${commentInstance?.text}"/>
-					</div>
-				</fieldset>
-
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" />
-				</fieldset>
-			</g:form>
+		<div class="title">
+	    	<label>Edit your Comment</label>
 		</div>
+		<g:form url="[resource:commentInstance, action:'update']" method="PUT" >
+			<textarea name="comment_text">${commentInstance.text}</textarea>			
+			
+			<div class="bottom">
+		        <div class="button">
+		        	<button type="submit">${message(code: 'default.button.update.label')}</button>
+		        </div>
+		        <div class="button">
+			        <g:link controller="Question" action="show" params='[question_id: "${questionInstance.id}"]'>
+				        <button>Cancel</button>
+				    </g:link>
+				</div>
+			</div>
+		</g:form>
+	</div>
 	</body>
 </html>

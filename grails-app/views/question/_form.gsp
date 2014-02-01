@@ -26,7 +26,7 @@
 	]
 	</ckeditor:config>
 	<ckeditor:editor name="text" toolbar="Mytoolbar">
-		${questionInstance?.text}
+		<div class="content">${questionInstance?.text}</div>
 	</ckeditor:editor>	
 	
 	<!-- tags -->
