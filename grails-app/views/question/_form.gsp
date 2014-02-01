@@ -10,11 +10,13 @@
 <fieldset class="form">
 	<!-- title -->
 	<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'title', 'error')} required">
-		<label for="title">
-			<g:message code="question.title" />
-			<span class="required-indicator">*</span>
-		</label>
-		<g:textField name="title" required="" value="${questionInstance?.title}"/>
+		<div class="title">
+			<label for="title">
+				<g:message code="question.title" />
+				<span>*</span>
+			</label>
+			<input class="text" name="title" required="" placeholder="${questionInstance?"":"What's your programming question ? Be specific ?" }" value="${questionInstance?.title}"/>
+		</div>
 	</div>
 	
 	<!-- body -->
@@ -29,10 +31,12 @@
 	
 	<!-- tags -->
 	<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'question_tags', 'error')} required">
-		<label for="question_tags">
-			<g:message code="question.tags" />		
-			<span class="required-indicator">*</span>
-		</label>
-		<input class="text" name="question_tags" value="${questionInstance?.tags?.sort{a,b-> a.creationDate.compareTo(b.creationDate)}*.name?.join(" ")}" required="" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
+		<div class="tags">
+			<label for="question_tags">
+				<g:message code="question.tags" />		
+				<span>*</span>
+			</label>
+			<input class="text" name="question_tags" value="${questionInstance?.tags?.sort{a,b-> a.creationDate.compareTo(b.creationDate)}*.name?.join(" ")}" required="" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
+		</div>	
 	</div>
 </fieldset>

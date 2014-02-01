@@ -4,10 +4,9 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'question.Question')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		
 	</head>
 	<body>
-		<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
@@ -23,9 +22,9 @@
 			<g:form action="saveQuestion" >
 				<g:render template="form" />
 
-		    	<fieldset class="buttons">
-					<g:actionSubmit class="save" action="saveQuestion" value="${message(code: 'question.post_question')}" />
-				</fieldset>
+		    	<div class="bouton">
+					<button type="submit">${message(code: 'question.post_question')}</button>
+				</div>
 			</g:form>
 		</div>		
 	</body>

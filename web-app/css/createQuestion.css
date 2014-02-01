@@ -6,6 +6,7 @@
 .new_question .title, .new_question .tags {
 	margin-top:10px;
 	margin-bottom:10px;
+	color: black;
 }
 
 
@@ -15,6 +16,7 @@
 	font-size:19px;
 	font-weight:bold;
 	margin-bottom:4px;
+	text-align: left;
 }
 
 .new_question .title .text, .new_question .tags .text, .new_question .text textarea {
@@ -22,6 +24,9 @@
 	width:80%;
 	margin-bottom:20px;
 	clear:both;
+	background-color: white! important;
+	border-color : black! important;
+	color: black! important;
 }
 
 .new_question .text textarea {
