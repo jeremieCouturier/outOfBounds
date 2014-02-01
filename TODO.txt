@@ -25,6 +25,8 @@ JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
 	- CSS édition d'une question
 	- CSS édition d'un commentaire
 	- CSS de réponse
+	
+- pb de validation d'une answer (correctAnswer)
 
 
 Ne PAS faire :
