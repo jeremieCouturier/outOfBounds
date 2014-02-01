@@ -6,8 +6,6 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-		
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
@@ -23,9 +21,9 @@
 			<g:form url="[resource:questionInstance, action:'update']" method="PUT" >
 				<g:render template="form" />
 			
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" />
-				</fieldset>
+				<div class="bouton">
+					<button type="submit">${message(code: 'default.button.update.label')}</button>
+				</div>
 			</g:form>
 		</div>
 	</body>
