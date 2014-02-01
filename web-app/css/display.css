@@ -7,7 +7,7 @@
 	display: block;
 }
 
-.question .title, .question_show .number_answers {
+.question .title, .question_show .number_answers, .title label {
 	font-size:23px;
 	font-weight:bold;
 	margin: 30px 0px 15px 40px;
@@ -170,3 +170,14 @@
 	clear:both;
 }
 
+
+
+.bottom {
+	display: block;
+	margin-left:60px;
+}
+
+.bottom .button {
+	display: inline-block;
+	margin-right: 20px;
+}

@@ -4,6 +4,8 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'answer.Answer')}" />
+		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 
 		<ckeditor:resources/>
@@ -11,8 +13,10 @@
 	</head>
 	<body>
 
-    <label>Question: ${questionInstance.title}</label>
-
+	<div class="title">
+    	<label>${questionInstance.title}</label>
+	</div>
+	
     <g:form action="updateAnswer" id="${answerInstance.id}">
     	<div class="block">
 			<!-- <textarea name="answer_text" required placeholder="Add an answer ...">${answerInstance.text}</textarea> -->
@@ -26,13 +30,19 @@
 			</ckeditor:editor>
 		</div>
         <br />
-        <button type="submit">OK</button>
+        
+        <div class="bottom">
+	        <div class="button">
+	        	<button type="submit">OK</button>
+	        </div>
+	        <div class="button">
+		        <g:link controller="Question" action="show" params='[question_id: "${questionInstance.id}"]'>
+			        <button>Cancel</button>
+			    </g:link>
+			</div>
+		</div>
         
     </g:form>
-    
-    <g:link controller="Question" action="show" params='[question_id: "${questionInstance.id}"]'>
-        <button>Cancel</button>
-    </g:link>
 		
 	</body>
 </html>
