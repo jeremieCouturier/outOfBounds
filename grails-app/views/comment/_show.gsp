@@ -12,6 +12,7 @@
 	    <g:link controller="Post" action="upVote" params='[post_id: "${comment.id}"]'>
 	        <span class="triangle-up"></span><br />
 	    </g:link><br/>
+	    <label class="mark"> ${comment.mark} </label><br/>
   </div>
 
 	<div class="content">
