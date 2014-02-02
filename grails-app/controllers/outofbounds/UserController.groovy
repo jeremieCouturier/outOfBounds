@@ -47,7 +47,7 @@ class UserController {
     }
 	
 	def userQuestions() {
-		def user = User.findById(params.user_id)
+		def user = User.findById(params.int('user_id'))
 		def questions = UserService.userQuestions(user)
 		
 		render(
@@ -61,7 +61,7 @@ class UserController {
 	}
 	
 	def userAnswers() {
-		def user = User.findById(params.user_id)
+		def user = User.findById(params.int('user_id'))
 		def questions = UserService.userAnswers(user)
 		
 		render(

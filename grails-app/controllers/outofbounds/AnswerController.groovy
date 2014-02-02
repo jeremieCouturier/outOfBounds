@@ -59,7 +59,7 @@ class AnswerController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def edit() {
-		def answer = Answer.findById(params.answer_id)
+		def answer = Answer.findById(params.int('answer_id'))
 		def question = answer.question
 
 		return [questionInstance: question, answerInstance: answer]
@@ -75,7 +75,7 @@ class AnswerController {
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def deleteAnswer() {
 
-        def answer = Answer.findById(params.answer_id)
+        def answer = Answer.findById(params.int('answer_id'))
         def question = answer.question      
 		if (answer && answer.canUserDeletePost(getAuthenticatedUser())) {
             AnswerService.delete(answer)

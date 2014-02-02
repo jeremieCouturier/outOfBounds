@@ -57,7 +57,7 @@ class TagController {
     }
 
     def newestQuestions() {
-        def tag = Tag.findById(params.tag_id)
+        def tag = Tag.findById(params.int('tag_id'))
         if (tag == null) {
             notFound()    
             return
@@ -69,7 +69,7 @@ class TagController {
         displayQuestions(tag, "newest", questions, tag.questions.size())
     }
     def popularQuestions() {
-        def tag = Tag.findById(params.tag_id)
+        def tag = Tag.findById(params.int('tag_id'))
         if (tag == null) {
             notFound()    
             return
@@ -81,7 +81,7 @@ class TagController {
         displayQuestions(tag, "popular", questions, tag.questions.size())
     }
     def unansweredQuestions() {
-        def tag = Tag.findById(params.tag_id)
+        def tag = Tag.findById(params.int('tag_id'))
         if (tag == null) {
             notFound()    
             return
@@ -118,7 +118,7 @@ class TagController {
 
     @Secured(['IS_AUTHENTICATED_FULLY', 'ROLE_MODERATOR', 'ROLE_ADMIN'])
     def edit() {
-        def tag = Tag.findById(params.tag_id)
+        def tag = Tag.findById(params.int('tag_id'))
         if (tag == null) {
             notFound()    
             return

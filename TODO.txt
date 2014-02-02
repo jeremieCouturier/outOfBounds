@@ -6,32 +6,32 @@ FOUREL
 JUTAND 
 	- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
 	- changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
+	JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
+		- CSS édition d'une question
+		- CSS édition d'un commentaire
+		- CSS de réponse
+	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
 PELLOUX
 	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
-	- regarder pourquoi à la compile on (jutand + pp) a le message "warning... require -Xlint"
 	
 ALL 
 	- écrire les tests...
 	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
 
 - les tags, y a un '_' underscore entre chaque tags
-- si on passe un mauvais id (lettres, etc.) erreur 500 (http://localhost:8080/outOfBounds/question/edit?question_id=14a)
-- gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)
-- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
+
 - vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
-- modif des pages d'erreurs? 404 etc.
-- ajout de photo à un utilisateur (gravatar?)
-
-JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
-	- CSS édition d'une question
-	- CSS édition d'un commentaire
-	- CSS de réponse
 	
-- pb de validation d'une answer (correctAnswer)
-
+Dans une version ultérieure... :
+	- ajout de photo à un utilisateur (gravatar?)
+	- modif des pages d'erreurs? 404 etc.
 
 Ne PAS faire :
 	- redirect(uri: "/question/show?question_id=${answer.question.id}")
 		mais 
    		redirect action: 'show', params: ['question_id' : answer.question.id ]
    	- du texte en clair dans les .gsp (utiliser g:message)
+
+Tests à écrire:
+	PP - redirection vers index si http://localhost:8080/outOfBounds/question/edit?question_id=14a
+	PP - gérer les erreurs lors de la création de question etc. (par ex gérer l'erreur quand on va sur http://localhost:8080/outOfBounds/question/saveQuestion)

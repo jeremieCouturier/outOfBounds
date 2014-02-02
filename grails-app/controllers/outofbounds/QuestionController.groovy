@@ -67,7 +67,7 @@ class QuestionController {
 
     def show() {
         def currentLoggedInUser = springSecurityService.getCurrentUser();
-		def question = Question.findById(params.question_id)
+		def question = Question.findById(params.int('question_id'))
         
         //if no question selected, go back to index
         if (question == null) {
@@ -104,7 +104,7 @@ class QuestionController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit() {
-        def question = Question.findById(params.question_id)
+        def question = Question.findById(params.int('question_id'))
         if (question == null) {
             notFound()
             return
@@ -147,7 +147,7 @@ class QuestionController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     @Transactional
     def deleteQuestion() {
-        def question = Question.findById(params.question_id)
+        def question = Question.findById(params.int('question_id'))
 
         if (question == null) {
             notFound()
@@ -176,7 +176,7 @@ class QuestionController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def accept() {
-        def answer = Answer.findById(params.answer_id)
+        def answer = Answer.findById(params.int('answer_id'))
         
         if (answer == null) {
             notFound()
@@ -189,7 +189,7 @@ class QuestionController {
     
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def unaccept() {
-        def answer = Answer.findById(params.answer_id)
+        def answer = Answer.findById(params.int('answer_id'))
 
         if (answer == null) {
             notFound()

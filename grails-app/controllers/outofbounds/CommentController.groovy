@@ -50,7 +50,7 @@ class CommentController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def edit() {
-        def comment = Comment.findById(params.comment_id)
+        def comment = Comment.findById(params.int('comment_id'))
         if (comment == null) {
             notFound()
             return
@@ -95,7 +95,7 @@ class CommentController {
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     @Transactional
     def deleteComment() {
-		def comment = Comment.findById(params.comment_id)
+		def comment = Comment.findById(params.int('comment_id'))
 		def question = PostService.findQuestionPost(comment)
 
 		if (comment && comment.canUserDeletePost(getAuthenticatedUser())) {
