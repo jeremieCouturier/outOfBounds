@@ -12,7 +12,7 @@
 	</head>
 	<body>		
 		<ul class="menuInPage"> 
-		   <li class="title">Users</li> 
+		   	<li class="title"><g:message code="default.list.label" args="[entityName]" /></li>
 		   <li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="newestUsers">newest</g:link></li>
 		</ul> 
 		

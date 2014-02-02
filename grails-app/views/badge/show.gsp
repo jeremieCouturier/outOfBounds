@@ -6,6 +6,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'badge.label', default: 'Badge')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<link href="${resource(dir: 'css', file: 'badge.css')}" rel="stylesheet">
 	</head>
 	<body>
 		<a href="#show-badge" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

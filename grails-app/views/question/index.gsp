@@ -14,7 +14,7 @@
 		</g:if>
 		
 		<ul class="menuInPage"> 
-		   <li class="title">All Questions</li>
+		   	<li class="title"><g:message code="default.list.label" args="[entityName]" /></li>
 		   <li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Question" action="newestQuestions">newest</g:link></li>
 		   <li <g:if test="${choice.equals('votes')}">class="item_selected_menu"</g:if> ><g:link controller="Question" action="voteQuestions">votes</g:link></li>
 		   <li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Question" action="unansweredQuestions">unanswered</g:link></li>

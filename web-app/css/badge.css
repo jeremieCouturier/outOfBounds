@@ -1,0 +1,10 @@
+.badge {
+	margin: 0 auto;
+	padding: 5px;
+	padding-top: 0;
+}
+.medal img {
+	margin: 0 auto;
+	height: 50px;
+	max-width: 50px;
+}

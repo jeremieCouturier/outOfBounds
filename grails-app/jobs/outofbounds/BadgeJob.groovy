@@ -9,9 +9,12 @@ class BadgeJob {
 	
 	def BadgeService badgeService
     static triggers = {
-      simple repeatInterval: 50000l // execute job once in 50 seconds
+      simple repeatInterval: 10000l // execute job once in 10 seconds
     }
 
+    /**
+     * For each user, add badges that verify the badge's conditions
+     */
     def execute() {
 		badgeService.addBadgeToUser(Badge.findByName("yearConnection"), User.findByUsername("admin"))
 		for (Badge badge : badgeService.getAllBadges()) {
