@@ -20,7 +20,7 @@
 		    ${question.title}
 		</g:link><br/>
 		<label class="text">
-			<g:if test="${question.text.size() > 150}"> ${question.text.substring(0, 150) + "..." } </g:if>
+			<g:if test="${question.text.size() > 110}"> ${question.text.substring(0, 110) + "..." } </g:if>
 			<g:else> ${question.text} </g:else>
 		</label>
 	</div>
