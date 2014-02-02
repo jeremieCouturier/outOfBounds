@@ -4,6 +4,10 @@
 <div class="answer">
     <!-- vote -->
     <div class="vote">
+    	<g:set var="typePost_id" value="${"[class outofbounds.Answer, " + answer.id + ']'}"/> 
+		<g:if test="${flash.error && flash.args == typePost_id}">
+		  	<div class="alert alert-error" style="display: block">${flash.error}</div>
+		</g:if>  
 	    <g:link controller="Post" action="upVote" params='[post_id: "${answer.id}"]'>
 	        <span class="triangle-up"></span><br />
 	    </g:link><br/>
