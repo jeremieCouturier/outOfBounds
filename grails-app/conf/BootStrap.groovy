@@ -1,3 +1,8 @@
+import outOfBounds.BadgeCondition;
+import outOfBounds.ConnectedCondition;
+import outOfBounds.ConnectedCondition.CalendarFormat;
+import outofbounds.Badge.BadgeMedal;
+import outofbounds.Badge
 import outofbounds.Question
 import outofbounds.Answer
 import outofbounds.Role
@@ -83,6 +88,34 @@ class BootStrap {
 			title:"How to insert a graphic in Qt",
 			text:'<p><strong>ed in, etc. HOWEVER, I do want to DISPLAY them in the same order. It seems to me that this logic should be able to exist ENTIRELY in the view layer, but the only solutions I&#39;ve been able to find tell me to declare items as a SortedSet in the model layer. This also affects my controller layer, as simple List op<em>erations such as .collect{} now require extra synta</em></strong><em>ctic jumping around to keep the type conversions correct and preserve my sorting. To me, this is nuts, so I must be missing something simple! Is there any way, for example, to do something like </em><code><em>&lt;g:each in=&quot;${cart.items</em>.sort{it.name}}&quot;&gt;</code> or so</p>',
 			user:user).addToTags(tagcpp).save(failOnError: true)
+		
+		//badges
+		BadgeCondition bc = new ConnectedCondition(1, CalendarFormat.HOUR)
+		def badge = Badge.findByName("hourConnection") ?: new Badge(
+			name:"hourConnection",
+			description:"you've been here for an hour",
+			medal:BadgeMedal.Bronze,
+			conditionClass: ConnectedCondition.class.getName(),
+			conditionParameters: bc.getParameters()
+			).save(failOnError: true)
+			
+		BadgeCondition bcy = new ConnectedCondition(1, CalendarFormat.YEAR)
+		def badgey = Badge.findByName("yearConnection") ?: new Badge(
+			name:"yearConnection",
+			description:"you've been here for a year",
+			medal:BadgeMedal.Silver,
+			conditionClass: ConnectedCondition.class.getName(),
+			conditionParameters: bcy.getParameters()
+			).save(failOnError: true)
+				
+		BadgeCondition bcs = new ConnectedCondition(0, CalendarFormat.HOUR)
+		def badgesec = Badge.findByName("yearConnection") ?: new Badge(
+			name:"yearConnection",
+			description:"you've been here for a year",
+			medal:BadgeMedal.Silver,
+			conditionClass: ConnectedCondition.class.getName(),
+			conditionParameters: bcs.getParameters()
+			).save(failOnError: true)
 	}
     def destroy = {
     }
