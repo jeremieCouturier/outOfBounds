@@ -6,10 +6,7 @@ FOUREL
 JUTAND 
 	- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
 	- changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
-	JUTAND? Édition / Suppression / gestion des erreurs qui s'affichent pas :
-		- CSS édition d'une question
-		- CSS édition d'un commentaire
-		- CSS de réponse
+	- Édition / Suppression / gestion des erreurs qui s'affichent pas
 	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
 PELLOUX
 	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)

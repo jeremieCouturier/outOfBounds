@@ -24,7 +24,7 @@
 	    	<label>Edit your Comment</label>
 		</div>
 		<g:form url="[resource:commentInstance, action:'update']" method="PUT" >
-			<textarea name="comment_text">${commentInstance.text}</textarea>			
+			<textarea name="text">${commentInstance.text}</textarea>			
 			
 			<div class="bottom">
 		        <div class="button">
