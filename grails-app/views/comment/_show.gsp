@@ -13,11 +13,14 @@
 	        <span class="triangle-up"></span><br />
 	    </g:link><br/>
 	    <label class="mark"> ${comment.mark} </label><br/>
+	    <g:link controller="Post" action="downVote" params='[post_id: "${comment.id}"]'>
+	        <span class="triangle-down"></span>
+	    </g:link>
   </div>
 
 	<div class="content">
 	
-	   	<label for="comment_text" class="text">${comment.text} -
+	   	<label for="comment_text" class="text">${comment.text}>
 			<g:link controller="user" action="show" params='[user_id: "${comment.user.id}"]'>
 				${comment.user.username}
 			</g:link>
