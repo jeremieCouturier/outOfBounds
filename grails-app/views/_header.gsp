@@ -1,6 +1,6 @@
 <div id='cssmenu'>
 <ul>
-	<li class='active'><a href='${resource(uri: "/")}/'><span>Home</span></a></li>
+	<li class='active'><a href='${resource(uri: "/")}/'><g:message code="index.home" /></a></li>
 
 	<sec:ifLoggedIn>
 		<li><g:link controller="user" action="show">

@@ -73,6 +73,20 @@ class UserController {
 			]
 		)
 	}
+	
+	def userBadges() {
+		def user = User.findById(params.user_id)
+		def badges = user.badges
+		
+		render(
+			view: '/user/show',
+			model: [
+				userInstance: user,
+				badges: badges,
+				choice: "badges"
+			]
+		)
+	}
 
 
     def create() {

@@ -40,6 +40,9 @@
 }
 
 
+.list_question .tag a {
+	text-decoration: none;
+}
 .list_question .tag .tag_text {
 	color:rgb(49, 99, 137);
 	padding: 2px 6px 2px 6px;

@@ -12,6 +12,7 @@
 	color: rgb(12, 123, 184);
 	font-weight: bold;
 	font-size: 16px;
+	text-decoration:none; 
 }
 
 .tag .text {
