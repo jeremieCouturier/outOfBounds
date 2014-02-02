@@ -87,7 +87,7 @@ class BootStrap {
 		
 		def questionCpp = Question.findByTitle("How to insert a graphic in Qt") ?: new Question(
 			title:"How to insert a graphic in Qt",
-			text:'<p><strong>ed in, etc. HOWEVER, I do want to DISPLAY them in the same order. It seems to me that this logic should be able to exist ENTIRELY in the view layer, but the only solutions I&#39;ve been able to find tell me to declare items as a SortedSet in the model layer. This also affects my controller layer, as simple List op<em>erations such as .collect{} now require extra synta</em></strong><em>ctic jumping around to keep the type conversions correct and preserve my sorting. To me, this is nuts, so I must be missing something simple! Is there any way, for example, to do something like </em><code><em>&lt;g:each in=&quot;${cart.items</em>.sort{it.name}}&quot;&gt;</code> or so</p>',
+			text:'<img alt="" height="347" src="http://www.menucool.com/slider/prod/image-slider-4.jpg"><p><strong>ed in, etc. HOWEVER, I do want to DISPLAY them in the same order. It seems to me that this logic should be able to exist ENTIRELY in the view layer, but the only solutions I&#39;ve been able to find tell me to declare items as a SortedSet in the model layer. This also affects my controller layer, as simple List op<em>erations such as .collect{} now require extra synta</em></strong><em>ctic jumping around to keep the type conversions correct and preserve my sorting. To me, this is nuts, so I must be missing something simple! Is there any way, for example, to do something like </em><code><em>&lt;g:each in=&quot;${cart.items</em>.sort{it.name}}&quot;&gt;</code> or so</p>',
 			user:user).addToTags(tagcpp).save(failOnError: true)
 		
 		//badges
@@ -121,7 +121,7 @@ class BootStrap {
 		BadgeCondition bcq = new QuestionNumberCondition(1);
 		def badgeq = Badge.findByName("First question") ?: new Badge(
 			name:"First question",
-			description:"You're first question !",
+			description:"You're first question!",
 			medal:BadgeMedal.Bronze,
 			conditionClass: QuestionNumberCondition.class.getName(),
 			conditionParameters: bcq.getParameters()
