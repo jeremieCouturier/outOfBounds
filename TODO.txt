@@ -1,6 +1,7 @@
 COUTURIER
-	- empecher à un utilisateur de voter plusieurs fois
-	- mettre un message d'erreur lorsqu'on vote sur sa propre réponse (flash.message)
+	- changer la couleur de la fleche quand on a voté
+	- rajouter le vote down pour le commentaire
+	- changement le comportement: si on a déja voté et qu'on fait fleche up ça fait rien (parce que même si ça fait un vote down sur stackoverflow, c'est trop moche comme comportement) 
 FOUREL
 	- gestion des badges
 JUTAND 
