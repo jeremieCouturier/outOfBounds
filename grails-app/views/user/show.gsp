@@ -11,14 +11,14 @@
 	<body>
 		<div class="userDetailled">
 			<div class="title">
-				<label>${userInstance.username}</label>
+				<label>${userInstance?.username}</label>
 			</div>
 			
 			<ul class="menuInPage"> 
-			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance.id}"]'>questions</g:link></li>
-			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userAnswers" params='[user_id: "${userInstance.id}"]'>answers</g:link></li>
+			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance?.id}"]'>questions</g:link></li>
+			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userAnswers" params='[user_id: "${userInstance?.id}"]'>answers</g:link></li>
 			   <li <g:if test="${choice.equals('tags')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName">tags</g:link></li>
-			   <li <g:if test="${choice.equals('badges')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userBadges" params='[user_id: "${userInstance.id}"]'>badges</g:link></li>
+			   <li <g:if test="${choice.equals('badges')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userBadges" params='[user_id: "${userInstance?.id}"]'>badges</g:link></li>
 			</ul> 
 			
 			<g:if test="${choice.equals('questions')}">

@@ -38,7 +38,13 @@ class UserController {
 		
 	}
 	
-    def show() {		
+    def show() {
+		
+		if (params == null || params?.user_id == null) {
+			notFound()
+			return
+		}
+
 		def user_id = params?.user_id?:getAuthenticatedUser().id
 		redirect (
 			action: "userQuestions",
@@ -48,6 +54,12 @@ class UserController {
 	
 	def userQuestions() {
 		def user = User.findById(params.int('user_id'))
+		
+		if (user == null) {
+			notFound()
+			return
+		}
+		
 		def questions = UserService.userQuestions(user)
 		
 		render(
@@ -62,6 +74,12 @@ class UserController {
 	
 	def userAnswers() {
 		def user = User.findById(params.int('user_id'))
+		
+		if (user == null) {
+			notFound()
+			return
+		}
+		
 		def questions = UserService.userAnswers(user)
 		
 		render(
@@ -76,7 +94,13 @@ class UserController {
 	
 	def userBadges() {
 		def user = User.findById(params.user_id)
-		def badges = user.badges
+		
+		if (user == null) {
+			notFound()
+			return
+		}
+		
+		def badges = user?.badges
 		
 		render(
 			view: '/user/show',
@@ -90,9 +114,7 @@ class UserController {
 
 
     def create() {
-        
-
-   
+           
         def newUser = new User(
             username: params.username,
             password: params.password,
@@ -102,8 +124,6 @@ class UserController {
             passwordExpired: false
         )
         
-
-
         respond newUser
     }
 

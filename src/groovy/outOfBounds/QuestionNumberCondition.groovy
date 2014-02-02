@@ -20,7 +20,7 @@ class QuestionNumberCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
-		return user.questions.size() >= neededValue;
+		return user.posts.size() >= neededValue;
 	}
 
 	@Override
