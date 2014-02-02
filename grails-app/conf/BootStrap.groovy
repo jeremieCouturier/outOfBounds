@@ -1,5 +1,6 @@
 import outOfBounds.BadgeCondition;
 import outOfBounds.ConnectedCondition;
+import outOfBounds.QuestionNumberCondition
 import outOfBounds.ConnectedCondition.CalendarFormat;
 import outofbounds.Badge.BadgeMedal;
 import outofbounds.Badge
@@ -109,12 +110,21 @@ class BootStrap {
 			).save(failOnError: true)
 				
 		BadgeCondition bcs = new ConnectedCondition(0, CalendarFormat.HOUR)
-		def badgesec = Badge.findByName("yearConnection") ?: new Badge(
-			name:"yearConnection",
-			description:"you've been here for a year",
-			medal:BadgeMedal.Silver,
+		def badgesec = Badge.findByName("First connection") ?: new Badge(
+			name:"First connection",
+			description:"Hello world",
+			medal:BadgeMedal.Bronze,
 			conditionClass: ConnectedCondition.class.getName(),
 			conditionParameters: bcs.getParameters()
+			).save(failOnError: true)
+				
+		BadgeCondition bcq = new QuestionNumberCondition(1);
+		def badgeq = Badge.findByName("First question") ?: new Badge(
+			name:"First question",
+			description:"You're first question !",
+			medal:BadgeMedal.Bronze,
+			conditionClass: QuestionNumberCondition.class.getName(),
+			conditionParameters: bcq.getParameters()
 			).save(failOnError: true)
 	}
     def destroy = {
