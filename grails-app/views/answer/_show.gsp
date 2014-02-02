@@ -7,14 +7,16 @@
     	<g:set var="typePost_id" value="${"[class outofbounds.Answer, " + answer.id + ']'}"/> 
 		<g:if test="${flash.error && flash.args == typePost_id}">
 		  	<div class="alert alert-error" style="display: block">${flash.error}</div>
-		</g:if>  
-	    <g:link controller="Post" action="upVote" params='[post_id: "${answer.id}"]'>
-	        <span class="triangle-up"></span><br />
-	    </g:link><br/>
-	    <label class="mark"> ${answer.mark} </label><br/>
-	    <g:link controller="Post" action="downVote" params='[post_id: "${answer.id}"]'>
-	        <span class="triangle-down"></span>
-	    </g:link>
+		</g:if> 
+		<div class="check"> 
+		    <g:link controller="Post" action="upVote" params='[post_id: "${answer.id}"]'>
+		        <span class="triangle-up"></span><br />
+		    </g:link><br/>
+		    <label class="mark"> ${answer.mark} </label><br/>
+		    <g:link controller="Post" action="downVote" params='[post_id: "${answer.id}"]'>
+		        <span class="triangle-down"></span>
+		    </g:link>
+		</div>
 	    
 	    <!-- correct answer -->
 	    <!-- if it's user question, display both accept/unaccept -->

@@ -11,6 +11,7 @@ JUTAND
 	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
 PELLOUX
 	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
+	- lorsque l'on crée une user depuis la page enregistrement, le mdp et le login peuvent être identique. Ce n'est pas le cas si on le crée depuis la page d'authentification google.
 	
 ALL 
 	- écrire les tests...

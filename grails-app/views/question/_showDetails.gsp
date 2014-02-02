@@ -13,14 +13,15 @@
 		<g:if test="${flash.error && flash.args == typePost_id}">
 		  	<div class="alert alert-error" style="display: block">${flash.error}</div>
 		</g:if>   	
-
-	    <g:link controller="Post" action="upVote" params='[post_id: "${question.id}"]'>
-	        <span class="triangle-up"></span><br />
-	    </g:link><br/>
-	    <label class="mark"> ${question.mark} </label><br/>
-	    <g:link controller="Post" action="downVote" params='[post_id: "${question.id}"]'>
-	        <span class="triangle-down"></span>
-	    </g:link>
+		<div class="check">
+		    <g:link controller="Post" action="upVote" params='[post_id: "${question.id}"]'>
+		        <span class="triangle-up"></span><br />
+		    </g:link><br/>
+		    <label class="mark"> ${question.mark} </label><br/>
+		    <g:link controller="Post" action="downVote" params='[post_id: "${question.id}"]'>
+		        <span class="triangle-down"></span>
+		    </g:link>
+		</div>
 	</div>
 	
 	<div class="group_question">

@@ -161,17 +161,32 @@
 }
 
 
-.question .vote .triangle-up, .answer .vote .triangle-up{
+.question .vote .no-check .triangle-up, .answer .vote .no-check .triangle-up, .comment .vote .no-check .triangle-up{
 	font-size: 0px; line-height: 0%; width: 0px;
 	border-bottom: 20px solid #77c;
 	border-left: 10px solid #f6f6f6;
 	border-right: 10px solid #f6f6f6;
 }
 
-.question .vote .triangle-down, .answer .vote .triangle-down{
+.question .vote .no-check .triangle-down, .answer .vote .no-check .triangle-down, .comment .vote .no-check .triangle-down{
 	width: 0;
 	font-size: 0px; line-height: 0%; width: 0px;
 	border-top: 20px solid #77c;
+	border-left: 10px solid #f6f6f6;
+	border-right: 10px solid #f6f6f6;
+}
+
+.question .vote .check .triangle-up, .answer .vote .check .triangle-up, .comment .vote .check .triangle-up{
+	font-size: 0px; line-height: 0%; width: 0px;
+	border-bottom: 20px solid #FF4000;
+	border-left: 10px solid #f6f6f6;
+	border-right: 10px solid #f6f6f6;
+}
+
+.question .vote .check .triangle-down, .answer .vote .check .triangle-down, .comment .vote .check .triangle-down{
+	width: 0;
+	font-size: 0px; line-height: 0%; width: 0px;
+	border-top: 20px solid #FF4000;
 	border-left: 10px solid #f6f6f6;
 	border-right: 10px solid #f6f6f6;
 }
