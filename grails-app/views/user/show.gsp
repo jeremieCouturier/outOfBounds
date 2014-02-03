@@ -8,6 +8,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
 		<link href="${resource(dir: 'css', file: 'badge.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'user.css')}" rel="stylesheet">
 	</head>
 	<body>
 		<div class="userDetailled">
