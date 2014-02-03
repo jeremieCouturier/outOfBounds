@@ -48,11 +48,13 @@ class BadgeService {
 	}
 	
 	def addBadgeToUser(Badge badge, User user) {
-		if (! user?.badges?.contains(badge)) {
-			user.addToBadges(badge)
+		if (user != null && badge != null) {
+			if (user.badges == null || ! (user.badges.contains(badge))) {
+				user.addToBadges(badge)
+			}
+			badge.save(failOnError: true)
+			user.save(failOnError: true)
 		}
-		badge.save(failOnError: true)
-		user.save(failOnError: true)
 		return user
 	}
 	
