@@ -9,6 +9,7 @@ JUTAND
 	- changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
 	- Édition / Suppression / gestion des erreurs qui s'affichent pas
 	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
+	- vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
 PELLOUX
 	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
 	- lorsque l'on crée une user depuis la page enregistrement, le mdp et le login peuvent être identique. Ce n'est pas le cas si on le crée depuis la page d'authentification google.
@@ -17,9 +18,6 @@ ALL
 	- écrire les tests...
 	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
 
-- les tags, y a un '_' underscore entre chaque tags
-
-- vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
 	
 Dans une version ultérieure... :
 	- ajout de photo à un utilisateur (gravatar?)
