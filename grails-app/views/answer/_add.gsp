@@ -1,7 +1,6 @@
 
 <div class="new_answer">
 	<g:form controller="Answer" action="create" id="${question.id}">
-		${initialValue}
 		<!-- text -->
 		<div class="text">
 		    <!-- <textarea name="text" placeholder="Add an answer ..."></textarea><br /> -->
@@ -11,7 +10,6 @@
 				]
 			</ckeditor:config>
 			<ckeditor:editor name="text" toolbar="Mytoolbar">
-				${initialValue}
 			</ckeditor:editor>	
 		 </div>
 		 <!-- save button -->

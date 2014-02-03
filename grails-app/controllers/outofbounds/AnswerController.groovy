@@ -16,11 +16,6 @@ class AnswerController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Answer.list(params), model:[answerInstanceCount: Answer.count()]
-    }
-
     def show(Answer answerInstance) {
         respond answerInstance
     }
@@ -61,8 +56,13 @@ class AnswerController {
     def edit() {
 		def answer = Answer.findById(params.int('answer_id'))
 		def question = answer.question
-
-		return [questionInstance: question, answerInstance: answer]
+        def user = getAuthenticatedUser()
+        if (answer.canUserEditPost(user)) {
+            return [questionInstance: question, answerInstance: answer]
+        } else {
+            flash.message = message(code: 'post.edit_not_authorized', args: ["answer"])
+            redirect controller: 'question', action: 'show', params: ['question_id': question.id]
+        }
     }
 	
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -90,7 +90,7 @@ class AnswerController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.Answer'), params.id])
-                redirect action: "index", method: "GET"
+                redirect uri: "/", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }
