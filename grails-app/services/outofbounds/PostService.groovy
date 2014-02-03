@@ -38,9 +38,8 @@ class PostService {
 			else
 			{			
 				user.addToUpVoted(new UpVote(
-									post:post
-									
-								).save(failOnError: true))
+									post:post									
+									).save(failOnError: true))
 			}
 			post.mark = post.mark + 1
 			post.save(failOnError: true)
@@ -62,7 +61,7 @@ class PostService {
 			{
 				user.addToDownVoted(new DownVote(
 								post:post
-							).save(failOnError: true))
+								).save(failOnError: true))
 			}
 			post.mark = post.mark - 1
 			post.save(failOnError: true)			

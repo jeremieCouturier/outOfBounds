@@ -34,7 +34,6 @@ class PostController {
 		else
 		{
 			flash.error = message(code:"post.vote_error")
-			flash.args = "[" + post.getClass() + ", " + params.post_id + "]"
 		}
 			
 		
@@ -54,7 +53,6 @@ class PostController {
 		else
 		{
 			flash.error = message(code:"post.vote_error")
-			flash.args = "[" + post.getClass() + ", " + params.post_id + "]"
 		}
 			
 		

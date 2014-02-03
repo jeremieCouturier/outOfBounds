@@ -1,21 +1,31 @@
 <%@page import="outofbounds.User" %> 
 
 <div class="comment">
-	<div class="vote">
-		<g:set var="typePost_id" value="${"[class outofbounds.Comment, " + comment.id + ']'}"/> 
-		<g:if test="${flash.error && flash.args == typePost_id}">
-		  	<div class="alert alert-error" style="display: block">${flash.error}</div>
-		</g:if> 
-		<div class="check"> 
+	<div class="vote">  
+    	<g:if test="${currentLoggedInUser.upVoted.find({obj -> obj.post == comment})}">
+			<g:set var="divName" value="check" />
+		</g:if>
+		<g:else>
+     		<g:set var="divName" value="no-check" />
+		</g:else>
+    	<div class="${divName}">
 		    <g:link controller="Post" action="upVote" params='[post_id: "${comment.id}"]'>
 		        <span class="triangle-up"></span><br />
 		    </g:link><br/>
-		    <label class="mark"> ${comment.mark} </label><br/>
+		</div>
+		<label class="mark"> ${comment.mark} </label><br/>
+		<g:if test="${currentLoggedInUser.downVoted.find({obj -> obj.post == comment})}">
+			<g:set var="divName" value="check" />
+		</g:if>
+		<g:else>
+     		<g:set var="divName" value="no-check" />
+		</g:else>
+		 <div class="${divName}">
 		    <g:link controller="Post" action="downVote" params='[post_id: "${comment.id}"]'>
 		        <span class="triangle-down"></span>
 		    </g:link>
 		</div>
-  </div>
+  	</div>
 
 	<div class="content">
 	

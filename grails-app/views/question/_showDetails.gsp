@@ -8,16 +8,26 @@
     </div>
         
     <!-- vote -->
-    <div class="vote">
-    	<g:set var="typePost_id" value="${"[class outofbounds.Question, " + question.id + ']'}"/> 
-		<g:if test="${flash.error && flash.args == typePost_id}">
-		  	<div class="alert alert-error" style="display: block">${flash.error}</div>
-		</g:if>   	
-		<div class="check">
+    <div class="vote">    	
+    	<g:if test="${currentLoggedInUser.upVoted.find({obj -> obj.post == question})}">
+			<g:set var="divName" value="check" />
+		</g:if>
+		<g:else>
+     		<g:set var="divName" value="no-check" />
+		</g:else>
+    	<div class="${divName}">
 		    <g:link controller="Post" action="upVote" params='[post_id: "${question.id}"]'>
 		        <span class="triangle-up"></span><br />
 		    </g:link><br/>
-		    <label class="mark"> ${question.mark} </label><br/>
+		</div>
+		<label class="mark"> ${question.mark} </label><br/>
+		<g:if test="${currentLoggedInUser.downVoted.find({obj -> obj.post == question})}">
+			<g:set var="divName" value="check" />
+		</g:if>
+		<g:else>
+     		<g:set var="divName" value="no-check" />
+		</g:else>
+		 <div class="${divName}">
 		    <g:link controller="Post" action="downVote" params='[post_id: "${question.id}"]'>
 		        <span class="triangle-down"></span>
 		    </g:link>
