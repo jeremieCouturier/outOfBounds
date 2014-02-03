@@ -3,7 +3,7 @@ package outofbounds
 
 
 import static org.springframework.http.HttpStatus.*
-import outOfBounds.Configuration;
+import outofbounds.Configuration;
 import grails.transaction.Transactional
 
 import com.megatome.grails.RecaptchaService

@@ -1,7 +1,7 @@
 package outofbounds
 
 class User {
-	static hasMany = [posts:Post, oAuthIDs: OAuthID, badges:Badge, upVoted:UpVote, downVoted:DownVote] 
+	static hasMany = [posts:Post, oAuthIDs: OAuthID, badges:EarnedBadge, upVoted:UpVote, downVoted:DownVote]
 
 
 	transient springSecurityService

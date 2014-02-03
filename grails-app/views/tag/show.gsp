@@ -1,4 +1,4 @@
-<%@page import="outOfBounds.Configuration"%>
+<%@page import="outofbounds.Configuration"%>
 <%@ page import="outofbounds.Tag" %>
 
 <!DOCTYPE html>

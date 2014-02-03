@@ -1,6 +1,6 @@
 
 <%@page import="java.lang.Math"%>
-<%@page import="outOfBounds.Configuration"%>
+<%@page import="outofbounds.Configuration"%>
 <%@ page import="outofbounds.User" %>
 <!DOCTYPE html>
 <html>

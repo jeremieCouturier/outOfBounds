@@ -1,4 +1,4 @@
-package outOfBounds
+package outofbounds
 
 import outofbounds.User;
 
