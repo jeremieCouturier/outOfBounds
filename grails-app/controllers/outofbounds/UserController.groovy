@@ -38,13 +38,14 @@ class UserController {
 	}
 	
     def show() {
+		def user = getAuthenticatedUser()
 		
-		if (params == null || params?.user_id == null) {
+		if (user == null || params == null || params?.user_id == null) {
 			notFound()
 			return
 		}
 
-		def user_id = params?.user_id?:getAuthenticatedUser().id
+		def user_id = params?.user_id?:user.id
 		redirect (
 			action: "userQuestions",
 			params: [user_id: user_id]
