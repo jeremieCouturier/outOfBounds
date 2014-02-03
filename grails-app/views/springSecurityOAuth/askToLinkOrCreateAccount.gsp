@@ -13,9 +13,13 @@
 
     <label class="message"><g:message code="springSecurity.oauth.registration.link.not.exists" args="[session.springSecurityOAuthToken.providerName]"/></label>
     <br/>
+    
+    <g:form url="[resource:userInstance, action:'save']" class="register">
+		<g:render template="/user/formRO"/>	
+	</g:form>
 
     
-    <div id="form_wrapper_google" class="form_wrapper_google" >
+    <!-- <div id="form_wrapper_google" class="form_wrapper_google" >
         <g:hasErrors bean="${createAccountCommand}">
         <div class="errors">
             <g:renderErrors bean="${createAccountCommand}" as="list"/>
@@ -41,7 +45,7 @@
 		        <div class="clear"></div>
 		    </div>
 		</g:form>
-	</div>
+	</div>-->
 
     <div id="form_wrapper_google" class="form_wrapper_google">
         <g:hasErrors bean="${linkAccountCommand}">

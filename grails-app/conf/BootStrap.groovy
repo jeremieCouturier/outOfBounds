@@ -16,34 +16,42 @@ class BootStrap {
 
 	def init = { servletContext ->
 		//roles definition
-	    def userRole = Role.findByAuthority('ROLE_USER') ?: 
-	    	new Role(authority: 'ROLE_USER').save(failOnError: true)
-	    def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: 
-	    	new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
-	    def moderatorRole = Role.findByAuthority('ROLE_MODERATOR') ?: 
-	    	new Role(authority: 'ROLE_MODERATOR').save(failOnError: true)
+		def userRole = Role.findByAuthority('ROLE_USER') ?:
+			new Role(authority: 'ROLE_USER').save(failOnError: true)
+		def adminRole = Role.findByAuthority('ROLE_ADMIN') ?:
+			new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
+		def moderatorRole = Role.findByAuthority('ROLE_MODERATOR') ?:
+			new Role(authority: 'ROLE_MODERATOR').save(failOnError: true)
 
-	    //admin super user 
-	    def adminUser = User.findByUsername('admin') ?: new User(
-        	username: 'admin',
-        	password: "admin",
-        	enabled: true).save(failOnError: true)
+		//admin super user
+		def adminUser = User.findByUsername('admin') ?: new User(
+			username: 'admin',
+			password: "admin",
+			realname: "paul ochon",
+			location: "in the space",
+			website: "http://admin.fr",
+			mail: "paul@ochon@yahoo.fr",
+			enabled: true).save(failOnError: true)
 		
-	    if (!adminUser.authorities.contains(adminRole)) {
-        	UserRole.create adminUser, adminRole
-    	}
-    	if (!adminUser.authorities.contains(userRole)) {
-        	UserRole.create adminUser, userRole
-    	}
+		if (!adminUser.authorities.contains(adminRole)) {
+			UserRole.create adminUser, adminRole
+		}
+		if (!adminUser.authorities.contains(userRole)) {
+			UserRole.create adminUser, userRole
+		}
 
-    	//random user
-    	def user = User.findByUsername('a') ?: new User(
-        	username: 'a',
-        	password: 'a',
-        	enabled: true).save(failOnError: true)
-    	if (!user.authorities.contains(userRole)) {
-        	UserRole.create user, userRole
-    	}
+		//random user
+		def user = User.findByUsername('a') ?: new User(
+			username: 'a',
+			password: 'a',			
+			realname: "jack ouzi",
+			location: "in my spirit",
+			website: "http://a.com",
+			mail: "a@a.hotmail.fr",
+			enabled: true).save(failOnError: true)
+		if (!user.authorities.contains(userRole)) {
+			UserRole.create user, userRole
+		}
 
 
 		//first question
@@ -127,7 +135,6 @@ class BootStrap {
 			conditionParameters: bcq.getParameters()
 			).save(failOnError: true)
 	}
-    def destroy = {
-    }
+	def destroy = {
+	}
 }
-

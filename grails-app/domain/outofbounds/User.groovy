@@ -3,13 +3,17 @@ package outofbounds
 class User {
 	static hasMany = [posts:Post, oAuthIDs: OAuthID, badges:EarnedBadge, upVoted:UpVote, downVoted:DownVote]
 
-
 	transient springSecurityService
 	
 	Date dateSignUp = new Date()
 
 	String username
+	String realname
+	String mail
+	String website
+	String location
 	String password
+	
 	String avatarpath = new String("user_unknown.png");
 	boolean enabled = true
 	boolean accountExpired

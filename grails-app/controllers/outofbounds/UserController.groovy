@@ -3,7 +3,6 @@ package outofbounds
 
 
 import static org.springframework.http.HttpStatus.*
-import outofbounds.Configuration;
 import grails.transaction.Transactional
 
 import com.megatome.grails.RecaptchaService
@@ -162,7 +161,6 @@ class UserController {
             respond userInstance.errors, view:'create'
             return
         }
-   
     }
 
     def edit(User userInstance) {

@@ -11,9 +11,8 @@
 	</head>
 	<body>
 		<div class="userDetailled">
-			<div class="title">
-				<label>${userInstance?.username}</label>
-			</div>
+			
+			<g:render template="templateUserDetailled" bean="${userInstance}" var="user" />
 			
 			<ul class="menuInPage"> 
 			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance?.id}"]'>questions</g:link></li>
