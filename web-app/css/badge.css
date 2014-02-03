@@ -39,9 +39,11 @@
 }
 
 .badge .content .description {
-	margin-top:20px;
+	margin-top:8px;
 }
 
 .badge .content .date {
+	margin-top:20px;
 	font-style: italic;
+	font-size:12px;
 }
