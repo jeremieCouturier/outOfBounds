@@ -9,7 +9,7 @@
         
     <!-- vote -->
     <div class="vote">    	
-    	<g:if test="${currentLoggedInUser.upVoted.find({obj -> obj.post == question})}">
+    	<g:if test="${currentLoggedInUser != null && currentLoggedInUser.upVoted.find({obj -> obj.post == question})}">
 			<g:set var="divName" value="check" />
 		</g:if>
 		<g:else>
@@ -21,7 +21,7 @@
 		    </g:link><br/>
 		</div>
 		<label class="mark"> ${question.mark} </label><br/>
-		<g:if test="${currentLoggedInUser.downVoted.find({obj -> obj.post == question})}">
+		<g:if test="${currentLoggedInUser != null &&currentLoggedInUser.downVoted.find({obj -> obj.post == question})}">
 			<g:set var="divName" value="check" />
 		</g:if>
 		<g:else>
@@ -33,6 +33,7 @@
 		    </g:link>
 		</div>
 	</div>
+
 	
 	<div class="group_question">
 		<!-- body -->
