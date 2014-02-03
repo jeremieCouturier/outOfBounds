@@ -12,6 +12,8 @@
 	margin-left:50px;
 	padding-bottom: 20px;
 	border-bottom: black 2px dotted;
+	padding:8px;
+	background-color: rgb(227, 248, 253);
 }
 
 .badge .medal {
