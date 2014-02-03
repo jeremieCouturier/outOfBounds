@@ -1,10 +1,45 @@
-.badge {
-	margin: 0 auto;
-	padding: 5px;
-	padding-top: 0;
-}
 .medal img {
 	margin: 0 auto;
 	height: 50px;
 	max-width: 50px;
+}
+
+
+
+.badge {
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:50px;
+	padding-bottom: 20px;
+	border-bottom: black 2px dotted;
+}
+
+.badge .medal {
+	margin-left:10px;
+	margin-top:10px;
+	display:inline-block;
+	vertical-align: top;
+	margin-right: 15px;
+	padding-right: 25px;
+}
+	
+.badge .content {
+	display:inline-block;
+	vertical-align: top;
+}
+
+.badge .content .name {
+	font-weight: bold;
+	font-size: 17px;
+	padding-bottom:15px;
+	color: rgb(12, 123, 184);
+	text-decoration: underline;
+}
+
+.badge .content .description {
+	margin-top:20px;
+}
+
+.badge .content .date {
+	font-style: italic;
 }
