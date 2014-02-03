@@ -13,8 +13,8 @@
             <g:textField type="text" name="username" required="" value="${userInstance?.username}"/>
         </div>
         <div>
-            <label><g:message code="index.mail"/></label>
-            <g:textField type="text" name="email" value="${userInstance?.mail}"/>
+            <label><g:message code="index.email"/></label>
+            <g:textField type="text" name="email" value="${userInstance?.email}"/>
         </div>  
     </div>
     <div class="column">

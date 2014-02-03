@@ -30,7 +30,7 @@ class BootStrap {
 			realname: "paul ochon",
 			location: "in the space",
 			website: "http://admin.fr",
-			mail: "paul@ochon@yahoo.fr",
+			email: "paul@ochon@yahoo.fr",
 			enabled: true).save(failOnError: true)
 		
 		if (!adminUser.authorities.contains(adminRole)) {
@@ -47,7 +47,7 @@ class BootStrap {
 			realname: "jack ouzi",
 			location: "in my spirit",
 			website: "http://a.com",
-			mail: "a@a.hotmail.fr",
+			email: "a@a.hotmail.fr",
 			enabled: true).save(failOnError: true)
 		if (!user.authorities.contains(userRole)) {
 			UserRole.create user, userRole

@@ -152,7 +152,7 @@ class UserController {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'user.User'), userInstance.id])
                 //redirect userInstance
-                redirect(uri: "")
+                redirect controller: 'login', action: 'index'
             }
             '*' { respond userInstance, [status: CREATED] }
             }

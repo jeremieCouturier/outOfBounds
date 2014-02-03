@@ -9,7 +9,7 @@ class User {
 
 	String username
 	String realname
-	String mail
+	String email
 	String website
 	String location
 	String password
