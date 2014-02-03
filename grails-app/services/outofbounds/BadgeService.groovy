@@ -1,7 +1,7 @@
 package outofbounds
 
-import outOfBounds.BadgeCondition;
-import outofbounds.Badge.BadgeMedal;
+import outofbounds.BadgeCondition
+import outofbounds.Badge.BadgeMedal
 import grails.transaction.Transactional
 
 @Transactional
@@ -48,13 +48,25 @@ class BadgeService {
 	}
 	
 	def addBadgeToUser(Badge badge, User user) {
-		if (user != null && badge != null) {
-			if (user.badges == null || ! (user.badges.contains(badge))) {
-				user.addToBadges(badge)
+		if (user == null) return user
+
+		for (EarnedBadge awardBadge : user.badges) {
+			if (awardBadge?.badge?.name == badge?.name) {
+				return user
 			}
-			badge.save(failOnError: true)
-			user.save(failOnError: true)
 		}
+
+		EarnedBadge awardBadge = new EarnedBadge(
+			badge: badge,
+			user: user
+			).save(failOnError: true)
+
+		badge.addToUsers(user)
+		user.addToBadges(awardBadge)
+
+		badge.save(failOnError: true)
+		user.save(failOnError: true)
+		
 		return user
 	}
 	

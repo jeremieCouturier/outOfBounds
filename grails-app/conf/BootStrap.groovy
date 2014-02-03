@@ -1,7 +1,7 @@
-import outOfBounds.BadgeCondition;
-import outOfBounds.ConnectedCondition;
-import outOfBounds.QuestionNumberCondition
-import outOfBounds.ConnectedCondition.CalendarFormat;
+import outofbounds.BadgeCondition;
+import outofbounds.ConnectedCondition;
+import outofbounds.QuestionNumberCondition
+import outofbounds.ConnectedCondition.CalendarFormat;
 import outofbounds.Badge.BadgeMedal;
 import outofbounds.Badge
 import outofbounds.Question

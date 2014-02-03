@@ -22,8 +22,7 @@ class Badge {
 	String conditionClass
 	List<String> conditionParameters
 	
-	static hasMany = [user: User]
-	static belongsTo = User
+	static hasMany = [users: User]
 
     static constraints = {
 		name  blank: false, unique: true

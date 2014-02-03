@@ -1,6 +1,6 @@
 package outofbounds
 
-import outOfBounds.BadgeCondition;
+import outofbounds.BadgeCondition;
 import outofbounds.Badge;
 import outofbounds.BadgeService;
 import outofbounds.User;
