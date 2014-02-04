@@ -9,7 +9,7 @@
 				    ['Bold', 'Italic', '-', 'Link', 'Unlink', 'Blockquote','CreateDiv', 'Image', '-', 'NumberedList', 'BulletedList', 'HorizontalRule', '-', 'Undo','Redo']
 				]
 			</ckeditor:config>
-			<ckeditor:editor name="text" toolbar="Mytoolbar">
+			<ckeditor:editor name="text" toolbar="Mytoolbar" >
 			</ckeditor:editor>	
 		 </div>
 		 <!-- save button -->

@@ -14,42 +14,20 @@ class AnswerController {
 
     def springSecurityService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def show(Answer answerInstance) {
-        respond answerInstance
-    }
+    static allowedMethods = [update: "PUT", delete: "DELETE"]
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def create() {
 		def user = getAuthenticatedUser()
-		def answer = AnswerService.create(Integer.parseInt(params.id), params.text, user)
+
+        if (params.text != null && params.text.size() != 0) {
+        	AnswerService.create(params.int('id'), params.text, user)
+        } else {
+            flash.message = message(code: "answer.text.size.toosmall")
+        }
+
 		
-        redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
-    }
-
-    @Secured(['IS_AUTHENTICATED_FULLY'])    
-    @Transactional
-    def save(Answer answerInstance) {
-        if (answerInstance == null) {
-            notFound()
-            return
-        }
-
-        if (answerInstance.hasErrors()) {
-            respond answerInstance.errors, view:'create'
-            return
-        }
-
-        answerInstance.save flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'answer.Answer'), answerInstance.id])
-                redirect answerInstance
-            }
-            '*' { respond answerInstance, [status: CREATED] }
-        }
+        redirect controller: 'question', action:'show', params: ['question_id': params.int('id')]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
@@ -84,15 +62,5 @@ class AnswerController {
             flash.message = message(code: 'post.delete_not_authorized', args: ["answer"])
         }
        redirect controller: 'question', action: 'show', params: ['question_id': question.id]
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.Answer'), params.id])
-                redirect uri: "/", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
     }
 }
