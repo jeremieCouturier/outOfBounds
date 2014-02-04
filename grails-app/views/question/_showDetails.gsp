@@ -21,7 +21,7 @@
 		    </g:link><br/>
 		</div>
 		<label class="mark"> ${question.mark} </label><br/>
-		<g:if test="${currentLoggedInUser != null &&currentLoggedInUser.downVoted.find({obj -> obj.post == question})}">
+		<g:if test="${currentLoggedInUser != null && currentLoggedInUser.downVoted.find({obj -> obj.post == question})}">
 			<g:set var="divName" value="check" />
 		</g:if>
 		<g:else>

@@ -7,7 +7,6 @@
 			<g:message code="user.my_profile" />
 		</g:link></li>
 
-
 		<li><g:link controller="logout" action="index">
 			<g:message code="index.log_out" />
 		</g:link></li>	
@@ -26,7 +25,8 @@
 	</sec:ifNotLoggedIn>
    
 
-   <li><a href='#'><span>About</span></a></li>
-   <li class='last'><a href='#'><span>Contact</span></a></li>
+   <li><a href='#'><span><g:message code="header.about" /></span></a></li>
+   <li class='last'><a href='#'><span><g:message code="header.contact" /></span></a></li>
+
 </ul>
 </div>
