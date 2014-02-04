@@ -1,4 +1,4 @@
-<%@page import="outofbounds.User" %> 
+<%@page import="outofbounds.User" %>
 <%@ defaultCodec="none" %>
 
 <link href="${resource(dir: 'css', file: 'listQuestion.css')}" rel="stylesheet">
@@ -19,10 +19,12 @@
 		<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 		    ${question.title}
 		</g:link><br/>
-		<%-- <label class="text">
-			<g:if test="${question.text.size() > 110}"> ${question.text.substring(0, 110) + "..." } </g:if>
-			<g:else> ${question.text} </g:else>
-		</label> --%>
+		<label class="text">
+			${question.summaryText()}
+		<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
+		    ...
+		</g:link><br/>
+		</label>
 	</div>
 	
 	<span class="tag">

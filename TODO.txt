@@ -12,6 +12,7 @@ PELLOUX
 	- lorsque l'on crée une user depuis la page enregistrement, le mdp et le login peuvent être identique. Ce n'est pas le cas si on le crée depuis la page d'authentification google.
 	- pb methode getAuthenticatedUser (chaque appel plante -> non reconnue)
 ALL 
+	- Question : prévenir l'utilisateur des erreurs (titre du post de l'utilisateur...)
 	- écrire les tests...
 	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
 

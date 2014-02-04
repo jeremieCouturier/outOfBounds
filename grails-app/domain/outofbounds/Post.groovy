@@ -30,4 +30,12 @@ class Post {
         	|| inUser.authorities.contains(adminRole) 
         	|| inUser.id == user.id)
 	}	
+
+	public String summaryText() {
+		String summary = text.replaceAll(/<[^<>]*>/,"")
+		if (summary.size() > 110) {
+			summary = summary.substring(0,110)
+		}
+		return summary
+	}
 }
