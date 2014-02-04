@@ -19,10 +19,10 @@
 		<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 		    ${question.title}
 		</g:link><br/>
-		<label class="text">
+		<%-- <label class="text">
 			<g:if test="${question.text.size() > 110}"> ${question.text.substring(0, 110) + "..." } </g:if>
 			<g:else> ${question.text} </g:else>
-		</label>
+		</label> --%>
 	</div>
 	
 	<span class="tag">

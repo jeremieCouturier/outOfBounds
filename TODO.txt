@@ -1,12 +1,9 @@
 COUTURIER
-	- changer la couleur de la fleche quand on a voté
-	- rajouter le vote down pour le commentaire
-	- changement le comportement: si on a déja voté et qu'on fait fleche up ça fait rien (parce que même si ça fait un vote down sur stackoverflow, c'est trop moche comme comportement) 
+	- écrire des tests
+	- la page de profil à faire !!!!!!!!!!!
 FOUREL
 	- gestion des badges
 JUTAND 
-	- ne pas afficher le body d'une question dans le template, ou le tronquer aux N premiers caractères mais problemes d'encodages (rich editor & cœ)
-	- changer la couleur d'un vote si l'utilisateur a déjà voté, pour le lui dire justement
 	- Édition / Suppression / gestion des erreurs qui s'affichent pas
 	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
 	- vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
@@ -18,7 +15,8 @@ ALL
 	- écrire les tests...
 	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
 
-	
+
+
 Dans une version ultérieure... :
 	- ajout de photo à un utilisateur (gravatar?)
 	- modif des pages d'erreurs? 404 etc.

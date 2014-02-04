@@ -17,10 +17,10 @@
 			</ul>
 		</div>
 		<div id="show-user" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
 			<ol class="property-list user">
 				<li class="fieldcontain">
 					<span id="username-label" class="property-label"><g:message code="user.username"/></span>
@@ -29,17 +29,17 @@
 				</li>
 			
 				<li class="fieldcontain">
-					<g:set var="count" value="${userInstance.questions?.size()}" />
+					<g:set var="count" value="${userInstance.posts?.size()}" />
 					<span id="postcount-label" class="property-label"><g:message code="user.post_count"/></span>
 					
 					<span class="property-value" aria-labelledby="postcount-label">${count}</span>
 				</li>
 
-				<g:if test="${userInstance?.questions}">
+				<g:if test="${userInstance?.posts}">
 				<li class="fieldcontain">
 					<span id="posts-label" class="property-label"><g:message code="user.posts.label" /></span>
 					
-						<g:each in="${userInstance.questions}" var="question">
+						<g:each in="${userInstance.posts}" var="question">
 						<span class="property-value" aria-labelledby="posts-label"><g:link controller="post" action="show" id="${question.id}">${question?.encodeAsHTML()}</g:link></span>
 						</g:each>
 				</li>
