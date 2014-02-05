@@ -16,8 +16,10 @@ class AnswerControllerSpec extends Specification {
     }
 
     void "Test the index action returns null"() {
-        def msg = shouldFail(MissingMethodException) {
-            controller.index()
-        }
+        when: 'Trying to access index'
+            def msg = shouldFail(MissingMethodException) {
+                controller.index()
+            }
+        then: 'Should return null'
     }
 }
