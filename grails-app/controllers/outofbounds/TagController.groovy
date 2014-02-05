@@ -10,7 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class TagController {
 	
-	def TagService
+	def tagService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -21,21 +21,21 @@ class TagController {
 
     /* Return list of tags ordered by date */    
     def newTags() {
-        def tags = TagService.newTags(params.offset?: 0, 
+        def tags = tagService.newTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("new", tags)
     }
 
     /* Return list of tags ordered by popularity */    
     def popularTags() {
-        def tags = TagService.popularTags(params.offset?: 0, 
+        def tags = tagService.popularTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("popular", tags)
     }
 
     /* Return list of tags ordered by alphanumeric order */    
     def nameTags() {
-        def tags = TagService.nameTags(params.offset?: 0, 
+        def tags = tagService.nameTags(params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
         getTags("name", tags)
     }
@@ -63,7 +63,7 @@ class TagController {
             return
         }
 
-        def questions = TagService.newestTaggedQuestions(tag, params.offset?: 0, 
+        def questions = tagService.newestTaggedQuestions(tag, params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
 
         displayQuestions(tag, "newest", questions, tag.questions.size())
@@ -75,7 +75,7 @@ class TagController {
             return
         }
 
-        def questions = TagService.popularTaggedQuestions(tag, params.offset?: 0, 
+        def questions = tagService.popularTaggedQuestions(tag, params.offset?: 0, 
             params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
 
         displayQuestions(tag, "popular", questions, tag.questions.size())
@@ -89,7 +89,7 @@ class TagController {
 
         // special case: since we need the total count, we do not use offset/max
         // params when querying the DB
-        def questions = TagService.unansweredTaggedQuestions(tag)
+        def questions = tagService.unansweredTaggedQuestions(tag)
         def size = questions.size()
 
         def offset = params.int('offset') ?: 0
