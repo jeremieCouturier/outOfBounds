@@ -11,47 +11,24 @@ import grails.plugin.springsecurity.SpringSecurityUtils
 class PostControllerSpec extends Specification {
 
     def user
-     
+    def user2
 
     void setup() {
         defineBeans {
             postService(PostService) { bean ->
                 bean.autowire = true
             }
+        }   
+    }
 
-            questionService(QuestionService) { bean ->
-                bean.autowire = true
-            }
-        }
+    void "Test add comment is OK"() {
+
         User.metaClass.encodePassword = { -> }
         PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
 
         user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
             password: 'a', location: 'fr', website: 'google.fr')
         user.save(flush: true)
-        
-    }
-    
-/*
-    void "Test up vote when no user logged"() {
-
-      when: "up vote a post"
-        params.post_id = '0'
-        controller.upVote()
-      then: "redirect to login page"
-        assert response.redirectedUrl == '/login/auth'
-    }
-
-    void "Test down vot when no user logged"() {
-
-      when: "down vote a post"
-        params.post_id = '0'
-        controller.downVote()
-      then: "redirect to login page"
-        assert response.redirectedUrl == '/login/auth'
-    }
-*/
-    void "Test add comment is OK"() {
 
         def question = new Question(title: "title very long", text: "text", user: user)
         question.save(flush: true)
@@ -69,7 +46,15 @@ class PostControllerSpec extends Specification {
             assert q.comments[0].text == "text"
     }
 
-    void "Test down vot when no user logged"() {
+
+    void "Test up vote when user is logged"() {
+
+        User.metaClass.encodePassword = { -> }
+        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
+
+        user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
+            password: 'a', location: 'fr', website: 'google.fr')
+        user.save(flush: true)
 
         def question = new Question(title: "title very long", text: "text", user: user)
         question.save(flush: true)
@@ -82,7 +67,15 @@ class PostControllerSpec extends Specification {
             assert q.mark == 1
     }
 
-    void "Test down vot when no user logged"() {
+
+    void "Test down vote when user is logged"() {
+
+        User.metaClass.encodePassword = { -> }
+        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
+
+        user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
+            password: 'a', location: 'fr', website: 'google.fr')
+        user.save(flush: true)
 
         def question = new Question(title: "title very long", text: "text", user: user)
         question.save(flush: true)
@@ -93,6 +86,6 @@ class PostControllerSpec extends Specification {
         then: "read mark"
             def q = Question.findById(1)
             assert q.mark == -1
-    }
-    
+    }   
 }
+
