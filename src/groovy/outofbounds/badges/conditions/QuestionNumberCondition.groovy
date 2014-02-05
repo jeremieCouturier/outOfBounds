@@ -2,15 +2,15 @@ package outofbounds
 
 import outofbounds.User;
 
-class ReputationCondition implements BadgeCondition {
+class QuestionNumberCondition implements BadgeCondition {
 
 	int neededValue
 	
-	public ConnectedCondition() {
+	public QuestionNumberCondition() {
 		this.neededValue = 1
 	}
 	
-	public ConnectedCondition(int neededValue) {
+	public QuestionNumberCondition(int neededValue) {
 		this.neededValue = neededValue
 	}
 
@@ -20,7 +20,8 @@ class ReputationCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
-		return false;
+		//throw new RuntimeException("check questionNumber " + user.username + " " + neededValue)
+		return user.posts.size() >= neededValue;
 	}
 
 	@Override

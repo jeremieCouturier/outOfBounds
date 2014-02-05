@@ -37,12 +37,13 @@ class ConnectedCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
-		Calendar c = Calendar.getInstance();
-		Calendar c1 = Calendar.getInstance();
-		c.setTime(new Date());
-		c1.setTime(user.dateSignUp);
-		//throw new RuntimeException("check " + (c.get(calendarFormat) - c1.get(calendarFormat)).toString())
-		return c.get(calendarFormat) - c1.get(calendarFormat) >= neededValue;
+		Calendar currentCalendar = Calendar.getInstance()
+		currentCalendar.setTime(new Date())
+		currentCalendar.add(calendarFormat, neededValue)
+		Calendar userCalendar = Calendar.getInstance()
+		userCalendar.setTime(user.dateSignUp)
+		//throw new RuntimeException("check " + user.username + " " + calendarFormat + " " + (currentCalendar.compareTo(userCalendar) >= 0).toString())
+		return userCalendar.compareTo(currentCalendar) >= 0;
 	}
 
 	@Override
