@@ -42,9 +42,9 @@ class BadgeService {
 			return condition.check(user)
 		}
 		catch(Exception e) {
-			throw new RuntimeException(e)
 			return false
 		}
+		return false;
 	}
 	
 	def addBadgeToUser(Badge badge, User user) {
