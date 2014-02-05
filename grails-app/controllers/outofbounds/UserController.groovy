@@ -222,7 +222,7 @@ class UserController {
     }
 
     def profile(User userInstance) {
-        userInstance = springSecurityService.getCurrentUser();
+        userInstance = springSecurityService.getAuthenticatedUser();
         respond userInstance, view:'profile'
     } 
 }

@@ -34,7 +34,7 @@ class QuestionService {
 			question.addToTags(tag)
 		}	
 		
-		question.save(faiLonError: true)
+		question.save(failOnError: true)
 	}
 	
 	def addView(Question question)
