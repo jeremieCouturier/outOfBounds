@@ -6,14 +6,13 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="user.list" /></title>
 		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
 	</head>
 	<body>		
 		<ul class="menuInPage"> 
-		   	<li class="title"><g:message code="default.list.label" args="[entityName]" /></li>
-		   <li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="newestUsers">newest</g:link></li>
+		   	<li class="title"><g:message code="user.list" /></li>
+		   <li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="newestUsers"><g:message code="user.newest"/></g:link></li>
 		</ul> 
 		
 		<div class="groupUser">

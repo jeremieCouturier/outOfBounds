@@ -2,7 +2,7 @@
 
 
 <div id="form_wrapper" class="form_wrapper">
-	<h3>Register</h3>
+	<h3><g:message code="user.register"/></h3>
 	<fieldset class="form">
     <div class="column">
         <div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'realname', 'error')} required">
@@ -41,7 +41,7 @@
     
     <div class="bottom">
         <input type="submit" value=<g:message code="user.create.validate"/>></input>
-        <g:link controller="login">You have an account already? Log in here</g:link>
+        <g:link controller="login"><g:message code="user.login.create"/></g:link>
         <div class="clear"></div>
     </div>
     </fieldset>

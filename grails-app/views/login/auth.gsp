@@ -125,7 +125,7 @@
 		            <span><g:message code="springSecurity.login.remember.me.label"/></span>
 		        </div>
 		        <input type="submit" value='${message(code: "springSecurity.login.button")}'></input>
-		        <g:link controller="user" action="create">You don't have an account yet? Register here</g:link>
+		        <g:link controller="user" action="create"><g:message code="auth.no_account"/></g:link>
 		        <div class="clear"></div>
 		    </div>
 		</form>

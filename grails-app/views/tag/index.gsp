@@ -5,12 +5,12 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="tag.list" /></title>
 		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
 	</head>
 	<body>		
 		<ul class="menuInPage"> 
-		   	<li class="title"><g:message code="tag.name" args="[entityName]" /></li>
+		   	<li class="title"><g:message code="tag.list" /></li>
 		   	<li <g:if test="${choice.equals('popular')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="popularTags"><g:message code='tag.popular' /></g:link></li>
 			<li <g:if test="${choice.equals('name')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="nameTags"><g:message code='tag.name' /></g:link></li>
 			<li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newTags"><g:message code='tag.new' /></g:link></li>		

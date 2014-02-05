@@ -2,19 +2,18 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'badge.label', default: 'Badge')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<title><g:message code="badge.create" /></title>
 	</head>
 	<body>
 		<a href="#create-badge" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="index"><g:message code="badge.create" /></g:link></li>
 			</ul>
 		</div>
 		<div id="create-badge" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h1><g:message code="badge.create" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

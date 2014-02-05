@@ -5,8 +5,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'badge.label', default: 'Badge')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="badge.list" /></title>
 		<link href="${resource(dir: 'css', file: 'badge.css')}" rel="stylesheet">
 	</head>
 	<body>
@@ -15,7 +14,7 @@
 		</g:if>
 			
 		<ul class="menuInPage"> 
-		   	<li class="title"><g:message code="default.list.label" args="[entityName]" /></li>
+		   	<li class="title"><g:message code="badge.list" /></li>
 		   	<li <g:if test="${choice.equals('all')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"all"]"><g:message code='badge.all' /></g:link></li>
 			<li <g:if test="${choice.equals('bronze')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"bronze"]"><g:message code='badge.bronze' /></g:link></li>
 			<li <g:if test="${choice.equals('silver')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"silver"]"><g:message code='badge.silver' /></g:link></li>
