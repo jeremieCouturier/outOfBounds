@@ -5,18 +5,17 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'tag.label', default: 'Tag')}" />
 		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<title><g:message code="tag.tagged_question" /></title>
 	</head>
 	<body>
 
 		<ul class="menuInPage"> 
-	   		<li class="title">Tagged Questions</li>
+	   		<li class="title"><g:message code="tag.tagged_question"/></li>
 		   		
-			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestQuestions" params='[tag_id: "${tag.id}"]'>newest</g:link></li>
-			<li <g:if test="${choice.equals('popular')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="popularQuestions" params='[tag_id: "${tag.id}"]'>popular</g:link></li>
-			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredQuestions" params='[tag_id: "${tag.id}"]'>unanswered</g:link></li>
+			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.new"/></g:link></li>
+			<li <g:if test="${choice.equals('popular')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="popularQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.popular"/></g:link></li>
+			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.unanswered"/></g:link></li>
 		</ul> 
 		
 		<div class="description">
