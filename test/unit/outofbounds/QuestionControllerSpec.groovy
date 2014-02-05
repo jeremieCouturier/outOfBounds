@@ -5,12 +5,13 @@ package outofbounds
 import grails.test.mixin.*
 import spock.lang.*
 import grails.plugin.springsecurity.SpringSecurityUtils
+import grails.validation.ValidationException
 
 @TestFor(QuestionController)
 @Mock([Question, User, Tag, Post])
 class QuestionControllerSpec extends Specification {
 
-      def user
+    def user
 
     void setup() {
         defineBeans {
@@ -42,4 +43,19 @@ class QuestionControllerSpec extends Specification {
             assert q.tags.size() == 2
             assert q.user == user
     }
+
+    void "Test create new question missing text is failling"() {
+        when: "creating new question with missing text"
+            params.title = 'title very long'
+            params.text = null
+            params.question_tags = 'cpp grails'
+
+            shouldFail(ValidationException) {
+                controller.saveQuestion()
+            }
+        then: "stays on create page"
+            assert response.redirectedUrl == null
+    }
+
+
 }
