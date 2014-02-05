@@ -11,6 +11,7 @@ class TagControllerSpec extends Specification {
 
     def user
     def tag1, tag2, tag3
+    def question1, question2
 
     void setup() {
         defineBeans {
@@ -35,8 +36,16 @@ class TagControllerSpec extends Specification {
 
         def tags = [tag1, tag2, tag3]
         
-        def question = new Question(title: "a", text: "a", tags: tags, user: user)
-        question.save(flush: true)
+        question1 = new Question(title: "a", text: "a", tags: tags, user: user)
+        question1.save(flush: true)
+        
+        question2 = new Question(title: "b", text: "b", tags: [tag2], user: user)
+        question2.save(flush: true)
+
+        tag1.addToQuestions(question1).save()
+        tag2.addToQuestions(question1).save()
+        tag3.addToQuestions(question1).save()
+        tag2.addToQuestions(question2).save()
     }
 
     void "Test the index action returns most popular tags"() {
@@ -60,5 +69,16 @@ class TagControllerSpec extends Specification {
         then: 'Should get the ordered list of tags by name'
             assert view == '/tag/index'
             assert model.tags == [tag3, tag1, tag2]
+    }
+
+    void "Test displaying a tag and its associated newest questions"() {
+        when: 'Trying to access questions for a given tag'
+            params.tag_id = tag2.id
+            controller.newestQuestions()
+        then: 'Should get the list of questions and a brief description of the tag'
+            assert view == '/tag/show'
+            assert model.tag == tag2
+            assert model.questions == [question2, question1]
+            assert model.total == 2
     }
 }
