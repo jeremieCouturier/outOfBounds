@@ -62,7 +62,7 @@ class AnswerControllerSpec extends Specification {
             controller.create()
         then: 'Should go back to index with error message'
             assertEquals flash.message, 'answer.question_404'
-            assertEquals response.redirectedUrl, '/'
+            assertEquals '/question/index', response.redirectedUrl
     }
 
     void "Test adding a answer with empty text fails"() {
