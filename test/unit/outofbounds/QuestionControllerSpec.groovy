@@ -50,11 +50,17 @@ class QuestionControllerSpec extends Specification {
             params.text = null
             params.question_tags = 'cpp grails'
 
-            shouldFail(ValidationException) {
+            // shouldFail(ValidationException) {
                 controller.saveQuestion()
-            }
+            // }
         then: "stays on create page"
             assert response.redirectedUrl == null
+            assert view == 'create'
+            assert model.questionInstance != null
+            assert model.questionInstance.errors.toString().contains(
+                "org.grails.datastore.mapping.validation.ValidationErrors: 1 errors")
+            assert model.questionInstance.errors.toString().contains(
+                "Field error in object 'outofbounds.Question' on field 'text': rejected value [null];")
     }
 
 
