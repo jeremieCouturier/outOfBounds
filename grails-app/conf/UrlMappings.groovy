@@ -11,6 +11,9 @@ class UrlMappings {
             controller = "question"
             action = "index"
         }
+
+        name about: "/about"(view: "about")
+
         "404" {
             controller = "question"
             action = "index"

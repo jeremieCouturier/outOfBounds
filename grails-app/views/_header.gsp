@@ -1,6 +1,6 @@
 <div id='cssmenu'>
 <ul>
-	<li class='active'><a href='${resource(uri: "/")}/'><g:message code="index.home" /></a></li>
+	<li class='active'><a href="${resource(uri: '/')}/"><g:message code="index.home" /></a></li>
 
 	<sec:ifLoggedIn>
 		<li><g:link controller="user" action="profile">
@@ -25,8 +25,7 @@
 	</sec:ifNotLoggedIn>
    
 
-   <li><a href='#'><span><g:message code="header.about" /></span></a></li>
-   <li class='last'><a href='#'><span><g:message code="header.contact" /></span></a></li>
+   <li><g:link mapping="about"><span><g:message code="header.about" /></span></g:link></li>
 
 </ul>
 </div>
