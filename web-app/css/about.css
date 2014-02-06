@@ -1,0 +1,48 @@
+.about {
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+
+.about .intro {
+	margin-bottom: 25px;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.about a {
+	color:rgb(12, 123, 184);
+	font-weight: bold;
+}
+
+.about .source {
+	margin-bottom: 40px;
+}
+
+.about .description {
+	margin-bottom: 40px;
+}
+
+.about .description h2, .about .license h2{
+	margin-left: 30px;
+	margin-bottom: 15px;
+}
+
+.about .description li{
+	
+}
+		
+.about .license {
+	
+}
+			
+.about .license .content {
+	
+}
+	
