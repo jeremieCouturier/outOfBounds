@@ -95,7 +95,11 @@ class QuestionController {
             params.text, params.question_tags, user) 
         
         if (question == null || question.id == null) {
-            respond question.errors, view:'create'
+            respond(
+                question.errors, 
+                view:'create',
+                model: [ tags: params.question_tags]
+            )
             return
         }
 
@@ -111,7 +115,10 @@ class QuestionController {
         }
 
         if (question.canUserEditPost(getAuthenticatedUser())) {
-            respond question
+            respond(
+                question,
+                model: [tags: question.tags?.sort{a,b-> a.creationDate.compareTo(b.creationDate)}*.name?.join(" ")]
+            )
         } else {
             flash.message = message(code: 'post.edit_not_authorized', args: ['question'])
             redirect action:'show', params: ['question_id': question.id]

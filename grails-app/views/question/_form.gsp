@@ -10,12 +10,12 @@
 <fieldset class="form">
 	<!-- title -->
 	<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'title', 'error')} required">
-		<div class="title">
+	 	<div class="title">
 			<label for="title">
 				<g:message code="question.title" />
 				<span>*</span>
 			</label>
-			<input class="text" name="title" required="" placeholder="${questionInstance?"":"What's your programming question ? Be specific ?" }" value="${questionInstance?.title}"/>
+			<input class="text" id="title" name="title" required="" placeholder="What's your programming question? Be specific?" value="${questionInstance?.title}"/>
 		</div>
 	</div>
 	
@@ -36,7 +36,7 @@
 				<g:message code="question.tags" />		
 				<span>*</span>
 			</label>
-			<input class="text" name="question_tags" value="${questionInstance?.tags?.sort{a,b-> a.creationDate.compareTo(b.creationDate)}*.name?.join(" ")}" required="" placeholder="at least one tag such as (java, grails, c++), max 5 tags">
+			<input class="text" name="question_tags" value="${tags}" required="" placeholder="at least one tag such as java, grails, c++ (max 5 tags)">
 		</div>	
 	</div>
 </fieldset>

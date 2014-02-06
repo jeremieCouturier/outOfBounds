@@ -46,8 +46,8 @@ class QuestionService {
 				text: text,
 				user: user
 		)
-		
-		if (question.hasErrors()) {
+
+		if (! question.validate()) {
 			return question
 		}
 
