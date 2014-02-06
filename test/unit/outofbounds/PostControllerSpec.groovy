@@ -7,7 +7,7 @@ import spock.lang.*
 import grails.plugin.springsecurity.SpringSecurityUtils
 
 @TestFor(PostController)
-@Mock([Question, User, Comment, UpVote, DownVote, Post, Role])
+@Mock([Question, User, Comment, UpVote, DownVote, Post])
 class PostControllerSpec extends Specification {
 
     def user
@@ -18,74 +18,66 @@ class PostControllerSpec extends Specification {
             postService(PostService) { bean ->
                 bean.autowire = true
             }
-        }   
-    }
-
-    void "Test add comment is OK"() {
+        } 
 
         User.metaClass.encodePassword = { -> }
-        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
 
         user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
             password: 'a', location: 'fr', website: 'google.fr')
         user.save(flush: true, failOnError: true)
+
+        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }         
+
+        user2 = new User(username: 'otherusername', realname: 'otherrealname', email: 'bbb@aa.fr',
+            password: 'b', location: 'fr', website: 'google.fr')
+        user2.save(flush: true, failOnError: true)
+    }
+
+
+    void "Test add comment is OK"() {       
 
         def question = new Question(title: "title very long", text: "text", user: user)
         question.save(flush: true, failOnError: true)
 
         when: "adding new comment"
-            params.id = '1'
+            params.id = question.id.toString()
             params.text = 'text'
             controller.addComment()
         then: "save it and redirect to its page"
-            assertEquals response.redirectedUrl, "/question/show?question_id=1"
+            assert response.redirectedUrl == "/question/show?question_id=1"
 
-            def q = Question.findById(1)
-            assertNotNull q.comments
-            assertNotNull q.comments[0]
-            assertEquals q.comments[0].text, "text"
+            def q = Question.findById(question.id)
+            assert q.comments != null
+            assert q.comments[0] != null
+            assert q.comments[0].text == "text"
     }
 
 
-    void "Test up vote when user is logged"() {
+    void "Test up vote"() {
 
-        User.metaClass.encodePassword = { -> }
-        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
-
-        user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
-            password: 'a', location: 'fr', website: 'google.fr')
-        user.save(flush: true, failOnError: true)
-
-        def question = new Question(title: "title very long", text: "text", user: user)
+        def question = new Question(title: "title very long", text: "text", user: user2)
         question.save(flush: true, failOnError: true)
 
-        when: "down vote a post"
-            params.post_id = '1'
+        when: "up vote a post"
+            params.post_id = question.id.toString()
             controller.upVote()
         then: "read mark"
-            def q = Question.findById(1)
-            assertEquals q.mark, 1
+            def q = Question.findById(question.id)
+            assert q.mark == 1
     }
 
 
-    void "Test down vote when user is logged"() {
+    void "Test down vote"() {
 
-        User.metaClass.encodePassword = { -> }
-        PostController.metaClass.springSecurityService.getAuthenticatedUser = { -> user }
-
-        user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
-            password: 'a', location: 'fr', website: 'google.fr')
-        user.save(flush: true, failOnError: true)
-
-        def question = new Question(title: "title very long", text: "text", user: user)
+        def question = new Question(title: "title very long", text: "text", user: user2)
         question.save(flush: true, failOnError: true)
 
         when: "down vote a post"
-            params.post_id = '1'
+            params.post_id = question.id.toString()
             controller.downVote()
         then: "read mark"
-            def q = Question.findById(1)
-            assertEquals q.mark, -1
-    }   
+            def q = Question.findById(question.id)
+            assert q.mark == -1
+    }
 }
 
