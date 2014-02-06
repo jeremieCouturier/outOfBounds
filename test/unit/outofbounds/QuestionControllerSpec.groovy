@@ -53,7 +53,7 @@ class QuestionControllerSpec extends Specification {
             // shouldFail(ValidationException) {
                 controller.saveQuestion()
             // }
-        then: "stays on create page"
+        then: "stay on create page"
             assert response.redirectedUrl == null
             assert view == 'create'
             assert model.questionInstance != null
@@ -63,5 +63,22 @@ class QuestionControllerSpec extends Specification {
                 "Field error in object 'outofbounds.Question' on field 'text': rejected value [null];")
     }
 
+    void "Return to index if request is invalid"() {
+        when: "accessing an invalid URL"
+            params.id = 'YOLLO!' //giving a string instead of integer
+            controller.show()
+        then: "go back to index"
+            assert response.redirectedUrl == '/question/newestQuestions'
+            assert flash.message == 'default.invalid_URL'
+    }
+
+    void "Return to index if trying to create a question from URL hardcode"() {
+        when: "pasting question creation validation URL in a new tab"
+            controller.saveQuestion()
+
+        then: "go back to index with custom error"
+            assert response.redirectedUrl == '/question/newestQuestions'
+            assert flash.message == 'question.force_create_URL_issue'
+    }
 
 }

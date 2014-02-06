@@ -31,7 +31,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
         
 		render(   
-            view: '/question/index',
+            view: 'index',
             model: [ 
                 questions: questionService.newestQuestions(offset, max), 
                 total: Question.count, choice: "newest", layout: "question"
@@ -44,7 +44,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(   
-            view: '/question/index',
+            view: 'index',
             model: [ 
                 questions: questionService.voteQuestions(offset, max), 
                 total: Question.count, choice: "votes", layout: "question"
@@ -57,7 +57,7 @@ class QuestionController {
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
 		
 		render(
-            view: '/question/index',
+            view: 'index',
 			model: [ 
                 questions: questionService.unansweredQuestions(offset, max), 
                 total: Question.count, choice: "unanswered", layout: "question"
@@ -71,6 +71,7 @@ class QuestionController {
         
         //if no question selected, go back to index
         if (question == null) {
+            flash.message = message(code: 'default.invalid_URL')
             index()
             return
         }
@@ -82,7 +83,7 @@ class QuestionController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
 		render(
-			view: '/question/create',
+			view: 'create',
 			model: [ layout: "ask" ]
 		)
     }
@@ -91,6 +92,13 @@ class QuestionController {
     @Transactional
     def saveQuestion() {
 		def user = getAuthenticatedUser()
+
+        if (params.title == null) {
+            flash.message = message(code: 'question.force_create_URL_issue')
+            index()
+            return
+        }
+
         def question = questionService.saveQuestion(params.title, 
             params.text, params.question_tags, user) 
         
@@ -171,15 +179,6 @@ class QuestionController {
         }
     }
 
-    protected void notFound() {
-        request.withFormat {
-            form {
-                flash.message = message(code: 'post.not_found', args: ['question'])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    
     def accept() {
@@ -207,6 +206,7 @@ class QuestionController {
         changeCorrectAnswer(question, null)
     }
 
+    // When owner of question select a/another answer as the 'correct' answer
     protected void changeCorrectAnswer(Question question, Answer newCorrect) {
         if (question.user != getAuthenticatedUser()) {
             flash.message = message(code: 'question.accept_answer_error')
@@ -217,5 +217,15 @@ class QuestionController {
         question.correctAnswer = newCorrect
         question.save(failOnError: true)
         redirect action:'show', params: ['question_id': question.id]
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form {
+                flash.message = message(code: 'post.not_found', args: ['question'])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
     }
 }
