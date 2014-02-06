@@ -8,7 +8,6 @@ class ReputationCondition implements BadgeCondition {
 	
 	public ReputationCondition() {
 		this.neededValue = 1
-
 	}
 	
 	public ReputationCondition(int neededValue) {
@@ -21,9 +20,9 @@ class ReputationCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
-
-		throw new RuntimeException("check reputation")
-		return false;
+		if (user == null) return false
+		//throw new RuntimeException("check reputation " + user.username + " " + neededValue)
+		return user.reputation >= neededValue
 	}
 
 	@Override

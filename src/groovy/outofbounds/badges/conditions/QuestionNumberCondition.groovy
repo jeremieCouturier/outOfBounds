@@ -20,8 +20,9 @@ class QuestionNumberCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
+		if (user == null) return false
 		//throw new RuntimeException("check questionNumber " + user.username + " " + neededValue)
-		return user.posts.size() >= neededValue;
+		return user.posts.size() >= neededValue
 	}
 
 	@Override

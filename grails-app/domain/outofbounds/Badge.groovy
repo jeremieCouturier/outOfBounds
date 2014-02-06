@@ -20,7 +20,7 @@ class Badge {
 	 * @conditionParameters parameters used by this class to perform this particular badge
 	 */
 	String conditionClass
-	List<String> conditionParameters
+	String conditionParameters
 	
 	static hasMany = [users: User]
 

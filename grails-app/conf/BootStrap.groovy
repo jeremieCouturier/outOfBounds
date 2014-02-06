@@ -1,7 +1,7 @@
 import outofbounds.BadgeCondition;
 import outofbounds.ConnectedCondition;
 import outofbounds.QuestionNumberCondition
-import outofbounds.ConnectedCondition.CalendarFormat;
+import outofbounds.ReputationCondition
 import outofbounds.Badge.BadgeMedal;
 import outofbounds.Badge
 import outofbounds.Question
@@ -13,6 +13,7 @@ import outofbounds.UserRole
 
 class BootStrap {
 	def springSecurityService
+	def badgeService
 
 	def init = { servletContext ->
 		//roles definition
@@ -41,17 +42,11 @@ class BootStrap {
 		}
 
 		//random user
-		def user = User.findByUsername('a') ?: new User(
-			username: 'a',
-			password: 'a',			
-			realname: "jack ouzi",
-			location: "in my spirit",
-			website: "http://a.com",
-			email: "a@a.hotmail.fr",
-			enabled: true).save(failOnError: true)
-		if (!user.authorities.contains(userRole)) {
-			UserRole.create user, userRole
+		for (String a in ["a","b","c","d","e","f","g","h","i","j"]) {
+			createSimplifiedStandardUser(a, userRole)
 		}
+
+		def user = createSimplifiedStandardUser("user", userRole)
 
 
 		//first question
@@ -97,44 +92,74 @@ class BootStrap {
 			title:"How to insert a graphic in Qt",
 			text:'<img alt="" height="347" src="http://www.menucool.com/slider/prod/image-slider-4.jpg"><p><strong>ed in, etc. HOWEVER, I do want to DISPLAY them in the same order. It seems to me that this logic should be able to exist ENTIRELY in the view layer, but the only solutions I&#39;ve been able to find tell me to declare items as a SortedSet in the model layer. This also affects my controller layer, as simple List op<em>erations such as .collect{} now require extra synta</em></strong><em>ctic jumping around to keep the type conversions correct and preserve my sorting. To me, this is nuts, so I must be missing something simple! Is there any way, for example, to do something like </em><code><em>&lt;g:each in=&quot;${cart.items</em>.sort{it.name}}&quot;&gt;</code> or so</p>',
 			user:user).addToTags(tagcpp).save(failOnError: true)
-		
-		//badges
-		BadgeCondition bc = new ConnectedCondition(1, CalendarFormat.HOUR)
-		def badge = Badge.findByName("hourConnection") ?: new Badge(
-			name:"hourConnection",
-			description:"you've been here for an hour",
-			medal:BadgeMedal.Bronze,
-			conditionClass: ConnectedCondition.class.getName(),
-			conditionParameters: bc.getParameters()
-			).save(failOnError: true)
-			
-		BadgeCondition bcy = new ConnectedCondition(1, CalendarFormat.YEAR)
-		def badgey = Badge.findByName("yearConnection") ?: new Badge(
-			name:"yearConnection",
-			description:"you've been here for a year",
-			medal:BadgeMedal.Silver,
-			conditionClass: ConnectedCondition.class.getName(),
-			conditionParameters: bcy.getParameters()
-			).save(failOnError: true)
-				
-		BadgeCondition bcs = new ConnectedCondition(0, CalendarFormat.HOUR)
-		def badgesec = Badge.findByName("First connection") ?: new Badge(
-			name:"First connection",
-			description:"Hello world",
-			medal:BadgeMedal.Bronze,
-			conditionClass: ConnectedCondition.class.getName(),
-			conditionParameters: bcs.getParameters()
-			).save(failOnError: true)
-				
-		BadgeCondition bcq = new QuestionNumberCondition(1);
-		def badgeq = Badge.findByName("First question") ?: new Badge(
-			name:"First question",
-			description:"You're first question!",
-			medal:BadgeMedal.Bronze,
-			conditionClass: QuestionNumberCondition.class.getName(),
-			conditionParameters: bcq.getParameters()
-			).save(failOnError: true)
+
+		initBadges()
 	}
 	def destroy = {
 	}
+
+	def createSimplifiedStandardUser(String username, def userRole) {
+		def user = User.findByUsername(username) ?: new User(
+			username: username,
+			password: username,			
+			realname: username,
+			location: username,
+			website: username,
+			email: username + "@hotmail.fr",
+			enabled: true).save(failOnError: true)
+		if (!user.authorities.contains(userRole)) {
+			UserRole.create user, userRole
+		}
+		return user
+	}
+
+	def initBadges() {
+		badgeService.saveBadge("Hello you",
+			"You've been here for more than a second",
+			BadgeMedal.Bronze,
+			new ConnectedCondition(0, "HOUR")
+			)
+		badgeService.saveBadge("Happy hour",
+			"You've been here for more than an hour",
+			BadgeMedal.Silver,
+			new ConnectedCondition(1, "HOUR")
+			)
+		badgeService.saveBadge("Happy birthday",
+			"You've been here for more than a year",
+			BadgeMedal.Gold,
+			new ConnectedCondition(1, "YEAR")
+			)
+		badgeService.saveBadge("One question",
+			"And the others will follow",
+			BadgeMedal.Bronze,
+			new QuestionNumberCondition(1)
+			)
+		badgeService.saveBadge("Thirteen questions",
+			"Good luck",
+			BadgeMedal.Silver,
+			new QuestionNumberCondition(13)
+			)
+		badgeService.saveBadge("Forty-two questions",
+			"We hope you've got your answer",
+			BadgeMedal.Gold,
+			new QuestionNumberCondition(42)
+			)
+		badgeService.saveBadge("Second reputation",
+			"You're reputation is growing",
+			BadgeMedal.Bronze,
+			new ReputationCondition(2)
+			)
+		badgeService.saveBadge("Third reputation",
+			"Three",
+			BadgeMedal.Silver,
+			new ReputationCondition(333)
+			)
+		badgeService.saveBadge("Reputation hunter",
+			"There's a bounty on your head",
+			BadgeMedal.Gold,
+			new ReputationCondition(1000)
+			)
+	}
+
 }
+

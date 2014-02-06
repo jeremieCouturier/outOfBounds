@@ -6,56 +6,51 @@ import grails.transaction.Transactional
 
 @Transactional
 class BadgeService {
-
-    def serviceMethod() {
-
-    }
 	
-	def updateBadge(String name, String description, BadgeMedal medal, BadgeCondition badgeCondition)
+	def saveBadge(String name, String description,
+		BadgeMedal medal, BadgeCondition badgeCondition)
 	{
 		Badge badge = Badge.findByName(name);
-		if (badge != null) {
-			if (badge.description != description) {
-				badge.description = description;
-			}
-			if (badge.medal != medal) {
-				badge.medal = medal;
-			}
-		} else {
+		if (badge == null) {
 			badge = new Badge(
 				name: name,
 				description: description,
 				medal: medal,
-				conditionClass: badgeCondition.getClass(),
-				conditionParameters: badgeCondition.getParameters()
-			)
+				conditionClass: badgeCondition.getClass().getName(),
+				conditionParameters : badgeCondition.getParameters().join(";")
+			).save(failOnError: true)
 		}
-		badge.save(failOnError: true)
 		return badge
 	}
 	
 	def callConditionOnBadge(Badge badge, User user) {
+		if (badge == null || user == null)  return false
 		try {
 			Class<?> conditionClass = Class.forName(badge.conditionClass);
-			BadgeCondition condition = conditionClass.newInstance()
-			condition.setParameters(badge.conditionParameters)
-			return condition.check(user)
+			if (conditionClass != null) {
+				BadgeCondition condition = conditionClass.newInstance()
+				condition.setParameters(badge.conditionParameters.split(";").toList())
+				return condition.check(user)
+			}
 		}
 		catch(Exception e) {
+			throw e
 			return false
 		}
 		return false;
 	}
 	
 	def addBadgeToUser(Badge badge, User user) {
-		if (user == null) return user
+		if (badge == null || user == null)  return user
 
+		// does user already has the badge ?
 		for (EarnedBadge awardBadge : user.badges) {
-			if (awardBadge?.badge?.name == badge?.name) {
+			if (awardBadge.badge.name == badge.name) {
 				return user
 			}
 		}
 
+		// create user's badge
 		EarnedBadge awardBadge = new EarnedBadge(
 			badge: badge,
 			user: user
@@ -72,5 +67,9 @@ class BadgeService {
 	
 	def getAllBadges() {
 		return Badge.list()
+	}
+
+	def findByName(String name) {
+		return Badge.findByName(name)
 	}
 }

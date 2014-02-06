@@ -8,25 +8,20 @@ import org.hibernate.util.CalendarComparator;
 import outofbounds.User;
 
 class ConnectedCondition implements BadgeCondition {
-	
-	enum CalendarFormat {
-		YEAR,
-		HOUR
-	}
 
 	int neededValue
 	int calendarFormat
-	
+
 	public ConnectedCondition() {
 		this.neededValue = 1
-		calendarFormat = Calendar.YEAR
+		calendarFormat = Calendar.HOUR
 	}
-	
-	public ConnectedCondition(int neededValue, CalendarFormat format) {
+
+	public ConnectedCondition(int neededValue, String format) {
 		this.neededValue = neededValue
 		switch(format) {
-			case CalendarFormat.YEAR: calendarFormat = Calendar.YEAR; break
-			case CalendarFormat.HOUR: calendarFormat = Calendar.HOUR; break
+			case "YEAR": calendarFormat = Calendar.YEAR; break
+			case "HOUR": calendarFormat = Calendar.HOUR; break
 			default: calendarFormat = Calendar.YEAR
 		}
 	}
