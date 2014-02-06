@@ -20,7 +20,19 @@
 		
 
 		<div class="groupUser">
-			<g:render template="templateUser" collection="${users}" var="user" />
+		<table>
+		   <g:each var="i" in="${ (0..<(users.size()-1)/4+1) }">
+		   <g:set var="liste" value="${users.subList(i*4, Math.min((i+1)*4, users.size()))}" />
+			<tr>
+				<g:each var="j" in="${(0..<liste.size()) }">
+					<td>
+					<g:render template="templateUser" bean="${liste.get(j)}" var="user" />
+					</td>
+				</g:each>
+			</tr>
+			
+			</g:each>
+		</table>
 		</div>
 		
 		<div class="pagination">

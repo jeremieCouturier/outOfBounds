@@ -12,9 +12,11 @@
 
 .userDetailled .title .content {
 	display: inline-block;
-        width: 100%;
-        margin-top: 19px;
+    width: 80%;
+    margin-top: 19px;
 	margin-left: 20px;
+	padding-bottom:20px;
+	border-bottom : solid rgb(100, 100, 100) 1px;
 }
 
 .userDetailled .title .content .parameters,
