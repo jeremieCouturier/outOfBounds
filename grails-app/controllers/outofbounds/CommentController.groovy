@@ -10,8 +10,8 @@ import grails.plugin.springsecurity.annotation.Secured
 class CommentController {
 
     def springSecurityService
-	def PostService
-	def CommentService
+	def postService
+	def commentService
 
     static allowedMethods = [update: "PUT"]
 
@@ -28,7 +28,7 @@ class CommentController {
         }
 
         if (comment.canUserEditPost(getAuthenticatedUser())) {
-            [commentInstance: comment, questionInstance: PostService.findQuestionPost(comment)]
+            [commentInstance: comment, questionInstance: postService.findQuestionPost(comment)]
         } else {
             flash.message = message(code: 'post.edit_not_authorized', args: ['comment'])
             Post p = Post.findById(comment.post.id)
@@ -67,10 +67,10 @@ class CommentController {
     @Transactional
     def deleteComment() {
 		def comment = Comment.findById(params.int('comment_id'))
-		def question = PostService.findQuestionPost(comment)
+		def question = postService.findQuestionPost(comment)
 
 		if (comment && comment.canUserDeletePost(getAuthenticatedUser())) {
-			CommentService.delete(comment)
+			commentService.delete(comment)
 			flash.message = message(code: 'post.delete_success', args: ["comment"])
 		} else {
 			flash.message = message(code: 'post.delete_not_authorized', args: ["comment"])
