@@ -4,10 +4,6 @@ import grails.transaction.Transactional
 
 @Transactional
 class CommentService {
-
-    def serviceMethod() {
-
-    }
 	
 	def delete(Comment comment)
 	{

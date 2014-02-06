@@ -12,28 +12,30 @@
 
 .userDetailled .title .content {
 	display: inline-block;
-        width: 40%;
+        width: 100%;
         margin-top: 19px;
 	margin-left: 20px;
 }
 
-.userDetailled .title .content .parameters {
+.userDetailled .title .content .parameters,
+.userDetailled .title .content .values {
 	display:block;
 	float: left;
-	width: 50%;
-	color: rgb(120, 120, 120);
+	width: 30%;
 	font-weight: normal;
-	font-style: italic;
 	font-size: 12px;
 }
 
-.userDetailled .title .content .values {
-	display: block;
-	width: 50%;
-	float: left;
-        
-   	font-weight: normal;
-	font-size: 12px;
+.userDetailled .title .content .parameters {
+	color: rgb(120, 120, 120);
+	font-style: italic;
+}
+
+.userDetailled .title .content .reputation {
+	display:block;
+        float: left;
+	height: 100%;
+	width: 20%;
 }
 
 .userDetailled .title .content .parameters .parameter,

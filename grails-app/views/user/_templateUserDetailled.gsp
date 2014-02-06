@@ -2,6 +2,11 @@
 	<div class="username"><label>${user?.username}</label>
 	</div>
 	<div class="content">
+
+		<div class="reputation">
+		${user?.reputation}
+		</div>
+
 		<div class="parameters">
 		<label class="parameter"><g:message code="index.realname"/></label>
 		<label class="parameter"><g:message code="index.location"/></label>

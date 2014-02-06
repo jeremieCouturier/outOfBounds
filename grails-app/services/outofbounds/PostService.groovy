@@ -6,10 +6,6 @@ import grails.transaction.Transactional
 class PostService {
 
 	def UserService
-
-    def serviceMethod() {
-
-    }
 	
 	def addComment(int post_id, String text, User user)
 	{

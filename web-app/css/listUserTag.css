@@ -1,11 +1,18 @@
-.groupUser, .groupTag {
+.groupTag {
 	margin: 20px 20px 60px 60px;
 }
-
+.groupUser {
+	margin: 0 auto;
+width:50%
+}
 .user, .tag {
 	display: inline-block;
 	margin-right:20%;
 	vertical-align: top;
+}
+
+.user {
+        margin-bottom: 20px;
 }
 
 .user a, .tag a {
@@ -13,6 +20,17 @@
 	font-weight: bold;
 	font-size: 16px;
 	text-decoration:none; 
+}
+.user img {
+  width: 50px;
+}
+.user a {
+display: block;
+}
+.user .reputation {
+vertical-align: top;
+display: inline-block;
+color: rgb(150, 150, 150);
 }
 
 .tag .text {
@@ -28,9 +46,9 @@ label {
 }
 
 .description label.description {
-	margin-left:40px;
-	margin-right:40px;
-	margin-top:20px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
 	margin-bottom:20px;
 	padding: 20px 20px 20px 20px;
 	font-size: 15px;
@@ -64,11 +82,76 @@ td {
 }
 
 .userDetailled .title {
-	font-size:23px;
+	font-size:1px;
 	font-weight:bold;
 	margin: 30px 0px 15px 40px;
 	padding-right: 10%;
 	padding-bottom: 8px;
+	border-bottom:1px solid rgb(150, 150, 150);
+	cursor: text;
+}
+
+.user a, .tag a {
+	color: rgb(12, 123, 184);
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration:none; 
+}
+
+.tag .text {
+	font-size: 12px;
+	font-color: rgb(150, 150, 150);
+	line-height: 15px;
+	margin-top:5px;
+	font-style: italic;
+}
+
+label {
+	cursor: text;
+}
+
+.description label.description {
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:20px;
+	padding: 20px 0px 20px 20px;
+	fo:-size: 15px;
+	font-style: italic;
+	border : solid rgb(100, 100, 100) 1px;
+	width: 80%;
+}
+
+.description label.name {
+	font-size: 20px;
+	font-weight:bold;
+	margin-left:60px;
+	text-transform: uppercase;
+	padding-left:20px;
+	padding-right:160px;
+	padding-top:4px;
+	padding-bottom: 4px;
+	color: white;
+	background-color: rgb(12, 123, 184);
+}
+
+table:HOVER, tr:HOVER, td:HOVER {
+	background-color: transparent;
+}
+
+td {
+	padding-bottom:20px;
+	margin-bottom: 20px;
+	border-color: rgb(200, 200, 200);
+	border-style:  none none solid none;
+}
+
+.userDetailled .title {
+	font-size:1px;
+	font-weight:bold;
+	margin: 30px 0px 15px 40px;
+	padding-right: 10%;
+	paddi1-bottom: 8px;
 	border-bottom:1px solid rgb(150, 150, 150);
 	cursor: text;
 }

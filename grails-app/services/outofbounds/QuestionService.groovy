@@ -6,10 +6,6 @@ import grails.transaction.Transactional
 class QuestionService {
 	def answerService
 
-    def serviceMethod() {
-
-    }
-
 	def setTags(String tagString, Question question)
 	{
 		String[] tagsName = tagString.split("[;,:( )]+")

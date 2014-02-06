@@ -6,10 +6,6 @@ import grails.transaction.Transactional
 
 @Transactional
 class AnswerService {
-
-    def serviceMethod() {
-
-    }
 	
 	def updateAnswer(int answer_id, String text)
 	{

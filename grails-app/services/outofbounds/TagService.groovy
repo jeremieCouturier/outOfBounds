@@ -4,10 +4,6 @@ import grails.transaction.Transactional
 
 @Transactional
 class TagService {
-
-    def serviceMethod() {
-
-    }
 	
 	def popularTags(def offset, def max) {
 

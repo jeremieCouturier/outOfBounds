@@ -20,6 +20,8 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
+	Integer reputation = 1
+	
 	static transients = ['springSecurityService']
 
 	transient bEncoded = false
