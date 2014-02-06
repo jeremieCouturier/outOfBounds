@@ -9,7 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class BadgeController {
 
     def springSecurityService
-	def badgeService
+    def badgeService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -107,27 +107,31 @@ class BadgeController {
             '*'{ render status: NOT_FOUND }
         }
     }
-	
-	def badges() {
-		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
-		def medal = params?.medal ?: "all"
-		
-		def badges
-		
-		switch (medal) {
-			case "bronze" : badges = Badge.findAllByMedal("Bronze"); break
-			case "silver" : badges = Badge.findAllByMedal("Silver"); break
-			case "gold" : badges = Badge.findAllByMedal("Gold"); break
-			default : badges = Badge.all; break
-		}
-		
-		render(
-			view: '/badge/index',
-			model: [
-				badges: badges,
-				total: badges?.count ?: 0, choice: medal, layout: "badge"
-			]
-		)
-	}
+    
+    /**
+     * Get the list of badges (filtered on medals)
+     */
+    def badges() {
+        def offset = params?.offset ?: 0
+        def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+        def medal = params?.medal ?: "all"
+        
+        def badges
+        
+        switch (medal) {
+            case "bronze" : badges = Badge.findAllByMedal("Bronze"); break
+            case "silver" : badges = Badge.findAllByMedal("Silver"); break
+            case "gold" : badges = Badge.findAllByMedal("Gold"); break
+            default : badges = Badge.all; break
+        }
+        
+        render(
+            view: '/badge/index',
+            model: [
+                badges: badges,
+                total: badges?.count ?: 0, choice: medal, layout: "badge"
+            ]
+        )
+    }
+
 }
