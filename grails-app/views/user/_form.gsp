@@ -57,7 +57,7 @@
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${userInstance?.posts?}" var="p">
+<g:each in="${userInstance?.posts?}" var="p" >
     <li><g:link controller="post" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

@@ -14,7 +14,6 @@ class User {
 	String location
 	String password
 	
-	String avatarpath = new String("user_unknown.png");
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -29,7 +28,10 @@ class User {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false, password: true
-		avatarpath blank: false
+		realname nullable: true
+		email nullable: true
+		website nullable: true
+		location nullable: true
 	}
 
 	static mapping = {

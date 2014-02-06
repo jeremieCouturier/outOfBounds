@@ -21,9 +21,10 @@
 		</g:hasErrors>
 
 		<div class="title">
-	    	<label>Edit your Comment</label>
+	    	<label><g:message code='default.edit.label' args='["your comment"]' /></label>
 		</div>
 		<g:form url="[resource:commentInstance, action:'update']" method="PUT" >
+			<!-- text -->
 			<textarea name="text">${commentInstance.text}</textarea>			
 			
 			<div class="bottom">
@@ -32,7 +33,7 @@
 		        </div>
 		        <div class="button">
 			        <g:link controller="Question" action="show" params='[question_id: "${questionInstance.id}"]'>
-				        <button>Cancel</button>
+				        <button><g:message code='default.button.cancel.label' /></button>
 				    </g:link>
 				</div>
 			</div>

@@ -15,7 +15,7 @@
 				<g:message code="question.title" />
 				<span>*</span>
 			</label>
-			<input class="text" id="title" name="title" required="" placeholder="What's your programming question? Be specific?" value="${questionInstance?.title}"/>
+			<input class="text" id="title" name="title" required="" placeholder="${message (code: 'question.title.placeholder')}" value="${questionInstance?.title}"/>
 		</div>
 	</div>
 	
@@ -36,7 +36,7 @@
 				<g:message code="question.tags" />		
 				<span>*</span>
 			</label>
-			<input class="text" name="question_tags" value="${tags}" required="" placeholder="at least one tag such as java, grails, c++ (max 5 tags)">
+			<input class="text" name="question_tags" value="${tags}" required="" placeholder="${message (code: 'question.tags.placeholder')}">
 		</div>	
 	</div>
 </fieldset>

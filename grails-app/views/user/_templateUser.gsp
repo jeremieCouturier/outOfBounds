@@ -3,6 +3,6 @@
 		${user?.username} 
 	</g:link>
 	<div class="reputation">
-		<g:message code='user.reputation' /> ${user?.reputation}
+		<g:message code='user.reputation' args="[user?.reputation]" />
 	</div>
 </div>

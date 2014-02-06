@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Out of bounds</title>
+		<title>Out of Bounds</title>
 	</head>
 	<body>
 		<g:render template="/header" />

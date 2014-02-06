@@ -64,10 +64,10 @@
 			<sec:ifLoggedIn>
 	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isAdmin() }">
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
-			        Edit
+			        <g:message code='default.button.edit.label'/>
 			    </g:link>
 			    <g:link controller="Question" action="deleteQuestion" params='[question_id: "${question.id}"]'>
-			        Delete
+			        <g:message code='default.button.delete.label'/>
 			    </g:link>
 			</g:if>
 			</sec:ifLoggedIn>

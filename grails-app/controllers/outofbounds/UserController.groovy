@@ -28,11 +28,7 @@ class UserController {
             ]
         )	
     }
-	
-	def login() {
 		
-	}
-	
     def show() {
 
 		def user_id = params.user_id?: getAuthenticatedUser()?.id

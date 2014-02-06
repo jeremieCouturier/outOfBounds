@@ -6,13 +6,13 @@
 <div class="list_question">
 
 	<div class="parameters">
-	<div class="group_mark">
-		<span class="mark_value">${question.mark}</span><br/>
-		<span class="mark_name">vote<g:if test="${question.mark != 0 }">s</g:if></span><br/>
-		<span class="answers_value">${question.answers.size()}</span><br/>
-		<span class="answers_name">answer<g:if test="${question.answers.size() != 0 }">s</g:if></span><br/>
-	</div>
-		<span class="views">${question.views} view<g:if test="${question.views != 0 }">s</g:if></span>
+		<div class="group_mark">
+			<span class="mark_value">${question.mark}</span><br/>
+			<span class="mark_name"><g:message code='question.vote_pl' args="[question.mark]"/></span><br/>
+			<span class="answers_value">${question.answers.size()}</span><br/>
+			<span class="answers_name"><g:message code='question.answer_pl' args="[question.answers.size()]"/></span><br/>
+		</div>
+		<span class="views"><g:message code="question.view_count" args="[question.views]"/></span>
 	</div>
 
 	<div class="group_message">

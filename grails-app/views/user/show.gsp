@@ -16,10 +16,10 @@
 			<g:render template="templateUserDetailled" bean="${userInstance}" var="user" />
 			
 			<ul class="menuInPage"> 
-			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance?.id}"]'>questions</g:link></li>
-			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userAnswers" params='[user_id: "${userInstance?.id}"]'>answers</g:link></li>
-			   <li <g:if test="${choice.equals('tags')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName">tags</g:link></li>
-			   <li <g:if test="${choice.equals('badges')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userBadges" params='[user_id: "${userInstance?.id}"]'>badges</g:link></li>
+			   <li <g:if test="${choice.equals('questions')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userQuestions" params='[user_id: "${userInstance?.id}"]'><g:message code='question.questions'/></g:link></li>
+			   <li <g:if test="${choice.equals('answers')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userAnswers" params='[user_id: "${userInstance?.id}"]'><g:message code='answer.answers'/></g:link></li>
+			   <li <g:if test="${choice.equals('tags')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="actionName"><g:message code='tag.tags'/></g:link></li>
+			   <li <g:if test="${choice.equals('badges')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="userBadges" params='[user_id: "${userInstance?.id}"]'><g:message code='badge.badges'/></g:link></li>
 			</ul> 
 			
 			<g:if test="${choice.equals('questions')}">

@@ -19,7 +19,6 @@
 	
     <g:form action="updateAnswer" id="${answerInstance.id}">
     	<div class="block">
-			<!-- <textarea name="answer_text" required placeholder="Add an answer ...">${answerInstance.text}</textarea> -->
 			<ckeditor:config var="toolbar_Mytoolbar">
 				[
 				    ['Bold', 'Italic', '-', 'Link', 'Unlink', 'Blockquote','CreateDiv', 'Image', '-', 'NumberedList', 'BulletedList', 'HorizontalRule', '-', 'Undo','Redo']
