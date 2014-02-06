@@ -28,22 +28,22 @@ class PostControllerSpec extends Specification {
 
         user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
             password: 'a', location: 'fr', website: 'google.fr')
-        user.save(flush: true)
+        user.save(flush: true, failOnError: true)
 
         def question = new Question(title: "title very long", text: "text", user: user)
-        question.save(flush: true)
+        question.save(flush: true, failOnError: true)
 
         when: "adding new comment"
             params.id = '1'
             params.text = 'text'
             controller.addComment()
         then: "save it and redirect to its page"
-            assert response.redirectedUrl == "/question/show?question_id=1"
+            assertEquals response.redirectedUrl, "/question/show?question_id=1"
 
             def q = Question.findById(1)
-            assert q.comments != null
-            assert q.comments[0] != null
-            assert q.comments[0].text == "text"
+            assertNotNull q.comments
+            assertNotNull q.comments[0]
+            assertEquals q.comments[0].text, "text"
     }
 
 
@@ -54,17 +54,17 @@ class PostControllerSpec extends Specification {
 
         user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
             password: 'a', location: 'fr', website: 'google.fr')
-        user.save(flush: true)
+        user.save(flush: true, failOnError: true)
 
         def question = new Question(title: "title very long", text: "text", user: user)
-        question.save(flush: true)
+        question.save(flush: true, failOnError: true)
 
         when: "down vote a post"
             params.post_id = '1'
             controller.upVote()
         then: "read mark"
             def q = Question.findById(1)
-            assert q.mark == 1
+            assertEquals q.mark, 1
     }
 
 
@@ -75,17 +75,17 @@ class PostControllerSpec extends Specification {
 
         user = new User(username: 'username', realname: 'realname', email: 'aaa@aa.fr',
             password: 'a', location: 'fr', website: 'google.fr')
-        user.save(flush: true)
+        user.save(flush: true, failOnError: true)
 
         def question = new Question(title: "title very long", text: "text", user: user)
-        question.save(flush: true)
+        question.save(flush: true, failOnError: true)
 
         when: "down vote a post"
             params.post_id = '1'
             controller.downVote()
         then: "read mark"
             def q = Question.findById(1)
-            assert q.mark == -1
+            assertEquals q.mark, -1
     }   
 }
 

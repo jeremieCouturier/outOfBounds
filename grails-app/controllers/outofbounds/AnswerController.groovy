@@ -10,7 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class AnswerController {
 	
-	def AnswerService
+	def answerService
 
     def springSecurityService
 
@@ -21,7 +21,13 @@ class AnswerController {
 		def user = getAuthenticatedUser()
 
         if (params.text != null && params.text.size() != 0) {
-        	AnswerService.create(params.int('id'), params.text, user)
+        	def answer = answerService.create(params.int('id'), params.text, user)
+
+            // question does not exist!
+            if (answer == null) {
+                notFound()
+                return
+            }
         } else {
             flash.message = message(code: "answer.text.size.toosmall")
         }
@@ -45,7 +51,7 @@ class AnswerController {
 	
     @Secured(['IS_AUTHENTICATED_FULLY'])    
 	def updateAnswer() {
-		def answer = AnswerService.updateAnswer(Integer.parseInt(params.id), params.answer_text)
+		def answer = answerService.updateAnswer(Integer.parseInt(params.id), params.answer_text)
 		
         redirect controller: 'question', action:'show', params: ['question_id': answer.question.id]
 	}
@@ -54,13 +60,23 @@ class AnswerController {
     def deleteAnswer() {
 
         def answer = Answer.findById(params.int('answer_id'))
+        if (answer == null) {
+            notFound()
+            return
+        }
+
         def question = answer.question      
-		if (answer && answer.canUserDeletePost(getAuthenticatedUser())) {
-            AnswerService.delete(answer)
+        if (answer && answer.canUserDeletePost(getAuthenticatedUser())) {
+            answerService.delete(answer)
             flash.message = message(code: 'post.delete_success', args: ["answer"])
         } else {
             flash.message = message(code: 'post.delete_not_authorized', args: ["answer"])
         }
        redirect controller: 'question', action: 'show', params: ['question_id': question.id]
+    }
+
+    protected void notFound() {
+        flash.message = message(code: "answer.question_404")
+        redirect controller: 'question', action:'index'
     }
 }

@@ -21,6 +21,10 @@ class AnswerService {
 	{
 		def question = Question.findById(question_id)
 		
+		if (question == null) {
+			return null
+		}
+
 		Answer answer = new Answer(
 			question:question,
 			text:text,
