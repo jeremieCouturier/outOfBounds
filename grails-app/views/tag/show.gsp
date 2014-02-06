@@ -6,6 +6,8 @@
 	<head>
 		<meta name="layout" content="main">
 		<link href="${resource(dir: 'css', file: 'listUserTag.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'tag.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
 		<title><g:message code="tag.tagged_question" /></title>
 	</head>
 	<body>
@@ -21,13 +23,17 @@
 		<div class="description">
 			<label class="name">${tag.name}</label>
 			<label class="description">${tag.description?: message(code: "tag.no_description")}</label>
-				
-			<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>
-				<g:link controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
-		    	 	<g:message code="tag.edit_it" />
-		     	</g:link>
-		    </sec:ifAnyGranted>
 		</div>
+		
+		<div class="edit">
+		<sec:ifAnyGranted roles='ROLE_MODERATOR, ROLE_ADMIN'>		     	
+	     	<g:form controller="Tag" action="edit" params='[tag_id: "${tag.id}"]'>
+			    <button type="submit"><g:message code="tag.edit_it"/></button>
+			</g:form>		     	
+	    </sec:ifAnyGranted>
+	    </div>
+		
+		<div class="separation"></div>
 
 	    <g:if test="${total == 0}">
 	    	<g:message code="tag.no_question_found" args="[choice, tag.name]" />

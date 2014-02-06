@@ -1,0 +1,54 @@
+.edit_tag {
+	display: block;
+	margin: 20px 40px 20px 40px;
+}
+
+.edit_tag .title {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+.edit_tag .title label{
+	clear:both;
+	display: block;
+	font-size:19px;
+	font-weight:bold;
+	margin-bottom:4px;
+	text-align: left;
+}
+
+.edit_tag .title .text, .edit_tag .text textarea {
+	display:block;
+	width:80%;
+	margin-bottom:20px;
+	clear:both;
+	background-color: white! important;
+	border-color : black! important;
+	color: black! important;
+}
+
+.edit_tag .text textarea {
+	display: block;
+	margin-top: 20px;
+	margin-left:0px;
+	width: 80%;
+	float:left;
+	min-height:150px;
+}
+
+
+.edit_tag .text{
+	display: block;
+	margin-bottom:20px;
+}
+
+
+
+.edit_tag .bouton{
+	clear:both;
+	margin-top: 25px;
+	margin-left:130px;
+}
+
+

@@ -5,12 +5,11 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'tag.label', default: 'Tag')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<link href="${resource(dir: 'css', file: 'widgets.css')}" rel="stylesheet">
+		<link href="${resource(dir: 'css', file: 'createTag.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<g:render template="/header" />
-
-		<div id="edit-tag" class="content scaffold-edit" tag="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+		<div>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -21,28 +20,36 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			
+			<div class="edit_tag">			
 			<g:form url="[resource:tagInstance, action:'update']" method="PUT" >
-				<fieldset class="form">
-					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'name', 'error')} required">
-						<label for="name">
+				<ckeditor:resources/>
+				<!-- title -->
+				<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'title', 'error')} required">
+				 	<div class="title">
+						<label for="title">
 							<g:message code="tag.name" />
-							<span class="required-indicator">*</span>
+							<span>*</span>
 						</label>
-						<g:textField name="name" required="" value="${tagInstance?.name}"/>
+						<input class="text" id="title" name="title" required="" value="${tagInstance?.name}"/>
 					</div>
-
-					<div class="fieldcontain ${hasErrors(bean: tagInstance, field: 'description', 'error')}">
-						<label for="description">
-							<g:message code="tag.description" />
-						</label>
-						<g:textField name="description" value="${tagInstance?.description}"/>
-					</div>
-
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" />
-				</fieldset>
+				</div>
+				
+				<!-- body -->
+				<ckeditor:config var="toolbar_Mytoolbar">
+				[
+				    ['Bold', 'Italic', '-', 'Link', 'Unlink', 'Blockquote','CreateDiv', 'Image', '-', 'NumberedList', 'BulletedList', 'HorizontalRule', '-', 'Undo','Redo']
+				]
+				</ckeditor:config>
+				<ckeditor:editor name="text" toolbar="Mytoolbar">
+					<div class="content">${tagInstance?.description}</div>
+				</ckeditor:editor>
+			
+				<div class="bouton">
+					<button type="submit">${message(code: 'default.button.update.label')}</button>
+				</div>
 			</g:form>
+			</div>
 		</div>
 	</body>
 </html>
