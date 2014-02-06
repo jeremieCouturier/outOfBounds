@@ -18,24 +18,26 @@
 }
 
 .userDetailled .title .content .parameters,
-.userDetailled .title .content .values {
-	display:block;
-	float: left;
-	width: 30%;
+.userDetailled .title .content .values,
+.userDetailled .title .content .reputation {
+	display:inline-block;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .userDetailled .title .content .parameters {
 	color: rgb(120, 120, 120);
 	font-style: italic;
+	margin-right: 10%;
 }
 
 .userDetailled .title .content .reputation {
-	display:block;
-        float: left;
-	height: 100%;
-	width: 20%;
+	float: right;
+	vertical-align: middle;
+	text-align: center;
+	margin-right: 15%;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .userDetailled .title .content .parameters .parameter,
