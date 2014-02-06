@@ -10,24 +10,20 @@ import com.megatome.grails.RecaptchaService
 @Transactional(readOnly = true)
 class UserController {
     def springSecurityService
-	def UserService
+	def userService
     
     RecaptchaService recaptchaService 
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST"]
 
     def index() {
-        redirect action: "newUsers"
-    }
-	
-	def newUsers() {
 		def offset = params?.offset ?: 0
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE*4
 
-		render(   
-            view: '/user/index',
+		render(
+            view: 'index',
             model: [ 
-                users: UserService.newUsers(offset, max), 
+                users: userService.newUsers(offset, max), 
                 total: User.count, choice: "new", layout: "user"
             ]
         )	
@@ -38,14 +34,14 @@ class UserController {
 	}
 	
     def show() {
-		def user = getAuthenticatedUser()
-		
-		if (user == null || params == null || params?.user_id == null) {
-			notFound()
-			return
-		}
 
-		def user_id = params?.user_id?:user.id
+		def user_id = params.user_id?: getAuthenticatedUser()?.id
+    
+        if (user_id == null) {
+            notFound()
+            return
+        }
+
 		redirect (
 			action: "userQuestions",
 			params: [user_id: user_id]
@@ -60,10 +56,10 @@ class UserController {
 			return
 		}
 		
-		def questions = UserService.userQuestions(user)
+		def questions = userService.userQuestions(user)
 		
 		render(
-			view: '/user/show',
+			view: 'show',
 			model: [
 				userInstance: user,
 				questions: questions,
@@ -80,10 +76,10 @@ class UserController {
 			return
 		}
 		
-		def questions = UserService.userAnswers(user)
+		def questions = userService.userAnswers(user)
 		
 		render(
-			view: '/user/show',
+			view: 'show',
 			model: [
 				userInstance: user,
 				questions: questions,
@@ -103,7 +99,7 @@ class UserController {
 		def badges = user?.badges
 		
 		render(
-			view: '/user/show',
+			view: 'show',
 			model: [
 				userInstance: user,
 				badges: badges,
@@ -164,65 +160,13 @@ class UserController {
         }
     }
 
-    def edit(User userInstance) {
-        respond userInstance
-    }
-
-    @Transactional
-    def update(User userInstance) {
-        if (userInstance == null) {
-            notFound()
-            return
-        }
-
-        if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'edit'
-            return
-        }
-        UserRole.delete userInstance, userRole, flush:true
-
-        userInstance.save flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.User'), userInstance.id])
-                redirect userInstance
-            }
-            '*'{ respond userInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(User userInstance) {
-
-        if (userInstance == null) {
-            notFound()
-            return
-        }
-
-        userInstance.delete flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.User'), userInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.User'), params.id])
+                flash.message = message(code: 'post.not_found', args: ['user'])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }
     }
-
-    def profile(User userInstance) {
-        userInstance = getAuthenticatedUser();
-        respond userInstance, view:'profile'
-    } 
 }
