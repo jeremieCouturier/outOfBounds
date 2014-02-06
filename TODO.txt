@@ -1,12 +1,17 @@
 FOUREL
 	- gestion des badges
 JUTAND 
-	- Édition / Suppression / gestion des erreurs qui s'affichent pas
-	- voir quels sont les paramètres à conserver (email, site web, ...) + formulaire d'inscription à fusionner avec celui pour google
 	- vérifier la validité des saisies (regex pour mail, ...) et signaler à l'utilisateur la partie qu'il a mal saisi
 	- CSS about + list des utilisateurs
-PELLOUX
-	- gestion de la sécurité (empecher de poster si pas logguer) : aussi bien au niveau de la vue (cacher les boutons) qu'au niveau du controleur (forçage d'URL)
-ALL 
-	- écrire les tests...
-	- enlever les strings en clair dans les .gsp et utiliser des g:messages à la place
+
+- check signup que ça plante pas
+
+
+Tests restants :
+	- badge
+	- login ?
+	- question (un peu)
+	- user ?
+
+Wiki :
+	- screenshot de l'appli

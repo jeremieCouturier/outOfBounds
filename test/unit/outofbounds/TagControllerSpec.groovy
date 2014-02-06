@@ -6,7 +6,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(TagController)
-@Mock([Tag, Question, User, Post])
+@Mock([Tag, Question, User, Post, Role, UserRole])
 class TagControllerSpec extends Specification {
 
     def user
@@ -27,11 +27,11 @@ class TagControllerSpec extends Specification {
         user.save(flush: true, failOnError: true)
 
 
-        tag1 = new Tag(name: "grails", description: "")
+        tag1 = new Tag(name: "grails", description: "", creationDate: new Date() - 1)
         tag1.save(flush: true, failOnError: true)
-        tag2 = new Tag(name: "groovy", description: "")
+        tag2 = new Tag(name: "groovy", description: "", creationDate: new Date())
         tag2.save(flush: true, failOnError: true)
-        tag3 = new Tag(name: "cpp", description: "")
+        tag3 = new Tag(name: "cpp", description: "", creationDate: new Date() + 1)
         tag3.save(flush: true, failOnError: true)
 
         def tags = [tag1, tag2, tag3]
@@ -55,7 +55,7 @@ class TagControllerSpec extends Specification {
             assertEquals response.redirectedUrl, '/tag/popularTags'
     }
 
-    void "Test the newest tags action returns most newest tags"() {
+    void "Test the newest tags action returns newest tags"() {
         when: 'Trying to access newest tags'
             controller.newTags()
         then: 'Should get the ordered list of newest tags'

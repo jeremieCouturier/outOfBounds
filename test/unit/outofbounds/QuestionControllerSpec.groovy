@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.validation.ValidationException
 
 @TestFor(QuestionController)
-@Mock([Question, User, Tag, Post])
+@Mock([Question, User, Tag, Post, Role])
 class QuestionControllerSpec extends Specification {
 
     def user

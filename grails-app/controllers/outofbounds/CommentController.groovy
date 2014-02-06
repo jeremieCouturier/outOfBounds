@@ -13,39 +13,10 @@ class CommentController {
 	def PostService
 	def CommentService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Comment.list(params), model:[commentInstanceCount: Comment.count()]
-    }
+    static allowedMethods = [update: "PUT"]
 
     def show(Comment commentInstance) {
         respond commentInstance
-    }
-
-    @Secured(['IS_AUTHENTICATED_FULLY'])    
-    @Transactional
-    def save(Comment commentInstance) {
-        if (commentInstance == null) {
-            notFound()
-            return
-        }
-
-        if (commentInstance.hasErrors()) {
-            respond commentInstance.errors, view:'create'
-            return
-        }
-
-        commentInstance.save flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'comment.Comment'), commentInstance.id])
-                redirect commentInstance
-            }
-            '*' { respond commentInstance, [status: CREATED] }
-        }
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])    

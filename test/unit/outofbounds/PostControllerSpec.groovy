@@ -7,7 +7,7 @@ import spock.lang.*
 import grails.plugin.springsecurity.SpringSecurityUtils
 
 @TestFor(PostController)
-@Mock([Question, User, Comment, UpVote, DownVote, Post])
+@Mock([Question, User, Comment, UpVote, DownVote, Post, Role])
 class PostControllerSpec extends Specification {
 
     def user
