@@ -1,7 +1,4 @@
-import outofbounds.BadgeCondition;
-import outofbounds.ConnectedCondition;
-import outofbounds.QuestionNumberCondition
-import outofbounds.ReputationCondition
+import outofbounds.badges.conditions.*;
 import outofbounds.Badge.BadgeMedal;
 import outofbounds.Badge
 import outofbounds.Question
