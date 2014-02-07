@@ -1,4 +1,4 @@
-package outofbounds
+package outofbounds.badges.conditions
 
 import java.util.Calendar;
 import java.util.List;

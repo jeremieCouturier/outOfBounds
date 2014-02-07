@@ -1,4 +1,5 @@
 <%@page import="outofbounds.User" %>
+<%@page import="outofbounds.Text"%>
 <%@ defaultCodec="none" %>
 
 <link href="${resource(dir: 'css', file: 'listQuestion.css')}" rel="stylesheet">
@@ -20,7 +21,7 @@
 		    ${question.title}
 		</g:link><br/>
 		<label class="text">
-			${question.summaryText()}
+			${Text.summaryText(question.text)}
 		<g:link controller="Question" action="show" params='[question_id: "${question.id}"]'>
 		    ...
 		</g:link><br/>
