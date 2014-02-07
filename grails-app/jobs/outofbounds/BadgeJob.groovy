@@ -2,7 +2,6 @@ package outofbounds
 
 import outofbounds.badges.conditions.BadgeCondition;
 import outofbounds.Badge;
-import outofbounds.Badge.BadgeMedal;
 import outofbounds.BadgeService;
 import outofbounds.User;
 
@@ -21,7 +20,7 @@ class BadgeJob {
      */
     def execute() {
 
-		badgeService.addBadgeToUser(badgeService.findByName("yearConnection"), userService.findByUsername("admin"))
+		//badgeService.addBadgeToUser(badgeService.findByName("yearConnection"), userService.findByUsername("admin"))
 		for (Badge badge : badgeService.getAllBadges()) {
 			for (User user : userService.getAllUsers()) {
 				if (badgeService.callConditionOnBadge(badge, user)) {
