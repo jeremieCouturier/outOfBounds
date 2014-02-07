@@ -4,6 +4,7 @@ import grails.transaction.Transactional
 
 @Transactional
 class QuestionService {
+
 	def answerService
 
 	def setTags(String tagString, Question question)
@@ -92,5 +93,9 @@ class QuestionService {
 	{
 		def listUnansweredQuestions = Question.findByViews(0)
 		return listUnansweredQuestions.list(max: max, offset: offset, sort: 'date', order: 'desc')
+	}
+
+	def getAllQuestionsByUser(User user) {
+		return Question.findAllByUser(user)
 	}
 }

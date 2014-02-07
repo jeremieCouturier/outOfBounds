@@ -14,19 +14,14 @@ class Badge {
 	String description
 	BadgeMedal medal
 	Date dateCreated = new Date()
-	
-	/**
-	 * @conditionClass class implementing BadgeCondition used to bind some badges to an user
-	 * @conditionParameters parameters used by this class to perform this particular badge
-	 */
-	String conditionClass
+
 	String conditionParameters
 	
 	static hasMany = [users: User]
+	static belongsTo = [condition: RegisteredCondition]
 
     static constraints = {
 		name  blank: false, unique: true
 		medal blank: false
-		conditionClass blank: false
     }
 }

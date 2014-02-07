@@ -26,9 +26,9 @@ class AnswerService {
 		}
 
 		Answer answer = new Answer(
-			question:question,
-			text:text,
-			user:user
+			question: question,
+			text: text,
+			user: user
 		).save(failOnError: true)
 
 		return answer
@@ -45,6 +45,10 @@ class AnswerService {
 		
 		question.removeFromAnswers(answer)
 		answer.delete()
-		question.save(FailOnError: true)
+		question.save(failOnError: true)
+	}
+
+	def getAllAnswersByUser(User user) {
+		return Answer.findAllByUser(user)
 	}
 }

@@ -31,7 +31,7 @@
 			
 			<g:if test="${choice.equals('badges')}">
 					<g:render template="/badge/templateEarnedBadge" var="badge" 
-					 collection="${badges}" params='[earnedDate: "${earnedDate}"]'
+					 collection="${badges}"
 					/>
 			</g:if>
 			

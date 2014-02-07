@@ -1,5 +1,4 @@
 import outofbounds.badges.conditions.*;
-import outofbounds.Badge.BadgeMedal;
 import outofbounds.Badge
 import outofbounds.Question
 import outofbounds.Answer
@@ -111,49 +110,49 @@ class BootStrap {
 	}
 
 	def initBadges() {
-		badgeService.saveBadge("Hello you",
-			"You've been here for more than a second",
-			BadgeMedal.Bronze,
+		badgeService.saveBadge("bootstrap.badge.helloyou",
+			"bootstrap.badge.helloyou.content",
+Badge.			BadgeMedal.Bronze,
 			new ConnectedCondition(0, "HOUR")
 			)
-		badgeService.saveBadge("Happy hour",
-			"You've been here for more than an hour",
-			BadgeMedal.Silver,
+		badgeService.saveBadge("bootstrap.badge.happyhour",
+			"bootstrap.badge.happyhour.content",
+			Badge.BadgeMedal.Silver,
 			new ConnectedCondition(1, "HOUR")
 			)
-		badgeService.saveBadge("Happy birthday",
-			"You've been here for more than a year",
-			BadgeMedal.Gold,
+		badgeService.saveBadge("bootstrap.badge.birthday",
+			"bootstrap.badge.birthday.content",
+			Badge.BadgeMedal.Gold,
 			new ConnectedCondition(1, "YEAR")
 			)
-		badgeService.saveBadge("One question",
-			"And the others will follow",
-			BadgeMedal.Bronze,
+		badgeService.saveBadge("bootstrap.badge.onequestion",
+			"bootstrap.badge.onequestion.content",
+			Badge.BadgeMedal.Bronze,
 			new QuestionNumberCondition(1)
 			)
-		badgeService.saveBadge("Thirteen questions",
-			"Good luck",
-			BadgeMedal.Silver,
+		badgeService.saveBadge("bootstrap.badge.thirteenquestions",
+			"bootstrap.badge.thirteenquestions.content",
+			Badge.BadgeMedal.Silver,
 			new QuestionNumberCondition(13)
 			)
-		badgeService.saveBadge("Forty-two questions",
-			"We hope you've got your answer",
-			BadgeMedal.Gold,
+		badgeService.saveBadge("bootstrap.badge.fortytwoquestions",
+			"bootstrap.badge.fortytwoquestions.content",
+			Badge.BadgeMedal.Gold,
 			new QuestionNumberCondition(42)
 			)
-		badgeService.saveBadge("Second reputation",
-			"You're reputation is growing",
-			BadgeMedal.Bronze,
+		badgeService.saveBadge("bootstrap.badge.secondreputation",
+			"bootstrap.badge.secondreputation.content",
+			Badge.BadgeMedal.Bronze,
 			new ReputationCondition(2)
 			)
-		badgeService.saveBadge("Third reputation",
-			"Three",
-			BadgeMedal.Silver,
+		badgeService.saveBadge("bootstrap.badge.thirdreputation",
+			"bootstrap.badge.thirdreputation.content",
+			Badge.BadgeMedal.Silver,
 			new ReputationCondition(333)
 			)
-		badgeService.saveBadge("Reputation hunter",
-			"There's a bounty on your head",
-			BadgeMedal.Gold,
+		badgeService.saveBadge("bootstrap.badge.reputationhunter",
+			"bootstrap.badge.reputationhunter.content",
+			Badge.BadgeMedal.Gold,
 			new ReputationCondition(1000)
 			)
 	}

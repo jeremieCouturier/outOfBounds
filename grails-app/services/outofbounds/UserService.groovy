@@ -4,6 +4,9 @@ import grails.transaction.Transactional
 
 @Transactional
 class UserService {
+
+	def questionService
+	def answerService
 	
 	def newUser(def offset, def max) {
 		
@@ -52,26 +55,27 @@ class UserService {
 	 * http://meta.stackoverflow.com/questions/7237/how-does-reputation-work
 	 */
 	def updateReputation(User user) {
-		if (user == null) return user
+		//if (user == null) return user
 
 		user.reputation = 1
-		for (Question question : Question.findAllByUser(user)) {
+		for (Question question : questionService.getAllQuestionsByUser(user)) {
 			if (question.mark > 0) {
 				user.reputation += 5 * question.mark
 			}
 			else {
-				user.reputation -= 2 * question.mark
+				user.reputation += 2 * question.mark
 			}
 		}
-		for (Answer answer : Answer.findAllByUser(user)) {
-			if (answer.question.correctAnswer == answer) {
-				user.reputation ++
+		for (Answer answer : answerService.getAllAnswersByUser(user)) {
+			if (answer.question.correctAnswer != null
+				&&  answer.question.correctAnswer == answer) {
+				user.reputation += 20
 			}
 			if (answer.mark > 0) {
 				user.reputation += 10 * answer.mark
 			}
 			else {
-				user.reputation -= 2 * answer.mark
+				user.reputation += 2 * answer.mark
 			}
 		}
 		if (user.reputation < 1) user.reputation = 1

@@ -4,8 +4,6 @@ import grails.transaction.Transactional
 
 @Transactional
 class PostService {
-
-	def UserService
 	
 	def addComment(int post_id, String text, User user)
 	{

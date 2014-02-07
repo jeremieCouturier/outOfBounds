@@ -20,7 +20,7 @@
 			<li <g:if test="${choice.equals('silver')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"silver"]"><g:message code='badge.silver' /></g:link></li>
 			<li <g:if test="${choice.equals('gold')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"gold"]"><g:message code='badge.gold' /></g:link></li>		
 		</ul> 
-		<g:render template="templateBadge" collection="${badges}" var="badge" params='[isAwarded="{false}"]' /> 
+		<g:render template="templateBadge" collection="${badges}" var="badge"/> 
 		<div class="pagination">
 			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
 		</div>
