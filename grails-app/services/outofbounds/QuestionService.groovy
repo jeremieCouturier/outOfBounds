@@ -25,7 +25,7 @@ class QuestionService {
 
 		for (String tagName : tagsName) {
 			Tag tag = Tag.findByName(tagName.toLowerCase())?:
-				new Tag(name: tagName.toLowerCase(), description: "").save(failOnError: true)
+				new Tag(name: tagName.toLowerCase()).save(failOnError: true)
 
 			question.addToTags(tag)
 		}	

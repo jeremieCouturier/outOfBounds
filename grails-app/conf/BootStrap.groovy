@@ -69,7 +69,7 @@ class BootStrap {
 		//second question
 		def tagcss = Tag.findByName("css") ?: new Tag(
 			name:"css",
-			description:"the design of your web app").save(failOnError: true)
+			description:"CSS (Cascading Style Sheets) is a language used to control the visual presentation of HTML and XML documents including (but not limited to) colors, layout and fonts.").save(failOnError: true)
 			
 		def taghtml = Tag.findByName("html") ?: new Tag(
 			name:"html",
