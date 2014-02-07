@@ -138,6 +138,29 @@ class UserController {
 		)
 	}
 
+	def userTags() {
+		def user = User.findById(params.user_id)
+		if (user == null) {
+			notFound()
+			return
+		}
+
+		def tags = new ArrayList<Tag>()
+		for (Question question : userService.userQuestions(user)) {
+			for (Tag tag : question.tags)
+				tags << tag
+		}
+		
+		render(
+			view: 'show',
+			model: [
+				userInstance: user,
+				tags: tags,
+				choice: "tags"
+			]
+		)
+	}
+
 
     def create() {
            
