@@ -150,13 +150,9 @@ class QuestionController {
         // reset tags
         questionService.setTags(params.question_tags, questionInstance)
 
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.Question'), questionInstance.id])
-                redirect questionInstance
-            }
-            '*'{ respond questionInstance, [status: OK] }
-        }
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'question.Question'), questionInstance.id])
+
+        redirect action:'show', params: ['question_id': questionInstance.id]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
