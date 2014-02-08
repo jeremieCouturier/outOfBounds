@@ -6,6 +6,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<title><g:message code="question.list" /></title>
+		<link href="${resource(dir: 'css', file: 'display.css')}" rel="stylesheet">
 	</head>
 	<body>
 		<g:if test="${flash.message}">

@@ -5,10 +5,33 @@ import grails.transaction.Transactional
 @Transactional
 class UserService {
 	
-	def newUsers(def offset, def max) {
-		return User.list(max: max, offset: offset, sort: 'dateSignUp', order: 'desc')
+	def newUser(def offset, def max) {
+		
+		def c = User.createCriteria()
+		def results = c.list(max: max, offset: offset) {
+			and{
+			   order('dateSignUp','desc')
+			   order('username','asc')
+			}
+		}
+		return results
 	}
 	
+	def reputationUser(def offset, def max) {
+		def c = User.createCriteria()
+		def results = c.list(max: max, offset: offset) {
+			and{
+			   order('reputation','desc')
+			   order('username','asc')
+			}
+		}
+		return results
+	}
+	
+	def usernameUser(def offset, def max) {
+		return User.list(max: max, offset: offset, sort: 'username', order: 'asc')
+	}
+		
 	def userQuestions(def user) {
 		return Question.findAllByUser(user)
 	}

@@ -42,7 +42,7 @@
 	margin-bottom: 30px;
 }
 
-.question .group_question .foot_question .tag a {
+.question .group_question .foot_question .tag a, .list_question .tag a {
 	color:rgb(49, 99, 137);
 	padding: 2px 6px 2px 6px;
 	background-color:rgb(205, 223, 237);

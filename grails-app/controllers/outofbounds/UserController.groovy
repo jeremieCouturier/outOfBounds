@@ -16,7 +16,7 @@ class UserController {
 
     static allowedMethods = [save: "POST"]
 
-    def index() {
+    /*def index() {
 		def offset = params?.offset ?: 0
 		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE*4
 
@@ -27,7 +27,41 @@ class UserController {
                 total: User.count, choice: "new", layout: "user"
             ]
         )	
-    }
+    }*/
+	
+	def index() {
+		flash.message = flash.message
+		redirect action: "newUser"
+	}
+	
+	def reputationUser() {
+		def users = userService.reputationUser(params.offset?: 0,
+			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+		getUsers("reputation", users)
+	}
+
+	def usernameUser() {
+		def users = userService.usernameUser(params.offset?: 0,
+			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+		getUsers("username", users)
+	}
+	
+	def newUser() {
+		def users = userService.newUser(params.offset?: 0,
+			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+		getUsers("new", users)
+	}
+	
+	protected def getUsers(name, users) {
+		render(
+			view: '/user/index',
+			model: [
+				users: users,
+				total: User.count, choice: name, layout: "user"
+			]
+		)
+	}
+	
 		
     def show() {
 

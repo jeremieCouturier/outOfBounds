@@ -11,7 +11,10 @@
 	</head>
 	<body>		
 		<ul class="menuInPage"> 
-		   	<li class="title"><g:message code="user.list" /></li>
+		   	<li class="title"><g:message code="tag.list" /></li>
+		   	<li <g:if test="${choice.equals('reputation')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="reputationUser"><g:message code='user.sort.reputation' /></g:link></li>
+			<li <g:if test="${choice.equals('username')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="usernameUser"><g:message code='user.sort.username' /></g:link></li>
+			<li <g:if test="${choice.equals('new')}">class="item_selected_menu"</g:if> ><g:link controller="User" action="newUser"><g:message code='user.sort.new' /></g:link></li>		
 		</ul> 
 		
 		<g:if test="${flash.message}">

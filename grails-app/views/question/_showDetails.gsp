@@ -49,6 +49,7 @@
 					</g:link>
 				</g:each>
 			</span>
+			
 			<!-- asker / date -->
 			<span class="user">
 				<label><g:message code ="question.asked"/> </label>
