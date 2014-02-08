@@ -1,7 +1,6 @@
 package outofbounds
 
 import outofbounds.badges.conditions.BadgeCondition
-import outofbounds.BadgeCondition
 import outofbounds.RegisteredCondition
 import grails.transaction.Transactional
 
