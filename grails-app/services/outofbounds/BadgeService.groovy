@@ -1,7 +1,6 @@
 package outofbounds
 
 import outofbounds.badges.conditions.BadgeCondition
-import outofbounds.RegisteredCondition
 import grails.transaction.Transactional
 
 @Transactional
@@ -12,12 +11,11 @@ class BadgeService {
 	{
 		Badge badge = Badge.findByName(name);
 		if (badge == null) {
-			String conditionClass = badgeCondition.getClass().getName()
 			badge = new Badge(
 				name: name,
 				description: description,
 				medal: medal,
-				conditionClass: conditionClass,
+				conditionClass: badgeCondition.getClass().getName(),
 				conditionParameters : badgeCondition.getParameters().join(";")
 			).save(failOnError: true, flush: true)
 		}

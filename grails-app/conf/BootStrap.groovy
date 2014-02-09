@@ -112,7 +112,7 @@ class BootStrap {
 	def initBadges() {
 		badgeService.saveBadge("bootstrap.badge.helloyou",
 			"bootstrap.badge.helloyou.content",
-Badge.			BadgeMedal.Bronze,
+			Badge.BadgeMedal.Bronze,
 			new ConnectedCondition(0, "HOUR")
 			)
 		badgeService.saveBadge("bootstrap.badge.happyhour",
