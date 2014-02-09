@@ -58,6 +58,12 @@ class User {
 	    return (authorities.contains(adminRole))
 	}
 
+	boolean isModerator() {
+	    def modRole = Role.findByAuthority('ROLE_MODERATOR')
+		
+	    return (isAdmin() || authorities.contains(modRole))
+	}
+
 	protected void encodePassword() {
 		if (!bEncoded) {
 			password = springSecurityService.encodePassword(password, username)

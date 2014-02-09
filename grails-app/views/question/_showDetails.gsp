@@ -63,10 +63,12 @@
 		<div class="modification">
 			<!-- check that user IS login and owner or is admin -->
 			<sec:ifLoggedIn>
-	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isAdmin() }">
+	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isModerator() }">
 				<g:link controller="Question" action="edit" params='[question_id: "${question.id}"]'>
 			        <g:message code='default.button.edit.label'/>
 			    </g:link>
+			</g:if>
+	    	<g:if test="${question.user == currentLoggedInUser || currentLoggedInUser.isAdmin() }">
 			    <g:link controller="Question" action="deleteQuestion" params='[question_id: "${question.id}"]'>
 			        <g:message code='default.button.delete.label'/>
 			    </g:link>
