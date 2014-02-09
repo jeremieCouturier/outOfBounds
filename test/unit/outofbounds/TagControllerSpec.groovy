@@ -70,9 +70,9 @@ class TagControllerSpec extends Specification {
             assertNull flash.message
             assertEquals '/tag/show', view
             assertEquals tag2, model.tag 
-            assertEquals Math.min(Configuration.NUMBER_ITEM_PER_PAGE, 2), model.questions.size()
+            assertEquals Math.min(Configuration.NUMBER_POSTS_PER_PAGE, 2), model.questions.size()
             assertEquals 2, model.total
-            if (Configuration.NUMBER_ITEM_PER_PAGE == 1) {
+            if (Configuration.NUMBER_POSTS_PER_PAGE == 1) {
                 assertEquals([question2], model.questions)
             } else {
                 assertEquals([question1, question2], model.questions)

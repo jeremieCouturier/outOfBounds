@@ -28,7 +28,7 @@ class QuestionController {
 	
 	def newestQuestions() {
 		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		def max = params?.max ?: Configuration.NUMBER_POSTS_PER_PAGE
         
 		render(   
             view: 'index',
@@ -41,7 +41,7 @@ class QuestionController {
 	
 	def voteQuestions() {
 		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		def max = params?.max ?: Configuration.NUMBER_POSTS_PER_PAGE
 		
 		render(   
             view: 'index',
@@ -54,7 +54,7 @@ class QuestionController {
 
 	def unansweredQuestions() {
 		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+		def max = params?.max ?: Configuration.NUMBER_POSTS_PER_PAGE
 		
 		render(
             view: 'index',

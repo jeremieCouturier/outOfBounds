@@ -22,8 +22,11 @@
 		
 		<g:render template="showSummary" collection="${questions}" var="question" />
 		
-		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
-		</div>
+		%{--display pagination only if there is more than one page--}%
+		<g:if test="${total > Configuration.NUMBER_POSTS_PER_PAGE}">
+			<div class="pagination">
+				<g:paginate action="${actionName }" max="${Configuration.NUMBER_POSTS_PER_PAGE}" total="${total}"/>
+			</div>
+		</g:if>
 	</body>
 </html>

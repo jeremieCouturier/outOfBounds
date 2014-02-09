@@ -22,6 +22,7 @@
 		
 		<div class="groupTag">
 		<table>
+			<!-- display 4 tags per line -->
 		   <g:each var="i" in="${ (0..<(tags.size()-1)/4+1) }">
 		   <g:set var="liste" value="${tags.subList(i*4, Math.min((i+1)*4, tags.size()))}" />
 			<tr>
@@ -35,9 +36,14 @@
 			</g:each>
 		</table>
 		</div>
-		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE * 4}" total="${total}"/>
-		</div>
+
+			
+			%{--display pagination only if there is more than one page--}%
+			<g:if test="${total > Configuration.NUMBER_TAGS_PER_PAGE}">
+				<div class="pagination">
+					<g:paginate action="${actionName }" max="${Configuration.NUMBER_TAGS_PER_PAGE}" total="${total}"/>
+				</div>
+			</g:if>
 		
 	</body>
 </html>

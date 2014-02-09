@@ -38,9 +38,11 @@
 		</table>
 		</div>
 		
-		<div class="pagination">
-			<g:paginate action="${actionName}" max="${Configuration.NUMBER_ITEM_PER_PAGE*4}" total="${total}"/>
-		</div>
-		
+		%{--display pagination only if there is more than one page--}%
+		<g:if test="${total > Configuration.NUMBER_TAGS_PER_PAGE}">
+				<div class="pagination">
+				<g:paginate action="${actionName}" max="${Configuration.NUMBER_TAGS_PER_PAGE}" total="${total}"/>
+			</div>
+		</g:if>
 	</body>
 </html>

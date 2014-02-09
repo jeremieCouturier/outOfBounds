@@ -22,21 +22,21 @@ class TagController {
     /* Return list of tags ordered by date */    
     def newTags() {
         def tags = tagService.newTags(params.offset?: 0, 
-            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+            params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
         getTags("new", tags)
     }
 
     /* Return list of tags ordered by popularity */    
     def popularTags() {
         def tags = tagService.popularTags(params.offset?: 0, 
-            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+            params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
         getTags("popular", tags)
     }
 
     /* Return list of tags ordered by alphanumeric order */    
     def nameTags() {
         def tags = tagService.nameTags(params.offset?: 0, 
-            params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+            params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
         getTags("name", tags)
     }
 
@@ -64,7 +64,7 @@ class TagController {
         }
 
         def questions = tagService.newestTaggedQuestions(tag, params.offset?: 0, 
-            params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
+            params.max?: Configuration.NUMBER_POSTS_PER_PAGE)
 
         displayQuestions(tag, "newest", questions, tag.questions.size())
     }
@@ -76,7 +76,7 @@ class TagController {
         }
 
         def questions = tagService.popularTaggedQuestions(tag, params.offset?: 0, 
-            params.max?: Configuration.NUMBER_ITEM_PER_PAGE)
+            params.max?: Configuration.NUMBER_POSTS_PER_PAGE)
 
         displayQuestions(tag, "popular", questions, tag.questions.size())
     }
@@ -93,7 +93,7 @@ class TagController {
         def size = questions.size()
 
         def offset = params.int('offset') ?: 0
-        def max = params.int('max') ?: Configuration.NUMBER_ITEM_PER_PAGE
+        def max = params.int('max') ?: Configuration.NUMBER_POSTS_PER_PAGE
 
 
         // if we asked an invalid page, return to first page

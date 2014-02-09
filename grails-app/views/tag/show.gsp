@@ -15,7 +15,7 @@
 		<ul class="menuInPage"> 
 	   		<li class="title"><g:message code="tag.tagged_question"/></li>
 		   		
-			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.new"/></g:link></li>
+			<li <g:if test="${choice.equals('newest')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="newestQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.newest"/></g:link></li>
 			<li <g:if test="${choice.equals('popular')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="popularQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.popular"/></g:link></li>
 			<li <g:if test="${choice.equals('unanswered')}">class="item_selected_menu"</g:if> ><g:link controller="Tag" action="unansweredQuestions" params='[tag_id: "${tag.id}"]'><g:message code="tag.unanswered"/></g:link></li>
 		</ul> 
@@ -36,14 +36,17 @@
 		<div class="separation"></div>
 
 	    <g:if test="${total == 0}">
-	    	<g:message code="tag.no_question_found" args="[choice, tag.name]" />
+	    	<g:message code="tag.no_question_found" args="${ [message(code: 'tag.' + choice), tag.name] }" />
 	    </g:if>
 	    <g:else>
 			<g:render template="/question/showSummary" collection="${questions}" var="question" />
-		
-			<div class="pagination">
-				<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
-			</div>
+	
+			%{-- display pagination only if there is more than one page --}%
+			<g:if test="${total > Configuration.NUMBER_POSTS_PER_PAGE}">
+				<div class="pagination">
+					<g:paginate action="${actionName }" params='[tag_id: "${tag.id}"]' max="${Configuration.NUMBER_POSTS_PER_PAGE}" total="${total}"/>
+				</div>
+			</g:if>
 		</g:else>
 	</body>
 </html>

@@ -21,8 +21,12 @@
 			<li <g:if test="${choice.equals('gold')}">class="item_selected_menu"</g:if> ><g:link controller="Badge" action="badges" params="[medal:"gold"]"><g:message code='badge.gold' /></g:link></li>		
 		</ul> 
 		<g:render template="templateBadge" collection="${badges}" var="badge"/> 
-		<div class="pagination">
-			<g:paginate action="${actionName }" max="${Configuration.NUMBER_ITEM_PER_PAGE}" total="${total}"/>
-		</div>
+
+		%{--display pagination only if there is more than one page--}%
+		<g:if test="${total > Configuration.NUMBER_BADGES_PER_PAGE}">
+			<div class="pagination">
+				<g:paginate action="${actionName }" max="${Configuration.NUMBER_BADGES_PER_PAGE}" total="${total}"/>
+			</div>
+		</g:if>
 	</body>
 </html>

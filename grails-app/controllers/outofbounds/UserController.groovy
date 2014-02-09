@@ -18,7 +18,7 @@ class UserController {
 
     /*def index() {
 		def offset = params?.offset ?: 0
-		def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE*4
+		def max = params?.max ?: Configuration.NUMBER_TAGS_PER_PAGE
 
 		render(
             view: 'index',
@@ -36,19 +36,19 @@ class UserController {
 	
 	def reputationUser() {
 		def users = userService.reputationUser(params.offset?: 0,
-			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+			params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
 		getUsers("reputation", users)
 	}
 
 	def usernameUser() {
 		def users = userService.usernameUser(params.offset?: 0,
-			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+			params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
 		getUsers("username", users)
 	}
 	
 	def newUser() {
 		def users = userService.newUser(params.offset?: 0,
-			params.max?: Configuration.NUMBER_ITEM_PER_PAGE*4)
+			params.max?: Configuration.NUMBER_TAGS_PER_PAGE)
 		getUsers("new", users)
 	}
 	

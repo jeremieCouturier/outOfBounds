@@ -46,7 +46,7 @@ class BadgeController {
     def badges() {
 
         def offset = params?.offset ?: 0
-        def max = params?.max ?: Configuration.NUMBER_ITEM_PER_PAGE
+        def max = params?.max ?: Configuration.BADGES_PER_PAGE
         def medal = params?.medal ?: "all"
         
         def badges
