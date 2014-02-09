@@ -46,7 +46,7 @@ class BadgeController {
     def badges() {
 
         def offset = params?.offset ?: 0
-        def max = params?.max ?: Configuration.BADGES_PER_PAGE
+        def max = params?.max ?: Configuration.NUMBER_BADGES_PER_PAGE
         def medal = params?.medal ?: "all"
         
         def badges
@@ -57,12 +57,16 @@ class BadgeController {
             case "gold" : badges = Badge.findAllByMedal("Gold"); break
             default : badges = Badge.all; break
         }
+
+        def badgesSublist = badges.subList(offset, max)
+
+        def total = badges?.count ?: 0
         
         render(
             view: '/badge/index',
             model: [
-                badges: badges,
-                total: badges?.count ?: 0, choice: medal, layout: "badge"
+                badges: badgesSublist,
+                total: total, choice: medal, layout: "badge"
             ]
         )
     }
