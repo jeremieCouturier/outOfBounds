@@ -19,7 +19,7 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
-	Integer reputation = 0
+	Integer reputation = 1
 	
 	static transients = ['springSecurityService']
 

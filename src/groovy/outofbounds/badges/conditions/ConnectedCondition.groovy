@@ -50,11 +50,6 @@ class ConnectedCondition implements BadgeCondition {
 	}
 
 	@Override
-	public List<String> getParametersNames() {
-		return ["neededValue:int","calendarFormat:YEAR:HOUR"]
-	}
-
-	@Override
 	public void setParameters(List<String> parameters) {
 		if (parameters != null) {
 			neededValue = Integer.parseInt(parameters[0])

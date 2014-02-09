@@ -33,11 +33,6 @@ class ReputationCondition implements BadgeCondition {
 	}
 
 	@Override
-	public List<String> getParametersNames() {
-		return ["neededValue:int"]
-	}
-
-	@Override
 	public void setParameters(List<String> parameters) {
 		if (parameters != null && parameters.size() > 0) {
 			neededValue = Integer.parseInt(parameters[0])

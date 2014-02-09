@@ -13,18 +13,11 @@ class BadgeService {
 		Badge badge = Badge.findByName(name);
 		if (badge == null) {
 			String conditionClass = badgeCondition.getClass().getName()
-			RegisteredCondition condition = RegisteredCondition.findByConditionClass(conditionClass)
-			if (condition == null) {
-				condition = new RegisteredCondition(
-					conditionClass: conditionClass,
-					conditionParametersNames: badgeCondition.getParametersNames().join(";")
-				).save(failOnError: true, flush: true)
-			}
 			badge = new Badge(
 				name: name,
 				description: description,
 				medal: medal,
-				condition: condition,
+				conditionClass: conditionClass,
 				conditionParameters : badgeCondition.getParameters().join(";")
 			).save(failOnError: true, flush: true)
 		}
@@ -34,7 +27,7 @@ class BadgeService {
 	def callConditionOnBadge(Badge badge, User user) {
 		if (badge == null || user == null)  return false
 		try {
-			Class<?> conditionClass = Class.forName(badge.condition.conditionClass);
+			Class<?> conditionClass = Class.forName(badge.conditionClass);
 			if (conditionClass != null) {
 				BadgeCondition condition = conditionClass.newInstance()
 				condition.setParameters(badge.conditionParameters.split(";").toList())
@@ -42,7 +35,6 @@ class BadgeService {
 			}
 		}
 		catch(Exception e) {
-			throw e
 			return false
 		}
 		return false;
