@@ -51,7 +51,10 @@ class TagControllerSpec extends Specification {
             controller.newTags()
         then: 'Should get the ordered list of newest tags'
             assertEquals view, '/tag/index'
-            assertEquals model.tags, [tag3, tag2, tag1]
+
+            def sublist = [tag3, tag2, tag1].asList().subList(0, Math.min(3, Configuration.NUMBER_TAGS_PER_PAGE))
+
+            assertEquals model.tags, sublist
     }
 
     void "Test the name tags action returns tags by name"() {
@@ -59,7 +62,10 @@ class TagControllerSpec extends Specification {
             controller.nameTags()
         then: 'Should get the ordered list of tags by name'
             assertEquals view, '/tag/index'
-            assertEquals model.tags, [tag3, tag1, tag2]
+
+            def sublist = [tag3, tag1, tag2].asList().subList(0, Math.min(3, Configuration.NUMBER_TAGS_PER_PAGE))
+
+            assertEquals model.tags, sublist
     }
 
     void "Test displaying a tag and its associated newest questions"() {
