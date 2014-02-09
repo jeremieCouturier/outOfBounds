@@ -92,7 +92,7 @@ class QuestionService {
 	def unansweredQuestions(def offset, def max)
 	{
 		def listUnansweredQuestions = Question.findByViews(0)
-		if (listUnansweredQuestions !! null) {
+		if (listUnansweredQuestions != null) {
 			listUnansweredQuestions = listUnansweredQuestions.list(max: max, offset: offset, sort: 'date', order: 'desc')
 		}
 		return listUnansweredQuestions
