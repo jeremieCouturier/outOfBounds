@@ -45,8 +45,8 @@ class BadgeController {
      */
     def badges() {
 
-        def offset = params?.offset ?: 0
-        def max = params?.max ?: Configuration.NUMBER_BADGES_PER_PAGE
+        def offset = params?.int('offset') ?: 0
+        def max = params?.int('max') ?: Configuration.NUMBER_BADGES_PER_PAGE
         def medal = params?.medal ?: "all"
         
         def badges
@@ -58,7 +58,7 @@ class BadgeController {
             default : badges = Badge.all; break
         }
 
-        def badgesSublist = badges.subList(offset, max)
+        def badgesSublist = badges.subList(offset, offset + max)
 
         def total = 0
         if (badges != null) total = badges.size

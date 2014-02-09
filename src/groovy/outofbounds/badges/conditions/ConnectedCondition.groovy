@@ -8,21 +8,29 @@ import org.hibernate.util.CalendarComparator;
 import outofbounds.User;
 
 class ConnectedCondition implements BadgeCondition {
+	private static final int SECOND = 1000
+	private static final int MINUTE = 60 * SECOND
+	private static final int HOUR = 60 * MINUTE
+	private static final int DAY = 24 * HOUR
+	private static final int YEAR = 365 * DAY
 
 	int neededValue
 	int calendarFormat
 
 	public ConnectedCondition() {
 		this.neededValue = 1
-		calendarFormat = Calendar.HOUR
+		calendarFormat = DAY
 	}
 
 	public ConnectedCondition(int neededValue, String format) {
 		this.neededValue = neededValue
 		switch(format) {
-			case "YEAR": calendarFormat = Calendar.YEAR; break
-			case "HOUR": calendarFormat = Calendar.HOUR; break
-			default: calendarFormat = Calendar.YEAR
+			case "YEAR": calendarFormat = YEAR; break
+			case "DAY": calendarFormat = DAY; break
+			case "HOUR": calendarFormat = HOUR; break
+			case "MINUTE": calendarFormat = MINUTE; break
+			case "SECOND": calendarFormat = SECOND; break
+			default: calendarFormat = DAY
 		}
 	}
 
@@ -32,13 +40,7 @@ class ConnectedCondition implements BadgeCondition {
 	 */
 	@Override
 	public boolean check(User user) {
-		Calendar currentCalendar = Calendar.getInstance()
-		currentCalendar.setTime(new Date())
-		currentCalendar.add(calendarFormat, neededValue)
-		Calendar userCalendar = Calendar.getInstance()
-		userCalendar.setTime(user.dateSignUp)
-		//throw new RuntimeException("check " + user.username + " " + calendarFormat + " " + (currentCalendar.compareTo(userCalendar) >= 0).toString())
-		return userCalendar.compareTo(currentCalendar) >= 0;
+		return user.dateSignUp >= (new Date().getTime() + calendarFormat * neededValue);
 	}
 
 	@Override
