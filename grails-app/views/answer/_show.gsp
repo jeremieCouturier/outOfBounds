@@ -30,7 +30,7 @@
 
 	    <!-- correct answer -->
 	    <!-- if it's user question, display both accept/unaccept -->
-	    <g:if test="${answer.user == currentLoggedInUser}" >
+	    <g:if test="${answer.question.user == currentLoggedInUser}" >
 		    <g:if test="${ answer.question.correctAnswer != null && answer.question.correctAnswer.id == answer.id }">
 		    	<g:link class="accept" controller="Question" action="unaccept" params='[answer_id: "${answer.id}"]' />
 		    </g:if>
