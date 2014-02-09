@@ -92,7 +92,10 @@ class QuestionService {
 	def unansweredQuestions(def offset, def max)
 	{
 		def listUnansweredQuestions = Question.findByViews(0)
-		return listUnansweredQuestions.list(max: max, offset: offset, sort: 'date', order: 'desc')
+		if (listUnansweredQuestions !! null) {
+			listUnansweredQuestions = listUnansweredQuestions.list(max: max, offset: offset, sort: 'date', order: 'desc')
+		}
+		return listUnansweredQuestions
 	}
 
 	def getAllQuestionsByUser(User user) {
