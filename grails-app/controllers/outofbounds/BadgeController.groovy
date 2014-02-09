@@ -60,7 +60,8 @@ class BadgeController {
 
         def badgesSublist = badges.subList(offset, max)
 
-        def total = badges?.count ?: 0
+        def total = 0
+        if (badges != null) total = badges.size
         
         render(
             view: '/badge/index',
