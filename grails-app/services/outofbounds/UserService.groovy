@@ -79,6 +79,13 @@ class UserService {
 			}
 		}
 		if (user.reputation < 1) user.reputation = 1
+
+		def moderatorRole = Role.findByAuthority('ROLE_MODERATOR')
+		if (user.reputation >= Configuration.MODERATOR_REPUTATION) {
+			if (!user.authorities.contains(moderatorRole)) {
+				UserRole.create user, moderatorRole
+			}
+		}
 		
 		user.save(failOnError : true)
 
